@@ -229,7 +229,15 @@
 .wc-nav button:disabled{opacity:.35}
 .wc-hint{font-size:10.5px;color:var(--ft);margin-top:6px}
 /* المستخدمون: على الكمبيوتر يبقى الصف كما هو */
-.us-h,.us-fs{display:contents}.us-f{display:inline-flex;align-items:center;gap:4px}.us-row .ab{order:9}
+.us-row{display:block}.us-h{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.mov.usr .mo{max-width:620px}
+.us-h input{flex:0 1 200px;width:200px;min-width:120px}
+.us-fs{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin:8px 0 2px;padding:10px;background:#faf5ff;border:1px solid #7c3aed40;border-radius:8px}
+.us-fs[hidden]{display:none!important}
+.us-f{display:inline-flex;flex-direction:column;gap:3px}.us-hint{flex-basis:100%;font-size:11.5px;color:var(--dm);line-height:1.9;background:var(--card);border-radius:6px;padding:8px 10px}.us-hint b{color:#5b21b6}.us-hint[hidden]{display:none}
+.us-f2{display:inline-flex;align-items:flex-end;gap:8px}
+.us-q{display:inline-flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:50%;border:0;background:#7c3aed;color:#fff;font-size:18px;font-weight:800;font-family:var(--fm);cursor:pointer;line-height:1;box-shadow:0 2px 6px rgba(124,58,237,.35)}.us-q:hover{background:#6d28d9}
+.us-row.opn{background:#fdfbff}
 /* إعداد الاختبار على الجوال */
 .qs-go{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border-radius:14px;padding:14px;margin-bottom:12px}
 .qs-go .qs-sum{font-size:13px;font-weight:700;line-height:1.8;margin-bottom:10px}
@@ -307,11 +315,28 @@
   .us-list{max-height:none!important;overflow:visible!important}
   .us-row{display:block;border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px}
   .us-row.cur{border-color:#7c3aed}
-  .us-h{display:flex;align-items:center;gap:6px}.us-h input{flex:1;min-width:0;padding:10px!important;font-size:15px!important}
+  .us-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.us-h input{flex:1 1 0;min-width:0;padding:10px!important;font-size:15px!important}
   .us-h .ab{min-height:40px;min-width:42px;justify-content:center;font-size:16px}
-  .us-fs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .us-fs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.us-hint{grid-column:1/-1}
+  .us-f2{display:flex;min-width:0}.us-f2 .us-f{flex:1;min-width:0}.us-q{width:40px;height:40px;font-size:20px}
   .us-f{display:flex;flex-direction:column;gap:3px}.us-f small{font-size:11px!important}.us-f select{width:100%;padding:9px!important;font-size:14px!important}
 }
+/* شاشة اختيار المستخدم عند فتح التطبيق */
+.ugate{display:none;position:fixed;inset:0;z-index:600;background:linear-gradient(160deg,#f3f0ff,#eef4ff 55%,#f3f4f8);overflow-y:auto;padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
+.ugate.on{display:block}
+.ug-box{max-width:440px;margin:0 auto;text-align:center}
+.ug-box .logo-ic{margin:8px auto 10px;width:56px;height:56px;font-size:26px;border-radius:14px}
+.ug-box h2{font-size:21px;font-weight:800;margin-bottom:4px}.ug-box>p{font-size:13px;color:var(--dm);margin-bottom:18px}
+.ug-list{display:flex;flex-direction:column;gap:10px}
+.ug-u{display:flex;align-items:center;gap:12px;width:100%;min-height:68px;padding:10px 14px;background:var(--card);border:1.5px solid var(--bd);border-radius:14px;cursor:pointer;font-family:var(--fa);text-align:right;box-shadow:var(--sh);transition:.15s}
+.ug-u:hover,.ug-u:active{border-color:#7c3aed;transform:translateY(-1px)}
+.ug-u.last{border-color:#7c3aed;background:#faf5ff}
+.ug-av{width:44px;height:44px;border-radius:50%;background:#7c3aed;color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;flex:none}
+.ug-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.ug-tx b{font-size:16px;color:var(--tx)}.ug-tx small{font-size:11.5px;color:var(--dm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ug-pct{font-family:var(--fm);font-weight:800;font-size:15px;color:var(--gn);flex:none}
+.ug-mng{margin-top:16px;background:0 0;border:1px dashed var(--bd);border-radius:12px;padding:12px;width:100%;font-family:var(--fa);font-size:13px;font-weight:700;color:var(--dm);cursor:pointer}
+.ug-mng:hover{border-color:#7c3aed;color:#7c3aed}
+.ug-empty{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;font-size:13px;color:var(--dm);line-height:1.8}
 #pz{display:none}
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{background:#fff!important;margin:0;padding:0;font-size:10pt}
@@ -381,6 +406,7 @@
 <div class="mn"><div class="blay">
   <div class="cpan"><div class="lhd" id="lhd"></div><div class="lbd" id="wl"></div><div class="cgr" id="cg" style="display:none"></div></div>
 </div></div></div>
+<div class="ugate no-pr" id="ugate"></div>
 <div class="ddbk no-pr" id="ddBk"></div>
 <nav class="bnav no-pr" id="bnav"></nav>
 <div class="shov no-pr" id="shv" onclick="if(event.target===this)shClose()"><div class="sh" id="sh"></div></div>
@@ -427,7 +453,7 @@ function cacheSave(){try{lsSet(LS_KEY,JSON.stringify({v:1,at:Date.now(),
   queue:Q,seq:_qseq}));}catch(e){ts('تعذر الحفظ المحلي — مساحة المتصفح ممتلئة','er');}}
 function cacheLoad(){try{const o=JSON.parse(lsGet(LS_KEY)||'null');if(!o||!Array.isArray(o.terms)||!o.terms.length)return false;
   D=o.terms.map(t=>{const d=Object.assign({},t);d._tags=parseTags(d.tags);d._s=Array.isArray(t.s)?t.s:sEmpty();delete d.s;return d;});
-  if(Array.isArray(o.users)&&o.users.length===MAX_U)U=o.users;
+  if(Array.isArray(o.users)&&o.users.length===MAX_U){U=o.users;uNorm();}
   cats=o.cats||[];tags=o.tags||[];Q=o.queue||[];_qseq=o.seq||0;linkTags();return true;}catch(e){return false;}}
 
 // ── إضافة عملية للطابور مع دمج العمليات المتتالية على نفس الكلمة ──
@@ -535,7 +561,7 @@ function onC(r){if(r.status==='ok')cats=r.table.rows.map(rw=>({id:String(rw.c[0]
   lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onG&sheet=${encodeURIComponent('التاجات')}`,_lRej);}
 function onG(r){if(r.status==='ok')tags=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),name:(rw.c[1]?.v||'').trim(),catId:String(rw.c[2]?.v||'').trim()})).filter(g=>g.id&&g.name);
   loadUsersThen();}
-function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();$('ld').style.display='none';$('app').style.display='block';syncBadge();}
+function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();$('ld').style.display='none';$('app').style.display='block';syncBadge();if(!_uChosen)uGate();}
 
 // ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
 async function boot(){
@@ -671,7 +697,7 @@ function buildView(){
 
   ai=Math.min(ai,Math.max(0,V.length-1));
   $('sT').textContent=fd.length;$('sC').textContent=selC.size>0?selC.size:cats.length;$('sG').textContent=selT.size>0?selT.size:tags.length;
-  ren();
+  ren();vsSave();
 }
 function cntTag(tid){return V.filter(v=>v.tagId===tid).length;}
 
@@ -717,7 +743,7 @@ function bF(){const m=$('fm');if(!m)return;
     +`<button class="ddi all" onclick="vfAll()">✦ إظهار الكل</button>`;
   const off=4-vfOn().length;const bd=$('fb'),tg=bd.parentElement;
   if(off>0){bd.textContent=off;bd.style.display='inline';tg.classList.add('act');}else{bd.style.display='none';tg.classList.remove('act');}}
-function vfSave(){lsSet('dictFields',JSON.stringify(VF));vfCols();bF();rHdr();ren();}
+function vfSave(){lsSet('dictFields',JSON.stringify(VF));vfCols();bF();rHdr();ren();vsSave();}
 function vfTog(k){if(VF[k]&&vfOn().length===1){ts('يجب إظهار حقل واحد على الأقل','er');return;}VF[k]=!VF[k];vfSave();}
 function vfAll(){['ar','en','zh','pin'].forEach(k=>VF[k]=true);vfSave();}
 
@@ -752,7 +778,7 @@ function expCSV(){
   }catch(e){ts('تعذر التصدير: '+e.message,'er');}}
 
 // ── RENDER ──
-function sV(v){cv=v;document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$('lhd').style.display=v==='list'?'grid':'none';$('wl').style.display=v==='list'?'block':'none';$('cg').style.display=v==='cards'?'block':'none';ren();}
+function sV(v){cv=v;document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$('lhd').style.display=v==='list'?'grid':'none';$('wl').style.display=v==='list'?'block':'none';$('cg').style.display=v==='cards'?'block':'none';ren();vsSave();}
 // ── SELECTION (for printing selected words only) ──
 const selW=new Set();
 function selUpd(){const n=selW.size;const b=$('selbar');if(b){b.style.display=n?'flex':'none';$('selN').textContent=n;}
@@ -1211,7 +1237,7 @@ async function fixTagsFmt(){
   try{const r=await api({action:'fixTags'});hL();ts(`تم إصلاح ${r.fixed} صف ✓`,'ok');reload();}catch(e){hL();ts(e.message,'er');}}
 function resetAU(){lsDel('dictApiUrl');AU=DEFAULT_AU;cM();setTimeout(()=>checkApiVer(),300);ts('استعادة ✓','ok');}
 
-function oM(){$('mov').classList.add('opn');}function cM(){trBump();$('mov').classList.remove('opn');$('mov').classList.remove('po');$('mov').classList.remove('qz');$('mov').classList.remove('wide');$('mov').classList.remove('qzrun');}
+function oM(){$('mov').classList.add('opn');}function cM(){trBump();$('mov').classList.remove('opn');$('mov').classList.remove('po');$('mov').classList.remove('qz');$('mov').classList.remove('wide');$('mov').classList.remove('qzrun');$('mov').classList.remove('usr');if(!_uChosen)setTimeout(uGate,0);}
 function ts(m,t){const e=$('tst');e.textContent=m;e.className='tst '+(t||'')+' sh';setTimeout(()=>e.classList.remove('sh'),2500);}
 
 // ═══ PRINT OPTIONS ═══
@@ -1324,14 +1350,19 @@ function doPr(){const z=$('pz');const rows=poRows();if(!rows.length){ts('لا ت
 const QL={ar:'عربي',zh:'رمز',pin:'بينين',en:'إنجليزي'},QK=['ar','zh','pin','en'];
 const QL_REV={'عربي':'ar','رمز':'zh','بينين':'pin','بينيين':'pin','إنجليزي':'en','انجليزي':'en'};
 const S_MIN=-5,S_MAX=5,MAX_U=10,SC_COL0=6;
-function uDef(){return Array.from({length:MAX_U},(_,i)=>({code:i+1,name:'',q:'zh',a:'ar',x1:'',x2:''}));}
+// الإعدادات الافتراضية لكل مستخدم جديد: السؤال بينين، الإجابة عربي، المستثناة الأولى إنجليزي
+const U_DEF={q:'pin',a:'ar',x1:'en',x2:''};
+function uDef(){return Array.from({length:MAX_U},(_,i)=>Object.assign({code:i+1,name:''},U_DEF));}
+function uNorm(){U.forEach(u=>{if(!u.name)Object.assign(u,U_DEF);});}
 let U=uDef();
 let CU=parseInt(lsGet('dictQuizUser')||'0')||0;
 let QS=null,QZ=null;
 function uNamed(){return U.filter(u=>u.name);}
 function curU(){const u=U[CU-1];return u&&u.name?u:null;}
 function cuCode(){return curU()?CU:0;}
-function setCU(c){CU=c||0;lsSet('dictQuizUser',String(CU));uBtn();vfCols();rHdr();buildView();bS();}
+function setCU(c){const prev=CU;CU=c||0;lsSet('dictQuizUser',String(CU));
+  if(CU&&curU()&&(CU!==prev||!_uChosen)){_uChosen=true;uGateHide();vsLoad(CU);return;}
+  uBtn();vfCols();rHdr();buildView();bS();}
 function clampS(v){return Math.max(S_MIN,Math.min(S_MAX,v));}
 function sEmpty(){return new Array(MAX_U).fill(null);}
 function sOf(d,code){code=code||cuCode();if(!code||!d._s)return null;const v=d._s[code-1];return v==null||v===''?null:+v;}
@@ -1353,8 +1384,8 @@ function onU(r){
     const nu=uDef();
     r.table.rows.forEach(rw=>{const c=rw.c||[];const code=Number(c[0]&&c[0].v);if(!(code>=1&&code<=MAX_U))return;
       const g=i=>String((c[i]&&c[i].v)!=null?c[i].v:'').trim();
-      Object.assign(nu[code-1],{name:g(1),q:QL_REV[g(2)]||'zh',a:QL_REV[g(3)]||'ar',x1:QL_REV[g(4)]||'',x2:QL_REV[g(5)]||''});});
-    U=nu;}}catch(e){}
+      Object.assign(nu[code-1],{name:g(1),q:QL_REV[g(2)]||'pin',a:QL_REV[g(3)]||'ar',x1:QL_REV[g(4)]||'',x2:QL_REV[g(5)]||''});});
+    U=nu;uNorm();}}catch(e){}
   finishLoad();}
 function finishLoad(){if(_uDone)return;_uDone=true;clearTimeout(_uT);linkTags();cacheSave();paint();if(_lRes)_lRes();}
 
@@ -1394,17 +1425,30 @@ function sfSort(k){SF.sort=k;sfSave();buildView();bS();}
 
 // ── إدارة المستخدمين ──
 function uSel(id,val,allowEmpty){return `<select id="${id}">${allowEmpty?'<option value="">— لا شيء —</option>':''}${QK.map(k=>`<option value="${k}"${val===k?' selected':''}>${QL[k]}</option>`).join('')}</select>`;}
+let _usOpen=0;
 function oUsers(){
-  let h=`<h2>👤 المستخدمون <span style="font-size:10px;color:var(--ft);font-weight:400">10 مستخدمين كحد أقصى — الكود ثابت ويتغير الاسم فقط</span></h2>
-  <div class="qz-note" style="margin:0 0 8px">انقر ○ لتعيين المستخدم الحالي. الإعدادات الافتراضية تُطبَّق عند فتح شاشة الاختبار: <b>السؤال</b> و<b>الإجابة</b> إجباريان، و<b>المستثناة</b> (اختيارية) لا تُحدَّد عند «اختيار الكل». لا يجوز تكرار نفس اللغة في خانتين.</div><div class="us-list" style="max-height:58vh;overflow-y:auto">`;
-  U.forEach(u=>{const c=u.code,on=c===CU&&!!u.name;
-    h+=`<div class="us-row${on?' cur':''}"><div class="us-h">
+  let h=`<h2>👤 المستخدمون <span style="font-size:10px;color:var(--ft);font-weight:400">10 مستخدمين كحد أقصى</span></h2>
+  <div class="qz-note" style="margin:0 0 8px">انقر ○ لتعيين المستخدم الحالي، و<b>⚙ تخصيص</b> لتغيير إعدادات الاختبار الافتراضية له.</div><div class="us-list">`;
+  U.forEach(u=>{const c=u.code,on=c===CU&&!!u.name,op=c===_usOpen;
+    h+=`<div class="us-row${on?' cur':''}${op?' opn':''}"><div class="us-h">
     <span class="qz-opt${on?' on':''}" style="padding:3px 8px" onclick="uPick(${c})" title="تعيين كمستخدم حالي">${on?'●':'○'}</span><span class="cd">${c}</span>
-    <input id="un${c}" value="${esc(u.name)}" placeholder="مستخدم ${c} — اكتب الاسم" maxlength="30" style="flex:1 1 120px;min-width:110px">
+    <input id="un${c}" value="${esc(u.name)}" placeholder="مستخدم ${c} — اكتب الاسم" maxlength="30">
+    <button class="ab us-cfg${op?' act':''}" onclick="usCfg(${c})" title="تخصيص الإعدادات الافتراضية">⚙ <span class="ab-txt">تخصيص</span></button>
     <button class="ab g" onclick="uSave(${c})" title="حفظ">💾</button>${u.name?`<button class="ab d" onclick="uReset(${c})" title="مسح كل درجات هذا المستخدم">🧹</button>`:''}</div>
-    <div class="us-fs"><label class="us-f"><small>سؤال</small>${uSel('uq'+c,u.q)}</label><label class="us-f"><small>إجابة</small>${uSel('ua'+c,u.a)}</label><label class="us-f"><small>مستثناة 1</small>${uSel('ux1'+c,u.x1,true)}</label><label class="us-f"><small>مستثناة 2</small>${uSel('ux2'+c,u.x2,true)}</label></div></div>`;});
+    <div class="us-fs" id="usf${c}"${op?'':' hidden'}><label class="us-f"><small>سؤال</small>${uSel('uq'+c,u.q)}</label><label class="us-f"><small>إجابة</small>${uSel('ua'+c,u.a)}</label><label class="us-f"><small>مستثناة 1</small>${uSel('ux1'+c,u.x1,true)}</label><div class="us-f2"><label class="us-f"><small>مستثناة 2</small>${uSel('ux2'+c,u.x2,true)}</label><button type="button" class="us-q" onclick="usHelp(${c})" title="ما معنى هذه الإعدادات؟">?</button></div>
+      <div class="us-hint" id="ush${c}" hidden><b>ما فائدة هذه الإعدادات؟</b> هي الاختيارات التي تظهر جاهزة لهذا المستخدم عند فتح شاشة الاختبار، حتى لا يختارها في كل مرة (ويمكنه تغييرها داخل الاختبار متى شاء):<br>
+      • <b>السؤال:</b> اللغة التي تظهر بها الكلمة المطلوب معرفتها.<br>
+      • <b>الإجابة:</b> اللغة التي يجيب بها.<br>
+      • <b>مستثناة 1 و 2:</b> لغات لا تُحدَّد عند الضغط على «اختيار الكل» في أنواع السؤال، مثل لغة يعرفها جيداً ولا يحتاج التدرّب عليها.<br>
+      لا يجوز أن تتكرر نفس اللغة في خانتين. اضغط 💾 للحفظ.</div></div></div>`;});
   h+=`</div><div class="mbt"><button class="mc" onclick="cM()">إغلاق</button><button class="ms2" onclick="oStats()">📊 الإحصائيات</button><button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzMain()">🎯 اختبار</button></div>`;
-  $('mo').innerHTML=h;$('mov').classList.remove('qz');$('mov').classList.add('wide');oM();}
+  $('mo').innerHTML=h;$('mov').classList.remove('qz','wide');$('mov').classList.add('usr');oM();}
+// زر ؟ بجانب «مستثناة 2» يُظهر شرح الإعدادات أو يخفيه
+function usHelp(c){const h=$('ush'+c);if(h)h.hidden=!h.hidden;}
+// فتح/إغلاق حقول التخصيص لمستخدم واحد فقط، دون إعادة رسم الشاشة حتى لا يضيع اسم مكتوب لم يُحفظ
+function usCfg(c){_usOpen=_usOpen===c?0:c;
+  document.querySelectorAll('.us-row').forEach((row,k)=>{const op=k+1===_usOpen;row.classList.toggle('opn',op);
+    const f=row.querySelector('.us-fs');if(f)f.hidden=!op;const b=row.querySelector('.us-cfg');if(b)b.classList.toggle('act',op);});}
 function uPick(c){if(!U[c-1].name){ts('اكتب اسم المستخدم واحفظه أولاً','er');return;}setCU(c);oUsers();ts(`المستخدم الحالي: ${U[c-1].name}`,'ok');}
 function uCheck(u){if(!u.q||!u.a)return 'السؤال والإجابة الافتراضيان إجباريان';
   const v=[u.q,u.a,u.x1,u.x2].filter(Boolean);if(new Set(v).size!==v.length)return 'لا يجوز أن تتكرر نفس اللغة في خانتين';return '';}
@@ -1418,7 +1462,7 @@ async function uSave(c){const g=id=>(($(id)||{}).value||'').trim();
   try{const r=await api({action:'saveUser',code:c,name:u.name,q:QL[u.q],a:QL[u.a],x1:u.x1?QL[u.x1]:'',x2:u.x2?QL[u.x2]:''});
     if(!r||!r.saved)throw new Error('كود Apps Script لم يُحدَّث — انشر الإصدار الجديد أولاً');
     U[c-1]=u;if(!curU()&&u.name)CU=c;if(CU===c&&!u.name)CU=0;
-    cacheSave();hL();setCU(CU);oUsers();ts('تم حفظ المستخدم ✓','ok');}
+    cacheSave();hL();_usOpen=0;if(_uChosen)setCU(CU);else uBtn();oUsers();ts('تم حفظ المستخدم ✓','ok');}
   catch(e){hL();ts(e.message,'er');}}
 async function uReset(c){const u=U[c-1];
   if(Q.some(x=>/scores/i.test(x.op)&&x.code===c)){ts('يوجد درجات لم تُرحَّل بعد لهذا المستخدم — رحّلها أولاً','er');return;}
@@ -1485,7 +1529,7 @@ function oStats(){const us=uNamed();if(!us.length){ts('أضف مستخدماً �
       +rows.map((r,i)=>`<tr${r.x.code===u.code?' style="background:#faf5ff"':''}><td>${['🥇','🥈','🥉'][i]||i+1}</td><td style="font-weight:700">${esc(r.x.name)}</td><td>${r.s.g}</td><td>${r.s.m}</td><td>${r.s.w}</td><td>${r.s.n}</td><td><span class="qz-bar" style="width:56px;display:inline-block;vertical-align:middle"><i style="width:${r.s.pct}%;background:var(--gn)"></i></span> ${r.s.pct}%</td><td style="font-family:var(--fm)">${sTxt(r.s.sum)}</td></tr>`).join('')
       +'</tbody></table></div>';}
   h+=`<div class="mbt"><button class="mc" onclick="cM()">إغلاق</button><button class="ms2" onclick="oUsers()">👤 المستخدمون</button><button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzMain()">🎯 اختبار</button></div>`;
-  $('mo').innerHTML=h;$('mov').classList.remove('qz');$('mov').classList.add('wide');oM();}
+  $('mo').innerHTML=h;$('mov').classList.remove('qz','usr');$('mov').classList.add('wide');oM();}
 function stGo(k,code){setCU(code);SF.mode=k;sfSave();cM();ai=0;buildView();bS();ts('تم تطبيق فلتر الحفظ ✓ — غيّره من زر 🎯 الحفظ','ok');}
 
 // ── البينيين بالأرقام: yǐ zi ⇄ yi3 zi0 ──
@@ -1545,7 +1589,7 @@ function oQuiz(src){const us=uNamed();
   const u=curU();QZ=null;
   QS=qsLoad(u);if(src)QS.src=src;
   if(QS.src==='sel'&&(!src||!D.some(d=>selW.has(String(d.id)))))QS.src='view';
-  $('mov').classList.remove('wide');$('mov').classList.add('qz');rQS();oM();}
+  $('mov').classList.remove('wide','usr');$('mov').classList.add('qz');rQS();oM();}
 // آخر اختيارات الاختبار تُحفظ في المتصفح لكل مستخدم، وإلا تُستخدم إعداداته الافتراضية
 function qsLoad(u){let o=null;try{o=JSON.parse(lsGet('dictQuizCfg_'+u.code)||'null');}catch(e){}
   const c={q:new Set([u.q]),a:u.a,type:'mc',n:10,src:'view',tags:new Set(),cats:new Set(),tq:''};
@@ -1643,7 +1687,7 @@ function qzStart(pool,cfg){
   pool=pool||qsPool();if(!pool.length){ts('لا توجد كلمات صالحة للاختبار','er');return;}
   const words=pickWeighted(pool,Math.min(cfg.n,pool.length),cfg.code);
   QZ={cfg,items:words.map(d=>qzItem(d,cfg)),i:0,saved:false};
-  $('mov').classList.remove('wide');$('mov').classList.add('qz');rQZ();oM();}
+  $('mov').classList.remove('wide','usr');$('mov').classList.add('qz');rQZ();oM();}
 function qzTxt(t,k){return `<span class="l-${k}"${k==='en'||k==='pin'?' dir="ltr"':''}>${esc(t)}</span>`;}
 function rQZ(){const z=QZ,it=z.items[z.i],n=z.items.length,u=U[z.cfg.code-1];
   const okN=z.items.filter(x=>x.done&&x.ok).length,badN=z.items.filter(x=>x.done&&!x.ok).length;
@@ -1841,6 +1885,38 @@ const _lo=new MutationObserver(()=>{if(_loQ)return;_loQ=true;Promise.resolve().t
 ['mov','shv','cm','gm','sm','fm'].forEach(id=>{const el=$(id);if(el)_lo.observe(el,{attributes:true,attributeFilter:['class']});});
 _lo.observe(document.body,{attributes:true,attributeFilter:['class'],childList:true});
 MQ.addEventListener('change',()=>{if(!isMob()){shClose();selMode=false;}closeDD();ren();layersChanged();});
+
+// ═══════════ اختيار المستخدم عند الفتح + حفظ آخر عرض لكل مستخدم ═══════════
+// في كل مرة يُفتح فيها التطبيق يجب اختيار المستخدم أولاً، ثم تُستعاد فلاتره وطريقة عرضه كما تركها.
+let _uChosen=false;
+function vsSave(){if(!_uChosen||!cuCode())return;
+  lsSet('dictView_'+CU,JSON.stringify({c:[...selC],g:[...selT],sf:{mode:SF.mode,min:SF.min,max:SF.max,sort:SF.sort},cv,vf:Object.assign({},VF),q:$('si').value}));}
+function vsLoad(code){let o=null;try{o=JSON.parse(lsGet('dictView_'+code)||'null');}catch(e){}
+  if(o){selC.clear();selT.clear();
+    (o.c||[]).forEach(id=>{if(id==='_none'||cats.some(x=>x.id===id))selC.add(id);});
+    (o.g||[]).forEach(id=>{if(tags.some(t=>t.id===id))selT.add(id);});
+    Object.assign(SF,SF_DEF,o.sf||{});
+    if(o.vf){['ar','en','zh','pin'].forEach(k=>{if(k in o.vf)VF[k]=!!o.vf[k];});if(!vfOn().length)VF.ar=true;}
+    $('si').value=o.q||'';$('sc').classList.toggle('s',!!$('si').value);
+    cv=o.cv==='cards'?'cards':'list';}
+  else{selC.clear();selT.clear();Object.assign(SF,SF_DEF);$('si').value='';$('sc').classList.remove('s');cv='list';}   // مستخدم بلا عرض محفوظ يبدأ بعرض نظيف
+  document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===cv));
+  $('lhd').style.display=cv==='list'?'grid':'none';$('wl').style.display=cv==='list'?'block':'none';$('cg').style.display=cv==='cards'?'block':'none';
+  ai=0;uBtn();vfCols();rHdr();bDD();rFav();buildView();bS();}
+function uGateHide(){const g=$('ugate');if(g)g.classList.remove('on');}
+function uGate(){if(_uChosen)return;const g=$('ugate');if(!g)return;
+  if($('mov').classList.contains('opn')){uGateHide();return;}   // نافذة إدارة المستخدمين مفتوحة فوقها
+  const us=uNamed(),last=parseInt(lsGet('dictQuizUser')||'0')||0;
+  // على الجوال: يدخل تلقائياً بآخر مستخدم (والتبديل من 🎓 الحفظ ← المستخدم). على الكمبيوتر: يسأل كل مرة
+  if(isMob()&&last&&U[last-1]&&U[last-1].name){uChoose(last);return;}
+  const list=us.length?'<div class="ug-list">'+us.map(u=>{const st=uStats(u.code);const o=(()=>{try{return JSON.parse(lsGet('dictView_'+u.code)||'null');}catch(e){return null;}})();
+      const vw=o?[(o.g||[]).length?`${o.g.length} تاج`:'',(o.c||[]).length?`${o.c.length} تصنيف`:'',o.sf&&o.sf.mode&&o.sf.mode!=='all'&&SF_M[o.sf.mode]?SF_M[o.sf.mode][0]:''].filter(Boolean).join(' · '):'';
+      return `<button class="ug-u${u.code===last?' last':''}" onclick="uChoose(${u.code})"><span class="ug-av">${esc([...u.name.trim()].slice(0,2).join(''))}</span><span class="ug-tx"><b>${esc(u.name)}</b><small>اختُبر في ${st.tested} كلمة${vw?' · آخر عرض: '+esc(vw):''}</small></span><span class="ug-pct" title="نسبة الإتقان">${st.pct}%</span></button>`;}).join('')+'</div>'
+    :'<div class="ug-empty">لا يوجد مستخدمون بعد.<br>أضف اسمك أولاً لتُحفظ درجاتك وطريقة عرضك.</div>';
+  g.innerHTML=`<div class="ug-box"><div class="logo-ic">词</div><h2>من يستخدم القاموس الآن؟</h2><p>اختر اسمك لتظهر درجاتك وآخر فلترة وعرض استخدمتهما</p>${list}
+    <button class="ug-mng" onclick="uGateHide();oUsers()">${us.length?'⚙ إدارة المستخدمين':'➕ إضافة مستخدم'}</button></div>`;
+  g.classList.add('on');}
+function uChoose(c){if(!U[c-1]||!U[c-1].name)return;_uChosen=false;setCU(c);ts(`أهلاً ${U[c-1].name} 👋`,'ok');}
 
 boot();
 </script>
