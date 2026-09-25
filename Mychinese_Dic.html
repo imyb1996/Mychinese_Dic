@@ -81,7 +81,7 @@
   .nv-mob{display:flex;justify-content:center;align-items:center;gap:3px;padding:5px 10px;border-top:1px solid var(--bdl)}
   .nv-desk{display:none}
   .nv-mob .nb{padding:5px 12px;font-size:12px}.nb-del{background:var(--accl)!important;color:var(--acc)!important;border-color:var(--acc)!important}
-  .lhd{display:none}
+  .lhd{display:none!important}
   .wr{display:flex!important;gap:6px;padding:8px 10px;grid-template-columns:none}
   .wr .ra,.wr .re,.wr .rz,.wr .rp{display:none}
   .wr .wr-mob-r,.wr .wr-mob-l{display:block}.wr .wr-mob-r{flex:1;min-width:0}.wr .wr-mob-r .m-ar{font-size:14px;font-weight:700;text-align:right}.wr .wr-mob-r .m-en{font-size:12px;color:var(--bl);text-align:right;font-family:var(--fe);font-weight:500;direction:ltr}
@@ -237,6 +237,11 @@
 .us-f{display:inline-flex;flex-direction:column;gap:3px}.us-hint{flex-basis:100%;font-size:11.5px;color:var(--dm);line-height:1.9;background:var(--card);border-radius:6px;padding:8px 10px}.us-hint b{color:#5b21b6}.us-hint[hidden]{display:none}
 .us-f2{display:inline-flex;align-items:flex-end;gap:8px}
 .us-q{display:inline-flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:50%;border:0;background:#7c3aed;color:#fff;font-size:18px;font-weight:800;font-family:var(--fm);cursor:pointer;line-height:1;box-shadow:0 2px 6px rgba(124,58,237,.35)}.us-q:hover{background:#6d28d9}
+.st-user{display:none}
+@media(max-width:800px){.sts #verSt{display:none}
+  .st-user{display:flex;align-items:center;gap:5px;cursor:pointer;background:#f6f1ff;border-color:#7c3aed60;color:#5b21b6;padding:6px 10px!important;font-size:13px!important;max-width:170px;min-height:36px}
+  .st-user b{font-family:var(--fa)!important;color:#5b21b6!important;font-size:13px!important;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .st-user:active{background:#ede9fe}}
 .us-row.opn{background:#fdfbff}
 /* إعداد الاختبار على الجوال */
 .qs-go{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border-radius:14px;padding:14px;margin-bottom:12px}
@@ -367,7 +372,7 @@
 <div id="app" style="display:none">
 <div class="syncbar no-pr" id="syncbar"></div>
 <div class="top-area">
-<header class="hdr no-pr"><div class="hdr-in"><div class="logo"><div class="logo-ic">词</div><div><h1>قاموس المصطلحات الفنية</h1><p>عربي · English · 中文</p></div></div><div class="sts"><div class="st"><b id="sT">0</b> مصطلح</div><div class="st"><b id="sC">0</b> تصنيف</div><div class="st"><b id="sG">0</b> تاج</div><div class="st" id="verSt" style="font-size:9px;color:var(--ft);cursor:pointer" onclick="oSetup()" title="إعدادات">⏳</div></div></div></header>
+<header class="hdr no-pr"><div class="hdr-in"><div class="logo"><div class="logo-ic">词</div><div><h1>قاموس المصطلحات الفنية</h1><p>عربي · English · 中文</p></div></div><div class="sts"><div class="st"><b id="sT">0</b> مصطلح</div><div class="st"><b id="sC">0</b> تصنيف</div><div class="st"><b id="sG">0</b> تاج</div><div class="st st-user" id="hdrU" onclick="oUsers()" title="المستخدم الحالي — نقرة للتغيير"></div><div class="st" id="verSt" style="font-size:9px;color:var(--ft);cursor:pointer" onclick="oSetup()" title="إعدادات">⏳</div></div></div></header>
 <div class="tb no-pr"><div class="tb-in">
   <div class="tgrp g-flt"><span class="tg-l">🔎 الفلترة والعرض</span>
     <div class="dd" id="cdd"><button class="ddt" onclick="tDD('c')"><span>📂 <span class="ab-txt">التصنيف</span></span><span class="ddb" id="cb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="cm"></div></div>
@@ -1389,8 +1394,9 @@ function onU(r){
   finishLoad();}
 function finishLoad(){if(_uDone)return;_uDone=true;clearTimeout(_uT);linkTags();cacheSave();paint();if(_lRes)_lRes();}
 
-function uBtn(){const b=$('uBtn');if(!b)return;const u=curU();
-  b.innerHTML=`👤 <span class="ab-txt">${u?esc(u.name):'المستخدم'}</span>`;b.classList.toggle('act',!!u);}
+function uBtn(){const b=$('uBtn'),u=curU();
+  if(b){b.innerHTML=`👤 <span class="ab-txt">${u?esc(u.name):'المستخدم'}</span>`;b.classList.toggle('act',!!u);}
+  const h=$('hdrU');if(h)h.innerHTML=`<span>👤</span><b>${u?esc(u.name):'اختر المستخدم'}</b><span class="dda">▼</span>`;}
 
 // ── فلترة وترتيب القائمة حسب درجة الحفظ ──
 const SF_DEF={mode:'all',min:-5,max:0,sort:''};
@@ -1787,10 +1793,9 @@ function shWords(){const has=!!V[ai],w=curWordLbl();
     {ic:'🗑',t:'حذف الكلمة',s:has?w:'',fn:'oDelW()',dis:!has,cls:'danger'},
     {ic:'☑',t:'تحديد عدة كلمات',s:'أو اضغط مطوّلاً على أي كلمة',fn:'selEnter()'},
     {ic:'🌐',t:'ترجمة الناقص',s:'للكلمات المعروضة التي تنقصها ترجمة',fn:'trBulk()'}]));}
-function shLearn(){const u=curU();
+function shLearn(){
   shOpen(shBadge('#7c3aed','🎓 الحفظ والاختبارات'),shItems([
     {ic:'🎯',t:'اختبار',s:'يبدأ بآخر إعدادات اختبارك',fn:'qzMain()'},
-    {ic:'👤',t:'المستخدم',s:u?'الحالي: '+esc(u.name):'لم تختر مستخدماً بعد',fn:'oUsers()'},
     {ic:'📊',t:'الإحصائيات',s:'الإتقان والمقارنة بين المستخدمين',fn:'oStats()'}]));}
 function shOut(){const vs=(($('verSt')||{}).textContent||'').trim();
   shOpen(shBadge('#d97706','📤 الإخراج والإعدادات'),shItems([
