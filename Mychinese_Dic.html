@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>قاموس المصطلحات الفنية</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4f8;--card:#fff;--sf:#f8f9fc;--hov:#eef0f6;--acc:#d63031;--accl:#fff1f0;--bl:#2d6cdf;--bll:#e8f0fe;--gn:#27ae60;--gnl:#e6f5eb;--yl:#fef9c3;--tx:#1a1d26;--dm:#6b7280;--ft:#9ca3af;--pin:#2d2d3a;--bd:#e2e5ed;--bdl:#eff1f5;--sh:0 1px 3px rgba(0,0,0,.06);--shl:0 8px 24px rgba(0,0,0,.12);--r:8px;--rl:12px;--fa:'Tajawal',sans-serif;--fz:'Noto Sans SC',sans-serif;--fe:'Noto Sans',sans-serif;--fm:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}body{font-family:var(--fa);background:var(--bg);color:var(--tx);min-height:100vh}::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#ccc;border-radius:4px}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes fd{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lov{display:none;position:fixed;inset:0;background:rgba(255,255,255,.75);z-index:900;align-items:center;justify-content:center;flex-direction:column;gap:10px;backdrop-filter:blur(2px)}.lov.on{display:flex}.lov .sp2{width:30px;height:30px;border:3px solid var(--bd);border-top-color:var(--acc);border-radius:50%;animation:spin .6s linear infinite}.lov p{font-size:13px;color:var(--dm);font-weight:600;max-width:90%;text-align:center}
+.lov #trStopBtn{margin-top:4px}
+.hdr{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 20px;box-shadow:var(--sh)}.hdr-in{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}.logo{display:flex;align-items:center;gap:10px}.logo-ic{width:38px;height:38px;background:linear-gradient(135deg,var(--acc),#e74c3c);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;font-weight:800}.logo h1{font-size:18px;font-weight:800}.logo p{font-size:10px;color:var(--ft);letter-spacing:2px;margin-top:1px}.sts{display:flex;gap:6px;flex-wrap:wrap}.st{display:flex;align-items:center;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:4px 10px;font-size:11px;color:var(--dm)}.st b{font-family:var(--fm);font-weight:600;color:var(--acc);font-size:13px}
+.tb{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--bd);padding:7px 20px;box-shadow:var(--sh)}.tb-in{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.srch{display:flex;align-items:center;gap:6px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:5px 10px;flex:1 1 140px;min-width:120px}.srch:focus-within{border-color:var(--bl)}.srch svg{width:13px;height:13px;opacity:.35;flex-shrink:0}.srch input{background:0 0;border:0;outline:0;color:var(--tx);font-size:13px;width:100%;font-family:var(--fa)}.srch input::placeholder{color:var(--ft)}.clr{background:0 0;border:0;color:var(--ft);cursor:pointer;font-size:13px;display:none;padding:0 2px}.clr.s{display:block}
+.dd{position:relative}.ddt{display:flex;align-items:center;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:5px 9px;color:var(--dm);cursor:pointer;font-size:11px;font-family:var(--fa);white-space:nowrap}.ddt:hover{border-color:var(--bl)}.ddt.act{border-color:var(--acc);background:var(--accl);color:var(--acc)}.ddb{background:var(--acc);color:#fff;border-radius:7px;padding:0 5px;font-size:9px;font-weight:700;font-family:var(--fm)}.dda{font-size:7px;opacity:.4}
+.ddm{display:none;position:absolute;top:calc(100% + 3px);right:0;background:var(--card);border:1px solid var(--bd);border-radius:var(--rl);min-width:220px;max-height:320px;overflow-y:auto;box-shadow:var(--shl);padding:4px;z-index:200}.ddm.opn{display:block;animation:fd .12s ease}
+.ddi{display:flex;align-items:center;gap:6px;width:100%;background:0 0;border:0;padding:6px 8px;border-radius:5px;color:var(--dm);cursor:pointer;font-size:11px;font-family:var(--fa);text-align:right}.ddi:hover{background:var(--hov)}.ddi.sel{background:var(--accl);color:var(--acc)}.chk{width:14px;height:14px;border:2px solid var(--bd);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0}.ddi.sel .chk{background:var(--acc);border-color:var(--acc);color:#fff}.ddi.all{color:var(--bl);font-weight:600;border-bottom:1px solid var(--bdl);margin-bottom:2px;padding-bottom:6px}
+.dd-search{padding:4px;border-bottom:1px solid var(--bdl);margin-bottom:2px;position:sticky;top:0;background:var(--card)}.dd-search input{width:100%;padding:5px 8px;border:1px solid var(--bd);border-radius:5px;font-size:11px;font-family:var(--fa);outline:0;background:var(--sf)}
+.vg{display:flex;gap:2px;background:var(--sf);border-radius:var(--r);padding:2px;border:1px solid var(--bd)}.vb{border:0;border-radius:5px;padding:4px 9px;cursor:pointer;font-size:10px;font-weight:600;font-family:var(--fa);background:0 0;color:var(--ft);white-space:nowrap}.vb.on{background:var(--acc);color:#fff}.vb:not(.on):hover{background:var(--hov);color:var(--tx)}
+.ab{display:flex;align-items:center;gap:3px;border:1px solid var(--bd);border-radius:var(--r);padding:4px 9px;cursor:pointer;font-size:10px;font-weight:600;font-family:var(--fa);background:var(--card);color:var(--dm);white-space:nowrap;transition:.15s}.ab:hover{border-color:var(--bl);color:var(--bl)}.ab.g{background:var(--gn);color:#fff;border-color:var(--gn)}.ab.p{background:var(--bl);color:#fff;border-color:var(--bl)}
+.ab.d{background:var(--accl);color:var(--acc);border-color:var(--acc)}.ab.d:hover{background:var(--acc);color:#fff}.sp{flex:1}
+.nv{display:flex;justify-content:center;align-items:center;gap:2px;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:5px}.nb{background:var(--sf);border:1px solid var(--bd);border-radius:5px;padding:4px 8px;color:var(--dm);cursor:pointer;font-size:10px;font-family:var(--fa);white-space:nowrap}.nb:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}.nb:disabled{opacity:.3;cursor:default}.nc{font-family:var(--fm);font-size:11px;color:var(--acc);font-weight:600;padding:0 6px;min-width:50px;text-align:center}
+.mn{max-width:1400px;margin:0 auto;padding:12px}.blay{display:flex;gap:12px;height:calc(100vh - 120px);min-height:400px}
+.cpan{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh)}
+.lhd{display:grid;grid-template-columns:20px var(--fcols,1.4fr 1.4fr .7fr 1fr);gap:4px;padding:7px 12px;background:var(--sf);border-bottom:1px solid var(--bd);font-size:9px;font-weight:700;color:var(--ft);text-transform:uppercase}.lbd{flex:1;overflow-y:auto}
+.gs{display:flex;align-items:center;gap:6px;padding:6px 12px;background:linear-gradient(90deg,var(--accl),var(--sf));border-bottom:1px solid var(--bd);font-weight:700;position:sticky;top:0;z-index:5}.gs .cat-n{font-size:12px;color:var(--acc)}.gs .tag-n{font-size:11px;color:var(--tx)}
+.cnt{display:inline-block;background:var(--bd);color:var(--dm);font-family:var(--fm);font-size:9px;font-weight:600;padding:1px 6px;border-radius:10px;margin-right:4px}
+.wr{display:grid;grid-template-columns:20px var(--fcols,1.4fr 1.4fr .7fr 1fr);gap:4px;padding:7px 12px;cursor:pointer;transition:.1s;align-items:center;border-bottom:1px solid var(--bdl);border-right:3px solid transparent}.wr:hover{background:var(--hov)}.wr.on{background:var(--accl);border-right-color:var(--acc)}
+.sb{width:16px;height:16px;border:2px solid var(--bd);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:#fff;background:var(--card);flex:none;cursor:pointer;transition:.1s;line-height:1}.sb:hover{border-color:var(--bl)}.sb.on{background:var(--bl);border-color:var(--bl)}
+.wr .sb{margin-left:2px}.tc{position:relative}.tc .sb{position:absolute;top:5px;right:5px}
+.syncbar{display:none;align-items:center;gap:8px;padding:6px 14px;font-size:12px;font-weight:700;font-family:var(--fa);border-bottom:1px solid;justify-content:center;flex-wrap:wrap}
+.syncbar.on{display:flex}
+.syncbar.pend{background:var(--yl);color:#92400e;border-color:#f59e0b60}
+.syncbar.busy{background:var(--bll);color:var(--bl);border-color:#2d6cdf40}
+.syncbar.okk{background:var(--gnl);color:#166534;border-color:#27ae6040}
+.syncbar.err{background:var(--accl);color:var(--acc);border-color:#d6303140}
+.syncbar button{background:var(--card);border:1px solid currentColor;color:inherit;border-radius:6px;padding:3px 12px;font-size:11px;font-family:var(--fa);font-weight:700;cursor:pointer}
+.syncbar button:hover{opacity:.8}.syncbar .dt{font-family:var(--fm);font-size:13px}
+@media print{.syncbar{display:none!important}}
+.favbar{display:none;gap:3px;flex-wrap:wrap;align-items:center}
+.favc{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:4px 8px;font-size:10px;font-family:var(--fa);font-weight:600;color:var(--dm);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;transition:.15s}
+.favc:hover{border-color:var(--bl);color:var(--bl)}.favc.on{background:var(--bl);color:#fff;border-color:var(--bl)}.favc .c{font-family:var(--fm);font-size:9px;opacity:.75}
+.ddi .fav{font-size:12px;cursor:pointer;padding:0 3px;color:#f59e0b;flex:none}.ddi .fav.off{color:var(--bd)}.ddi .fav:hover{color:#f59e0b}
+.selbar{display:flex;align-items:center;gap:4px;background:var(--bll);border:1px solid var(--bl);border-radius:var(--r);padding:2px 6px;font-size:10px;color:var(--bl);font-weight:700}.selbar button{background:0 0;border:0;color:var(--bl);cursor:pointer;font-family:var(--fa);font-size:10px;font-weight:600;padding:2px 4px;border-radius:4px}.selbar button:hover{background:var(--card)}.wr .ra{font-size:13px;font-weight:600}.wr .re{font-size:13px;color:var(--bl);direction:ltr;text-align:left;font-family:var(--fe);font-weight:500}.wr .rz{font-size:15px;color:var(--acc);font-family:var(--fz);text-align:center;font-weight:500}.wr .rp{font-size:12px;color:var(--pin);font-family:var(--fe)}
+.cgr{flex:1;overflow-y:auto;padding:10px;align-content:start}.cgs{padding:6px 10px;margin:8px 0 4px;font-weight:700;border-bottom:2px solid var(--accl)}.cgs .cat-n{font-size:13px;color:var(--acc)}.cgs .tag-n{font-size:12px;color:var(--tx)}
+.ccg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:7px;margin-bottom:8px}
+.tc{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:10px 8px;text-align:center;cursor:pointer;transition:.15s;box-shadow:var(--sh)}.tc:hover{border-color:var(--bl);transform:translateY(-1px)}.tc.on{border-color:var(--acc);background:var(--accl)}.tc .ca{font-size:13px;font-weight:700;margin-bottom:3px;line-height:1.4}.tc .ce{font-size:12px;color:var(--bl);direction:ltr;margin-bottom:3px;font-family:var(--fe);font-weight:500}.tc .cz{font-size:19px;font-weight:700;color:var(--acc);font-family:var(--fz);margin-bottom:2px}.tc .cp{font-size:10px;color:var(--pin);font-family:var(--fe)}
+.dpan{width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.spot{background:var(--card);border:1px solid var(--bd);border-radius:var(--rl);padding:14px;box-shadow:var(--sh);flex:0 0 auto;overflow:visible}
+.sp-m{margin-bottom:10px;padding:8px 10px;background:var(--sf);border-radius:var(--r);border:1px solid var(--bdl)}.sp-m .sp-ids{font-size:10px;color:var(--ft);font-family:var(--fm)}
+.sp-row{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}.sp-row label{font-size:10px;font-weight:600;color:var(--dm)}.sp-row input{padding:7px 10px;border:1px solid var(--bd);border-radius:5px;font-size:14px;outline:0;font-family:var(--fa);width:100%;background:var(--sf)}.sp-row input:focus{border-color:var(--bl);background:#fff}
+.sp-btns{display:flex;gap:5px;margin-top:10px;padding-top:8px;border-top:1px solid var(--bd)}.sp-btns .sv{flex:1;background:var(--gn);color:#fff;border:none;border-radius:5px;padding:8px;cursor:pointer;font-size:13px;font-weight:700;font-family:var(--fa)}.tr-btn{background:var(--bll);color:var(--bl);border:1px solid var(--bl);border-radius:5px;padding:8px 12px;cursor:pointer;font-size:12px;font-family:var(--fa);font-weight:600;white-space:nowrap}.tr-btn:hover{background:var(--bl);color:#fff}
+.trl{background:var(--yl)!important;opacity:.75}
+.sp-btns .dl-btn{background:var(--accl);color:var(--acc);border:1px solid var(--acc);border-radius:5px;padding:8px 12px;cursor:pointer;font-size:12px;font-family:var(--fa);font-weight:600}
+.empt{text-align:center;padding:40px 14px;color:var(--ft);font-size:13px}
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(2px)}.mov.opn{display:flex}.mo{background:var(--card);border-radius:var(--rl);padding:20px;width:92%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:var(--shl);animation:fd .2s ease}.mo h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fi{display:flex;flex-direction:column;gap:3px}.fi.fu{grid-column:1/-1}.fi label{font-size:10px;font-weight:600;color:var(--dm)}.fi input,.fi select{padding:6px 8px;border:1px solid var(--bd);border-radius:5px;font-size:13px;font-family:var(--fa);color:var(--tx);background:var(--sf);outline:0}.fi input:focus,.fi select:focus{border-color:var(--bl)}.fi input[dir=ltr]{font-family:var(--fe);direction:ltr;text-align:left}.fi input.zi{font-family:var(--fz);font-size:18px;text-align:center}
+.mbt{display:flex;gap:5px;justify-content:flex-end;margin-top:14px;padding-top:10px;border-top:1px solid var(--bd)}.mbt button{padding:6px 16px;border-radius:5px;font-size:11px;font-weight:600;font-family:var(--fa);cursor:pointer;border:1px solid var(--bd)}.mbt .mc{background:var(--sf);color:var(--dm)}.mbt .ms{background:var(--gn);color:#fff;border-color:var(--gn)}.mbt .md{background:#fff;color:var(--acc);border-color:var(--acc)}
+.mbt .ms2{background:var(--bll);color:var(--bl);border-color:var(--bl)}.mbt .ms2:hover{background:var(--bl);color:#fff}
+.dupw{display:flex;align-items:center;justify-content:space-between;gap:6px;background:var(--yl);border:1px solid #f59e0b60;border-radius:6px;padding:5px 8px;font-size:11px;margin-top:4px;color:#92400e;line-height:1.5}
+.dupw button{background:var(--card);border:1px solid #f59e0b;color:#b45309;border-radius:5px;padding:3px 9px;font-size:10px;font-family:var(--fa);font-weight:700;cursor:pointer;white-space:nowrap;flex:none}
+.dupw button:hover{background:#f59e0b;color:#fff}.mbt .md:hover{background:var(--acc);color:#fff}
+.mg-row{display:flex;align-items:center;gap:4px;padding:5px 6px;border-bottom:1px solid var(--bdl)}.mg-row .mg-id{font-family:var(--fm);font-size:10px;color:var(--ft);min-width:24px;text-align:center}.mg-row input,.mg-row select{flex:1;padding:4px 8px;border:1px solid transparent;border-radius:4px;font-size:12px;font-family:var(--fa);background:transparent;outline:0;color:var(--tx)}.mg-row input:focus,.mg-row select:focus{border-color:var(--bl);background:#fff}.mg-row .mg-sv{display:none;background:var(--gn);color:#fff;border:0;border-radius:4px;padding:2px 8px;font-size:10px;cursor:pointer;font-family:var(--fa)}.mg-row .mg-sv.show{display:inline}.mg-row button.mg-dl{background:0 0;border:0;cursor:pointer;font-size:11px;color:var(--ft);padding:2px}.mg-row button.mg-dl:hover{color:var(--acc)}
+.tag-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}.tag-chip{display:inline-flex;align-items:center;gap:3px;background:var(--bll);color:var(--bl);padding:3px 8px;border-radius:12px;font-size:11px;cursor:pointer;border:1px solid transparent;transition:.1s}.tag-chip:hover{border-color:var(--bl)}.tag-chip.on{background:var(--bl);color:#fff}.tag-chip .x{font-size:13px;margin-right:2px;opacity:.7}
+.tag-search{position:relative}.tag-search input{width:100%;padding:5px 8px;border:1px solid var(--bd);border-radius:5px;font-size:12px;font-family:var(--fa);outline:0;background:var(--sf)}.tag-search input:focus{border-color:var(--bl)}.tag-search .tag-dd{display:none;position:absolute;top:100%;right:0;left:0;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);max-height:180px;overflow-y:auto;z-index:10;box-shadow:var(--shl)}.tag-search .tag-dd.show{display:block}.tag-search .tag-dd-item{padding:6px 10px;cursor:pointer;font-size:12px;font-family:var(--fa)}.tag-search .tag-dd-item:hover{background:var(--hov)}.tag-search .tag-dd-item .cat-hint{font-size:9px;color:var(--ft);margin-right:4px}
+
+
+.tst{position:fixed;bottom:16px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--tx);color:#fff;padding:7px 18px;border-radius:var(--r);font-size:11px;z-index:700;box-shadow:var(--shl);transition:transform .25s;pointer-events:none}.tst.sh{transform:translateX(-50%) translateY(0)}.tst.er{background:var(--acc)}.tst.ok{background:var(--gn)}
+.ld{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}.ldr{width:32px;height:32px;border:3px solid var(--bd);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite}.ld p{color:var(--dm);font-size:12px}
+
+.nv-mob{display:none}
+.nv-desk{display:flex;justify-content:center;align-items:center;gap:4px;padding:5px 10px;border-top:1px solid var(--bdl)}
+.wr-mob-r,.wr-mob-l,.tc-mob-r,.tc-mob-l{display:none}
+@media(max-width:800px){
+  .hdr{padding:8px 12px}.logo-ic{width:32px;height:32px;font-size:14px}.logo h1{font-size:15px}.logo p{font-size:8px}.st{padding:3px 6px;font-size:9px}.st b{font-size:11px}
+  .top-area{position:sticky;top:0;z-index:100;background:var(--card);box-shadow:var(--sh)}
+  .tb{padding:6px 10px;position:static;box-shadow:none}.tb-in{gap:3px}.ab .ab-txt{display:none}
+  .dpan{display:none!important}.blay{height:auto!important;min-height:0}.mn{padding:6px}.cpan{overflow:visible!important}.lbd,.cgr{overflow:visible!important}
+  .nv-mob{display:flex;justify-content:center;align-items:center;gap:3px;padding:5px 10px;border-top:1px solid var(--bdl)}
+  .nv-desk{display:none}
+  .nv-mob .nb{padding:5px 12px;font-size:12px}.nb-del{background:var(--accl)!important;color:var(--acc)!important;border-color:var(--acc)!important}
+  .lhd{display:none}
+  .wr{display:flex!important;gap:6px;padding:8px 10px;grid-template-columns:none}
+  .wr .ra,.wr .re,.wr .rz,.wr .rp{display:none}
+  .wr .wr-mob-r,.wr .wr-mob-l{display:block}.wr .wr-mob-r{flex:1;min-width:0}.wr .wr-mob-r .m-ar{font-size:14px;font-weight:700;text-align:right}.wr .wr-mob-r .m-en{font-size:12px;color:var(--bl);text-align:right;font-family:var(--fe);font-weight:500;direction:ltr}
+  .wr .wr-mob-l{text-align:center;flex-shrink:0;min-width:65px}.wr .wr-mob-l .m-zh{font-size:18px;color:var(--acc);font-family:var(--fz);font-weight:600;line-height:1.2}.wr .wr-mob-l .m-pn{font-size:10px;color:var(--pin);font-family:var(--fe);margin-top:1px}
+  .ccg{grid-template-columns:1fr!important}.tc .tc-mob-r,.tc .tc-mob-l{display:none}
+  .fg{grid-template-columns:1fr!important}.fi.fu{grid-column:1!important}
+}
+
+.po-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px;font-size:11px}.po-row>label:first-child{width:78px;flex:none;color:var(--dm);font-weight:700;font-size:10px}
+.po-seg{display:flex;flex-wrap:wrap;gap:3px}.po-seg button{background:var(--sf);border:1px solid var(--bd);border-radius:5px;padding:4px 9px;font-size:11px;font-family:var(--fa);cursor:pointer;color:var(--dm)}.po-seg button.on{background:var(--bl);color:#fff;border-color:var(--bl);font-weight:700}
+.po-step{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--bd);border-radius:6px;padding:2px 4px;background:var(--sf);margin-left:4px;margin-bottom:3px}.po-step .lb{font-size:10px;color:var(--dm);font-weight:700;margin-left:3px;min-width:34px;text-align:center}.po-step button{width:22px;height:22px;border:1px solid var(--bd);background:var(--card);border-radius:4px;cursor:pointer;font-size:14px;line-height:1;color:var(--bl);font-weight:700;padding:0}.po-step button:hover{background:var(--bll)}.po-step input{width:36px;text-align:center;border:0;background:0 0;font-family:var(--fm);font-size:12px;font-weight:600;outline:0;-moz-appearance:textfield}.po-step input::-webkit-inner-spin-button,.po-step input::-webkit-outer-spin-button{display:none}
+.po-chk{display:inline-flex;align-items:center;gap:3px;margin-left:8px;cursor:pointer}.po-row input[type=number]{padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm);font-size:11px}
+
+/* live print preview (scaled page) */
+.pvp .p-title{text-align:center;font-size:9pt;color:#888;padding-bottom:2mm;border-bottom:1px solid #ddd;margin-bottom:3mm}
+.pvp .p-cat{text-align:center;font-size:13pt;font-weight:800;color:#222;margin:3mm 0 1mm;padding:2mm;background:#e8e8e8!important;border-radius:3px}
+.pvp .p-cat.brk{page-break-before:always}
+.pvp .p-tag{text-align:right;font-size:11pt;font-weight:700;color:#444;margin:2mm 0 1mm;padding:1mm 3mm;border-right:3px solid #d63031}
+.pvp .pt{width:100%;border-collapse:collapse;margin-bottom:2mm}
+.pvp .pt th{background:#f0f0f0!important;padding:3px 6px;text-align:right;font-weight:700;border:1px solid #bbb;font-size:8pt}
+.pvp .pt th.eh{text-align:left;direction:ltr}
+.pvp .pt th.zh{text-align:center}
+.pvp .pt td{padding:3px 6px;border:1px solid #ccc;font-size:9pt}
+.pvp .pt .ta{font-weight:600;font-size:var(--par,9pt)}
+.pvp .pt .te{text-align:left;direction:ltr;color:#2c5282;font-size:var(--pen,10pt)}
+.pvp .pt .tz{text-align:center;font-family:'Noto Sans SC';color:#c0392b;font-size:var(--pzh,11pt)}
+.pvp .pt .tp{text-align:center;color:#2d2d3a;font-size:var(--ppn,9pt)}
+.pvp .pcg{display:grid!important;grid-template-columns:repeat(3,1fr);gap:3mm;margin-bottom:2mm}
+.pvp .pc{border:1px solid #999;border-radius:4px;padding:3mm;text-align:center;break-inside:avoid;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;box-sizing:border-box}
+.pvp .pc.f-dashed{border:1px dashed #999}
+.pvp .pc.f-none{border:1px solid transparent}
+.pvp .pc.ph{border:0;visibility:hidden}
+.pvp .pc .xa.big{font-weight:800;margin-bottom:2mm}
+.pvp .pc .xe.big{font-weight:600}
+.pvp .pcg.pg-brk{page-break-before:always}
+.pvp .pc .xz{font-size:var(--pzh,18pt);font-weight:800;color:#c0392b;font-family:'Noto Sans SC';margin-bottom:1mm;line-height:1.3}
+.pvp .pc .xp{font-size:var(--ppn,11pt);color:#2d2d3a;font-family:'Noto Sans';margin-bottom:2mm}
+.pvp .pc .xa{font-size:var(--par,8pt);font-weight:600;color:#333;margin-bottom:.5mm}
+.pvp .pc .xe{font-size:var(--pen,7pt);color:#2c5282;direction:ltr;font-family:'Noto Sans'}
+.pvp .p-cgs-cat{grid-column:1/-1;text-align:center;font-size:11pt;font-weight:800;color:#222;padding:2mm;background:#e8e8e8!important;border-radius:2px}
+.pvp .p-cgs-cat.brk{page-break-before:always}
+.pvp .p-cgs-tag{grid-column:1/-1;text-align:right;font-size:9pt;font-weight:700;color:#444;padding:1mm 2mm;border-right:2px solid #d63031}
+.pvp .p-footer{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:2mm 10mm;font-size:8pt;color:#999;border-top:1px solid #ddd;background:#fff!important}
+.pvp .p-footer{position:absolute}.pvp .pcg{display:grid}
+.pv-page{position:relative;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);border:1px solid #bbb;margin:0 auto}.pvp{position:absolute;top:0;left:0;transform-origin:top left;box-sizing:border-box;overflow:hidden;direction:rtl;font-size:10pt;color:#000;background:#fff}.pv-lbl{text-align:center;font-size:10px;color:var(--dm);margin-top:3px}
+.mov.po .mo{max-width:900px;width:96%}.po-wrap{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}.po-opts{flex:1 1 380px;min-width:0}.po-side{flex:0 0 250px;text-align:center}
+.po-big{font-size:22px;font-weight:800;color:var(--bl);line-height:1.1;background:var(--bll);border-radius:var(--rl);padding:10px}.po-big b{font-size:44px;font-family:var(--fm);display:block}.po-sub{font-size:11px;color:var(--dm);line-height:1.7;margin:6px 0 10px}
+/* QUIZ / USERS / SCORES */
+.ab.qz{background:#7c3aed;color:#fff;border-color:#7c3aed}.ab.qz:hover{background:#6d28d9;color:#fff}
+.tgrp{display:flex;gap:3px;align-items:center;flex-wrap:wrap;padding:2px;background:var(--sf);border:1px solid var(--bdl);border-radius:10px}
+.tgrp .ab,.tgrp .ddt{background:var(--card)}.tgrp .ab.g{background:var(--gn)}.tgrp .ab.p{background:var(--bl)}.tgrp .ab.qz{background:#7c3aed}.tgrp .ab.d{background:var(--accl)}.tgrp .ab.d:hover{background:var(--acc)}.tgrp .ab.act{background:#faf5ff}.tgrp .ddt.act{background:var(--accl)}
+.tgrp{--gc:#6b7280;--gb:var(--sf);background:var(--gb);border-color:color-mix(in srgb,var(--gc) 35%,transparent)}
+.tgrp .tg-l{font-size:10px;font-weight:800;color:#fff;background:var(--gc);padding:0 8px;white-space:nowrap;border-radius:7px;margin-left:3px;align-self:stretch;display:flex;align-items:center;gap:3px}
+.tgrp .ab:hover,.tgrp .ddt:hover{border-color:var(--gc)}
+.g-flt{--gc:#2d6cdf;--gb:#eef4ff}.g-wrd{--gc:#16a34a;--gb:#effaf3}.g-lrn{--gc:#7c3aed;--gb:#f6f1ff}.g-out{--gc:#d97706;--gb:#fff7ea}
+.tb .ab,.tb .ddt{padding:5px 8px;font-size:11.5px;gap:3px;border-radius:6px}.tb .vb{padding:4px 10px;font-size:11.5px}.tb .ddb{font-size:10px}
+.tb .srch{padding:6px 10px}.tb .srch input{font-size:13.5px}.tgrp{gap:4px;padding:3px;border-radius:6px}.tgrp .tg-l{font-size:11px;padding:0 8px;border-radius:0 5px 5px 0;margin:-3px -3px -3px 4px;border-left:1px solid color-mix(in srgb,var(--gc) 35%,transparent)}
+@media(max-width:800px){.tb .ab,.tb .ddt{padding:6px 9px;font-size:13px}.tb .vb{padding:5px 9px;font-size:12px}.tgrp .tg-l{font-size:10px;padding:0 6px}}
+.tbrk{flex-basis:100%;height:0}
+.tb .srch{flex:1 1 220px}.tb{padding-left:12px;padding-right:12px}
+.lhd{font-size:12.5px!important;font-weight:800!important;color:var(--tx)!important;padding:10px 12px!important;background:#e9edf5!important;border-bottom:2px solid var(--bd)!important;letter-spacing:.2px;text-transform:none!important}
+.nv-desk{padding:5px 10px;gap:5px}.nv-desk .nb{padding:5px 12px;font-size:12px;font-weight:600;border-radius:6px}.nv-desk .nc{font-size:13px;min-width:64px}
+@media(max-width:800px){.nv-mob{padding:6px 10px;gap:5px}.nv-mob .nb{padding:6px 13px;font-size:13px;border-radius:6px}.nv-mob .nc{font-size:13px}}
+.lhd .sb{margin-left:2px}.sb.part{background:var(--bll);border-color:var(--bl);color:var(--bl)}
+@media(max-width:800px){.tgrp .tg-l{font-size:9px;padding:0 3px}}
+.ab.act{border-color:#7c3aed;color:#6d28d9;background:#faf5ff}
+.rs{display:inline-flex;justify-content:center;align-items:center;min-width:32px;padding:1px 6px;border-radius:10px;font-family:var(--fm);font-size:11px;font-weight:700;line-height:1.5;flex:none}
+.s-w{background:#fde2e1;color:#c0392b}.s-m{background:#fef3c7;color:#92400e}.s-g{background:#dcfce7;color:#166534}.s-n{background:var(--sf);color:var(--ft);border:1px dashed var(--bd)}
+.wr .rs{justify-self:center}.tc .rs{position:absolute;top:5px;left:5px}
+#sm{min-width:300px;max-height:none}
+.sf-box{padding:8px}
+.mov.qz .mo{max-width:660px}.mov.wide .mo{max-width:880px}
+.qz-row{margin-bottom:12px}.qz-row>.lb{font-size:11px;font-weight:700;color:var(--dm);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.qz-opts{display:flex;flex-wrap:wrap;gap:5px}
+.qz-opt{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--bd);background:var(--sf);border-radius:7px;padding:6px 11px;font-size:12px;font-family:var(--fa);cursor:pointer;color:var(--tx);user-select:none}
+.qz-opt:hover{border-color:#7c3aed}.qz-opt.on{background:#ede9fe;border-color:#7c3aed;color:#5b21b6;font-weight:700}
+.qz-opt.dis{opacity:.45;cursor:not-allowed}.qz-opt.dis:hover{border-color:var(--bd)}
+.qz-opt .x{font-size:9px;color:var(--acc);font-weight:600}
+.qz-note{font-size:11px;color:var(--dm);line-height:1.8;background:var(--sf);border:1px solid var(--bdl);border-radius:6px;padding:6px 9px;margin-top:5px}
+.qz-note.w{background:var(--yl);border-color:#f59e0b60;color:#92400e}
+.qz-list{max-height:150px;overflow-y:auto;border:1px solid var(--bd);border-radius:6px;padding:4px;margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
+.qz-bar{height:6px;background:var(--bdl);border-radius:3px;overflow:hidden}.qz-bar i{display:block;height:100%;background:#7c3aed;transition:width .2s}
+.qz-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px;color:var(--dm)}
+.qz-dir{font-size:11px;color:#7c3aed;font-weight:700;text-align:center;margin:10px 0 6px}
+.qz-prompt{text-align:center;font-size:24px;font-weight:800;padding:18px 10px;background:var(--sf);border-radius:var(--rl);border:1px solid var(--bd);margin-bottom:12px;line-height:1.5;word-break:break-word}
+.l-zh{font-family:var(--fz);color:var(--acc)}.l-en{font-family:var(--fe)}.l-pin{font-family:var(--fe);color:var(--pin)}
+.qz-prompt.l-zh{font-size:42px}
+.qz-ans{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qz-ans button{padding:12px 10px;border:2px solid var(--bd);background:var(--card);border-radius:var(--r);cursor:pointer;font-size:15px;font-family:var(--fa);font-weight:600;color:var(--tx);min-height:54px;position:relative;word-break:break-word}
+.qz-ans button.l-en,.qz-ans button.l-pin{font-family:var(--fe)}.qz-ans button.l-zh{font-family:var(--fz);font-size:22px;color:var(--acc)}
+.qz-ans button:hover:not(:disabled){border-color:#7c3aed;background:#faf5ff}
+.qz-ans button .k{position:absolute;top:3px;right:6px;font-size:9px;color:var(--ft);font-family:var(--fm)}
+.qz-ans button.ok{border-color:var(--gn);background:var(--gnl);color:#166534}.qz-ans button.bad{border-color:var(--acc);background:var(--accl);color:var(--acc)}
+.qz-ans button:disabled{cursor:default}
+.qz-in{width:100%;padding:12px;font-size:18px;border:2px solid var(--bd);border-radius:var(--r);outline:0;text-align:center;font-family:var(--fa);background:var(--card);color:var(--tx)}
+.qz-in:focus{border-color:#7c3aed}.qz-in.l-zh{font-size:24px}
+.qz-fb{margin-top:12px;padding:10px 12px;border-radius:var(--r);font-size:13px;line-height:1.9}
+.qz-fb.ok{background:var(--gnl);color:#166534;border:1px solid #27ae6050}.qz-fb.bad{background:var(--accl);color:#991b1b;border:1px solid #d6303150}
+.qz-word{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin-top:4px;color:var(--tx)}
+.qz-res{text-align:center;padding:6px 0 10px}.qz-pct{font-size:52px;font-weight:800;font-family:var(--fm);line-height:1.1}
+.st-ring{width:124px;height:124px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.st-ring>div{width:94px;height:94px;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.st-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
+.st-c{border:1px solid var(--bd);border-radius:var(--r);padding:8px 4px;text-align:center;cursor:pointer;transition:.15s}.st-c:hover{transform:translateY(-1px);box-shadow:var(--sh)}
+.st-c b{display:block;font-size:22px;font-family:var(--fm)}
+.st-tbl{width:100%;border-collapse:collapse;font-size:12px}.st-tbl th,.st-tbl td{padding:6px;border-bottom:1px solid var(--bdl);text-align:center;white-space:nowrap}.st-tbl th{background:var(--sf);font-size:10px;color:var(--dm)}
+.us-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:7px 6px;border-bottom:1px solid var(--bdl)}
+.us-row.cur{background:#faf5ff}
+.us-row select,.us-row input{padding:4px 6px;border:1px solid var(--bd);border-radius:5px;font-size:12px;font-family:var(--fa);background:var(--sf);outline:0;color:var(--tx)}
+.us-row input:focus,.us-row select:focus{border-color:#7c3aed}
+.us-row .cd{font-family:var(--fm);font-size:11px;color:var(--ft);width:18px;text-align:center}
+.us-row small{font-size:9px;color:var(--dm)}
+@media(max-width:800px){.qz-ans{grid-template-columns:1fr}.st-cards{grid-template-columns:repeat(2,1fr)}.qz-prompt.l-zh{font-size:34px}.wr .wr-mob-l{flex-shrink:1;max-width:45%;overflow-wrap:anywhere}}
+/* ═══ MOBILE (≤800px): شريط سفلي، لوحات من الأسفل، بطاقة الكلمة، نوافذ بملء الشاشة ═══ */
+.bnav,.mov-x,.ddbk{display:none}
+.shov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:450;align-items:flex-end}
+.shov.opn{display:flex}
+.sh{background:var(--card);width:100%;max-height:86vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:6px 14px calc(14px + env(safe-area-inset-bottom));animation:shUp .22s ease;box-shadow:0 -6px 24px rgba(0,0,0,.15)}
+@keyframes shUp{from{transform:translateY(40px);opacity:.6}to{transform:none;opacity:1}}
+.sh-grab{width:42px;height:5px;border-radius:3px;background:var(--bd);margin:4px auto 10px}
+.sh-t{margin-bottom:10px}.sh-badge{display:inline-flex;align-items:center;gap:5px;color:#fff;font-size:13px;font-weight:800;padding:5px 12px;border-radius:8px}
+.sh-list{display:flex;flex-direction:column;gap:6px}
+.sh-it{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:8px 12px;border:1px solid var(--bdl);background:var(--sf);border-radius:12px;font-family:var(--fa);cursor:pointer;text-align:right;color:var(--tx)}
+.sh-it:active{background:var(--hov)}.sh-it:disabled{opacity:.4}
+.sh-ic{font-size:22px;width:30px;text-align:center;flex:none}
+.sh-tx{display:flex;flex-direction:column;min-width:0;gap:1px}.sh-tx b{font-size:15px}.sh-tx small{font-size:11.5px;color:var(--dm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh-it.danger{color:var(--acc);border-color:#d6303130;background:var(--accl)}
+/* بطاقة الكلمة */
+.wc{text-align:center;touch-action:pan-y}
+.wc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:var(--dm);margin-bottom:8px}
+.wc-top .wc-tag{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wc-zh{font-family:var(--fz);font-size:46px;font-weight:700;color:var(--acc);line-height:1.25;word-break:break-word}
+.wc-pn{font-family:var(--fe);font-size:17px;color:var(--pin);margin-top:2px}
+.wc-ar{font-size:21px;font-weight:800;margin-top:12px;line-height:1.5}
+.wc-en{font-family:var(--fe);font-size:16px;color:var(--bl);margin-top:2px}
+.wc-sc{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px}
+.wc-u{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--dm);background:var(--sf);border:1px solid var(--bdl);border-radius:14px;padding:2px 4px 2px 8px}
+.wc-u.cur{border-color:#7c3aed;color:#5b21b6;font-weight:700}
+.wc .tag-chips{justify-content:center;margin-top:8px}
+.wc-act{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+.wc-act button{min-height:52px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);font-family:var(--fa);font-size:12.5px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--tx)}
+.wc-act button span{font-size:19px}.wc-act .del{color:var(--acc);background:var(--accl);border-color:#d6303140}
+.wc-nav{display:flex;gap:6px;margin-top:8px}
+.wc-nav button{flex:1;min-height:46px;border-radius:12px;border:1px solid var(--bd);background:var(--card);font-family:var(--fa);font-size:14px;font-weight:700;color:var(--bl);cursor:pointer}
+.wc-nav button:disabled{opacity:.35}
+.wc-hint{font-size:10.5px;color:var(--ft);margin-top:6px}
+/* المستخدمون: على الكمبيوتر يبقى الصف كما هو */
+.us-h,.us-fs{display:contents}.us-f{display:inline-flex;align-items:center;gap:4px}.us-row .ab{order:9}
+/* إعداد الاختبار على الجوال */
+.qs-go{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border-radius:14px;padding:14px;margin-bottom:12px}
+.qs-go .qs-sum{font-size:13px;font-weight:700;line-height:1.8;margin-bottom:10px}
+.qs-go>button{width:100%;min-height:52px;border:0;border-radius:11px;background:#fff;color:#6d28d9;font-family:var(--fa);font-size:16px;font-weight:800;cursor:pointer}
+.qs-go .qz-note{background:rgba(255,255,255,.14);border-color:transparent;color:#fff;margin-top:10px}.qs-go .qz-note b{color:#fff}
+.qz-sec{border:1px solid var(--bd);border-radius:12px;margin-bottom:8px;background:var(--card)}
+.qz-sec summary{list-style:none;display:flex;align-items:center;gap:8px;padding:13px 12px;cursor:pointer;font-size:13.5px;font-weight:800}
+.qz-sec summary::-webkit-details-marker{display:none}
+.qz-sec summary::after{content:'▾';color:var(--ft);transition:.2s}.qz-sec[open] summary::after{transform:rotate(180deg)}
+.qz-sec .qs-v{font-size:12.5px;font-weight:700;color:#7c3aed;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.qz-sec .qs-b{padding:0 12px 12px}
+/* مقارنة المستخدمين كبطاقات */
+.st-cmp{display:flex;flex-direction:column;gap:6px}
+.st-cr{display:flex;align-items:center;gap:10px;border:1px solid var(--bd);border-radius:12px;padding:9px 10px}
+.st-cr.cur{border-color:#7c3aed;background:#faf5ff}
+.st-rk{font-size:20px;width:28px;text-align:center;font-weight:800;color:var(--dm)}
+.st-cn{flex:1;min-width:0;display:flex;flex-direction:column}.st-cn b{font-size:14px}.st-cn small{font-size:11px;color:var(--dm)}
+.st-cp{display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:13px}.st-cp .qz-bar{width:60px}
+@media(max-width:800px){
+  body.noscroll{overflow:hidden}
+  /* الرأس والشريط العلوي */
+  .hdr-in{flex-wrap:nowrap}.logo p{display:none}.logo h1{font-size:14px}
+  .sts{flex-wrap:nowrap}.sts .st:nth-child(2),.sts .st:nth-child(3){display:none}
+  .syncbar{font-size:11px;padding:4px 8px;gap:5px}.syncbar .sb-more{display:none}
+  .tb .tgrp.g-wrd,.tb .tgrp.g-lrn,.tb .tgrp.g-out,.tb .selbar,.tb .tbrk,.nv-mob,.nv-desk{display:none!important}
+  .tb .srch{order:-1;flex:1 1 100%;padding:8px 11px}.tb .srch input{font-size:15px}
+  .tb .g-flt{flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;background:transparent;border:0;padding:0;gap:5px}
+  .tb .g-flt::-webkit-scrollbar{display:none}.tb .g-flt .tg-l{display:none}.tb .g-flt>*{flex:none}
+  .tb .g-flt .ddt,.tb .g-flt .vg{min-height:38px}.tb .g-flt .ddt{padding:6px 11px;font-size:13px}
+  .favbar{flex:1 1 100%;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}.favbar::-webkit-scrollbar{display:none}.favc{flex:none;padding:6px 10px;font-size:12px}
+  /* القوائم المنسدلة تصبح لوحات من الأسفل */
+  .ddbk{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:95}.ddbk.on{display:block}
+  .ddm.opn{position:fixed!important;left:0!important;right:0!important;top:auto!important;bottom:0;width:100%;max-width:none!important;min-width:0!important;max-height:72vh;border-radius:18px 18px 0 0;padding:4px 10px calc(12px + env(safe-area-inset-bottom));animation:shUp .2s ease;z-index:300;box-shadow:0 -6px 24px rgba(0,0,0,.15)}
+  .ddm.opn::before{content:'';display:block;width:42px;height:5px;border-radius:3px;background:var(--bd);margin:6px auto 8px}
+  .ddi{padding:11px 10px;font-size:14px;min-height:44px}.chk{width:18px;height:18px;font-size:10px}.ddi .fav{font-size:17px;padding:0 6px}
+  .dd-search input{padding:10px;font-size:15px}
+  /* القائمة: المربعات تظهر فقط في وضع التحديد */
+  .wr,.tc{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+  body:not(.selmode) .wr .sb,body:not(.selmode) .tc .sb{display:none}
+  body.selmode .wr .sb,body.selmode .tc .sb{width:22px;height:22px;font-size:14px}
+  .wr{padding:10px 12px;min-height:56px}
+  .mn{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .tst{bottom:calc(78px + env(safe-area-inset-bottom));font-size:12.5px;max-width:92vw;text-align:center;opacity:0;visibility:hidden;transition:transform .25s,opacity .25s,visibility .25s}.tst.sh{opacity:1;visibility:visible}
+  /* الشريط السفلي */
+  .bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--card);border-top:1px solid var(--bd);box-shadow:0 -2px 12px rgba(0,0,0,.08);padding:4px 4px calc(4px + env(safe-area-inset-bottom));gap:2px;align-items:stretch}
+  .bnav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:0 0;border:0;border-radius:10px;min-height:52px;font-family:var(--fa);color:var(--dm);cursor:pointer;padding:4px 2px}
+  .bnav button span{font-size:21px;line-height:1.15}.bnav button small{font-size:11px;font-weight:800}
+  .bnav button:active{background:var(--hov)}
+  .bnav .bn-wrd{color:#16a34a}.bnav .bn-lrn{color:#7c3aed}.bnav .bn-out{color:#d97706}
+  .bnav .bn-add{color:var(--gn)}.bnav .bn-add span{width:44px;height:44px;border-radius:50%;background:var(--gn);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 3px 10px rgba(39,174,96,.45);margin-top:-16px}
+  .bnav.sel{background:var(--bll);border-top-color:var(--bl)}
+  .bnav.sel .bn-cnt{display:flex;align-items:center;padding:0 8px;font-weight:800;color:var(--bl);font-size:15px;white-space:nowrap}
+  .bnav.sel button{color:var(--bl)}.bnav.sel button:disabled{opacity:.3}.bnav.sel .bn-x{color:var(--acc)}
+  /* النوافذ بملء الشاشة: عنوان ثابت أعلى، أزرار ثابتة أسفل */
+  .mov{align-items:stretch;justify-content:stretch;backdrop-filter:none}
+  .mo{width:100%!important;max-width:none!important;height:100%;max-height:none!important;border-radius:0!important;padding:0 14px!important;display:flex;flex-direction:column;overflow-y:auto}
+  .mo>*{flex-shrink:0}
+  .mo>h2:first-child{position:sticky;top:0;z-index:3;background:var(--card);margin:0 -14px 12px;padding:15px 14px 11px 54px;border-bottom:1px solid var(--bdl);font-size:16px}
+  .mov-x{display:flex;align-items:center;justify-content:center;position:fixed;top:8px;left:8px;z-index:520;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--card);font-size:17px;color:var(--dm);cursor:pointer;box-shadow:var(--sh)}
+  .mov.qzrun .mov-x{display:none}
+  .mbt{position:sticky;bottom:0;z-index:3;background:var(--card);margin:auto -14px 0!important;padding:10px 14px calc(10px + env(safe-area-inset-bottom))!important;border-top:1px solid var(--bd);flex-wrap:wrap}
+  .mbt button{flex:1;min-width:80px;min-height:46px;font-size:13.5px!important;border-radius:10px!important}
+  .mbt .ms{order:-1;flex-basis:100%}
+  .fi input,.fi select{padding:10px;font-size:15px}.fi label{font-size:12px}.tr-btn{padding:8px 12px!important}
+  .tag-chip{padding:6px 11px;font-size:13px}
+  /* الاختبار */
+  .qz-opt{padding:9px 13px;font-size:14px;min-height:40px}
+  .mov.qz .mo>.qz-top:first-child{position:sticky;top:0;z-index:3;background:var(--card);margin:0 -14px;padding:10px 14px 8px}
+  .mov.qz .qz-ans{margin-top:auto;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  .qz-ans button{min-height:58px;font-size:17px}.qz-ans button.l-zh{font-size:24px}
+  .qz-prompt{margin-top:6px}
+  .qz-nx{position:sticky;bottom:calc(6px + env(safe-area-inset-bottom));min-height:52px;font-size:15px!important;box-shadow:0 4px 14px rgba(124,58,237,.35);margin-bottom:8px}
+  .qz-in{font-size:19px;padding:13px}
+  /* المستخدمون كبطاقات */
+  .us-list{max-height:none!important;overflow:visible!important}
+  .us-row{display:block;border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:8px}
+  .us-row.cur{border-color:#7c3aed}
+  .us-h{display:flex;align-items:center;gap:6px}.us-h input{flex:1;min-width:0;padding:10px!important;font-size:15px!important}
+  .us-h .ab{min-height:40px;min-width:42px;justify-content:center;font-size:16px}
+  .us-fs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .us-f{display:flex;flex-direction:column;gap:3px}.us-f small{font-size:11px!important}.us-f select{width:100%;padding:9px!important;font-size:14px!important}
+}
+#pz{display:none}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{background:#fff!important;margin:0;padding:0;font-size:10pt}
+  .hdr,.tb,.top-area,.nv,.nv-mob,.no-pr,.tst,.mov,.lov{display:none!important}.mn{display:none!important}
+  #pz{display:block!important}@page{margin:8mm 10mm 14mm 10mm}
+  .p-title{text-align:center;font-size:9pt;color:#888;padding-bottom:2mm;border-bottom:1px solid #ddd;margin-bottom:3mm}
+  .p-cat{text-align:center;font-size:13pt;font-weight:800;color:#222;margin:3mm 0 1mm;padding:2mm;background:#e8e8e8!important;border-radius:3px}.p-cat.brk{page-break-before:always}
+  .p-tag{text-align:right;font-size:11pt;font-weight:700;color:#444;margin:2mm 0 1mm;padding:1mm 3mm;border-right:3px solid #d63031}
+  .pt{width:100%;border-collapse:collapse;margin-bottom:2mm}.pt th{background:#f0f0f0!important;padding:3px 6px;text-align:right;font-weight:700;border:1px solid #bbb;font-size:8pt}.pt th.eh{text-align:left;direction:ltr}.pt th.zh{text-align:center}.pt td{padding:3px 6px;border:1px solid #ccc;font-size:9pt}.pt .ta{font-weight:600;font-size:var(--par,9pt)}.pt .te{text-align:left;direction:ltr;color:#2c5282;font-size:var(--pen,10pt)}.pt .tz{text-align:center;font-family:'Noto Sans SC';color:#c0392b;font-size:var(--pzh,11pt)}.pt .tp{text-align:center;color:#2d2d3a;font-size:var(--ppn,9pt)}
+  .pcg{display:grid!important;grid-template-columns:repeat(3,1fr);gap:3mm;margin-bottom:2mm}
+  .pc{border:1px solid #999;border-radius:4px;padding:3mm;text-align:center;break-inside:avoid;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden;box-sizing:border-box}
+  .pc.f-dashed{border:1px dashed #999}.pc.f-none{border:1px solid transparent}.pc.ph{border:0;visibility:hidden}
+  .pc .xa.big{font-weight:800;margin-bottom:2mm}.pc .xe.big{font-weight:600}
+  .pcg.pg-brk{page-break-before:always}
+  .pc .xz{font-size:var(--pzh,18pt);font-weight:800;color:#c0392b;font-family:'Noto Sans SC';margin-bottom:1mm;line-height:1.3}
+  .pc .xp{font-size:var(--ppn,11pt);color:#2d2d3a;font-family:'Noto Sans';margin-bottom:2mm}
+  .pc .xa{font-size:var(--par,8pt);font-weight:600;color:#333;margin-bottom:.5mm}
+  .pc .xe{font-size:var(--pen,7pt);color:#2c5282;direction:ltr;font-family:'Noto Sans'}
+  .p-cgs-cat{grid-column:1/-1;text-align:center;font-size:11pt;font-weight:800;color:#222;padding:2mm;background:#e8e8e8!important;border-radius:2px}.p-cgs-cat.brk{page-break-before:always}
+  .p-cgs-tag{grid-column:1/-1;text-align:right;font-size:9pt;font-weight:700;color:#444;padding:1mm 2mm;border-right:2px solid #d63031}
+  .p-footer{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:2mm 10mm;font-size:8pt;color:#999;border-top:1px solid #ddd;background:#fff!important}
+}
+</style>
+</head>
+<body>
+<div class="lov" id="lov"><div class="sp2"></div><p id="lm">جاري التحديث...</p></div>
+<div id="ld" class="ld"><div class="ldr"></div><p>جاري تحميل المصطلحات...</p></div>
+<div id="app" style="display:none">
+<div class="syncbar no-pr" id="syncbar"></div>
+<div class="top-area">
+<header class="hdr no-pr"><div class="hdr-in"><div class="logo"><div class="logo-ic">词</div><div><h1>قاموس المصطلحات الفنية</h1><p>عربي · English · 中文</p></div></div><div class="sts"><div class="st"><b id="sT">0</b> مصطلح</div><div class="st"><b id="sC">0</b> تصنيف</div><div class="st"><b id="sG">0</b> تاج</div><div class="st" id="verSt" style="font-size:9px;color:var(--ft);cursor:pointer" onclick="oSetup()" title="إعدادات">⏳</div></div></div></header>
+<div class="tb no-pr"><div class="tb-in">
+  <div class="tgrp g-flt"><span class="tg-l">🔎 الفلترة والعرض</span>
+    <div class="dd" id="cdd"><button class="ddt" onclick="tDD('c')"><span>📂 <span class="ab-txt">التصنيف</span></span><span class="ddb" id="cb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="cm"></div></div>
+    <div class="dd" id="gdd"><button class="ddt" onclick="tDD('g')"><span>🏷 <span class="ab-txt">التاج</span></span><span class="ddb" id="gb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="gm"></div></div>
+    <div class="dd" id="sdd"><button class="ddt" onclick="tDD('s')" title="فلترة الكلمات حسب درجة حفظ المستخدم الحالي"><span>🎯 <span class="ab-txt">الحفظ</span></span><span class="ddb" id="sfb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="sm"></div></div>
+    <div class="dd" id="fdd"><button class="ddt" onclick="tDD('f')"><span>👁 <span class="ab-txt">الحقول</span></span><span class="ddb" id="fb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="fm"></div></div>
+    <div class="vg"><button class="vb on" data-v="list" onclick="sV('list')">☰ <span class="ab-txt">قائمة</span></button><button class="vb" data-v="cards" onclick="sV('cards')">⊞ <span class="ab-txt">بطاقات</span></button></div>
+  </div>
+  <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث..."><button class="clr" id="sc" onclick="clrS()">✕</button></div>
+  <div class="favbar" id="favbar"></div>
+  <span class="tbrk"></span>
+  <div class="tgrp g-wrd"><span class="tg-l">📝 الكلمات</span>
+    <button class="ab g" onclick="oAdd()">+ <span class="ab-txt">إضافة</span></button>
+    <button class="ab" onclick="oEditW()" title="تعديل الكلمة الحالية (أو انقر نقرتين على الكلمة)">✏️ <span class="ab-txt">تعديل</span></button>
+    <button class="ab" onclick="oClrSel()" title="مسح الدرجات المسجلة من الكلمات المحددة ✓، أو من الكلمة الحالية">🧹 <span class="ab-txt">مسح الدرجات</span></button>
+    <button class="ab d" onclick="oDelW()" title="حذف الكلمة الحالية، أو كل الكلمات المحددة ✓">🗑 <span class="ab-txt">حذف</span></button>
+    <button class="ab" onclick="trBulk()" title="ترجمة تلقائية للكلمات المحددة ✓، أو للمعروضة إن لم تحدد شيئاً">🌐 <span class="ab-txt">ترجمة</span></button>
+  </div>
+  <div class="tgrp g-lrn"><span class="tg-l">🎓 الحفظ والاختبارات</span>
+    <button class="ab" id="uBtn" onclick="oUsers()" title="المستخدم الحالي — نقرة لتغييره أو لإدارة المستخدمين">👤 <span class="ab-txt">المستخدم</span></button>
+    <button class="ab qz" onclick="qzMain()" title="اختبار — في الكلمات المحددة ✓ إن وُجدت">🎯 <span class="ab-txt">اختبار</span></button>
+    <button class="ab" onclick="oStats()" title="إحصائيات الحفظ ومقارنة المستخدمين">📊 <span class="ab-txt">إحصائيات</span></button>
+  </div>
+  <div class="tgrp g-out"><span class="tg-l">📤 الإخراج</span>
+    <button class="ab p" onclick="prMain()" title="طباعة — للكلمات المحددة ✓ إن وُجدت">🖨 <span class="ab-txt">طباعة</span></button>
+    <button class="ab" onclick="expCSV()" title="تصدير الكلمات المعروضة إلى ملف CSV">⬇ <span class="ab-txt">CSV</span></button>
+    <button class="ab" onclick="oMng()" title="إدارة التصنيفات والتاجات">⚙ <span class="ab-txt">إدارة</span></button>
+    <button class="ab" onclick="oSetup()" title="إعدادات الاتصال">🔗 <span class="ab-txt">الاتصال</span></button>
+  </div>
+  <div class="selbar" id="selbar" style="display:none"><span>✓ <b id="selN">0</b></span><button onclick="selAllView()" title="تحديد كل الكلمات المعروضة">تحديد المعروض</button><button onclick="selClear()" title="إلغاء التحديد">✕</button></div>
+</div>
+<div class="nv-desk no-pr"><button class="nb" onclick="goF()">الأولى ⏭</button><button class="nb" onclick="goP()">السابقة ▶</button><span class="nc" id="nc">0/0</span><button class="nb" onclick="goN()">◀ التالية</button><button class="nb" onclick="goL()">⏮ الأخيرة</button></div>
+<div class="nv-mob no-pr"><button class="nb" onclick="goF()">⏭</button><button class="nb" onclick="goP()">▶</button><span class="nc" id="ncm">0/0</span><button class="nb" onclick="goN()">◀</button><button class="nb" onclick="goL()">⏮</button><span style="width:8px"></span><button class="nb nb-del" onclick="oDelW()">🗑</button></div>
+</div>
+</div>
+<div class="mn"><div class="blay">
+  <div class="cpan"><div class="lhd" id="lhd"></div><div class="lbd" id="wl"></div><div class="cgr" id="cg" style="display:none"></div></div>
+</div></div></div>
+<div class="ddbk no-pr" id="ddBk"></div>
+<nav class="bnav no-pr" id="bnav"></nav>
+<div class="shov no-pr" id="shv" onclick="if(event.target===this)shClose()"><div class="sh" id="sh"></div></div>
+<div id="pz"></div>
+<div class="mov" id="mov" onclick="if(event.target===this&&!(QZ&&!QZ.saved))cM()"><button class="mov-x" onclick="movX()" aria-label="إغلاق">✕</button><div class="mo" id="mo"></div></div>
+<div class="tst" id="tst"></div>
+<script>
+const DEFAULT_AU='https://script.google.com/macros/s/AKfycbyGc5bBovlXeim5uwPCti8z3dRep8Qb4685BkS_Tvie7zeCx3vqApiLQUze8mTx6C7L/exec';
+// Safe localStorage wrapper
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+// Clear stale old URLs
+(function(){const old=lsGet('dictApiUrl');if(old&&(old.includes('AKfycbwsk74_')||old.includes('AKfycby6M1l')))lsDel('dictApiUrl');})();
+let AU=lsGet('dictApiUrl')||DEFAULT_AU;
+const SID='1Vxj5-4Uo0tZ_X0tx9a3FSNHdS_z-zDns7_tsZUM9gWA';
+const EXPECTED_VER='v5-quiz-2026f';
+let D=[],V=[],cats=[],tags=[],selC=new Set,selT=new Set,ai=0,cv='list';
+const $=id=>document.getElementById(id);const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+function sL(m){$('lm').textContent=m||'جاري التحديث...';$('lov').classList.add('on');}function hL(){$('lov').classList.remove('on');}
+function parseTags(s){
+  const v=String(s||'');
+  // Handle case where Google Sheets converted "1,3" to a number like 39333 (date serial)
+  // Only valid tags are small numbers matching known tag IDs
+  return new Set(v.split(',').map(x=>x.trim()).filter(x=>x&&/^\d+$/.test(x)));
+}
+
+// ═══════════ التخزين المحلي وطابور الترحيل ═══════════
+// كل إضافة/تعديل/حذف يحدث محلياً فوراً ويُسجَّل في طابور، ثم يُرحَّل تلقائياً في الخلفية.
+const LS_KEY='dictCache_v1';
+let Q=[];              // العمليات غير المرحّلة
+let _qseq=0;           // عدّاد المعرّفات المؤقتة
+let syncing=false,_syncT=null,_syncErr='',_okTimer=null;
+function isOnline(){return navigator.onLine!==false;}
+// بعض البيئات تمنع التخزين المحلي (تصفح خفي، إعدادات صارمة). نكتشف ذلك ونتعامل معه بوضوح.
+const CAN_STORE=(function(){try{localStorage.setItem('__probe','1');const ok=localStorage.getItem('__probe')==='1';localStorage.removeItem('__probe');return ok;}catch(e){return false;}})();
+function linkTags(){const m=new Map();cats.forEach(c=>m.set(c.id,c));
+  tags.forEach(t=>{const c=m.get(t.catId);t.catName=c?c.name:'';t.catOrd=c?parseInt(c.ord)||0:999;});}
+function cacheSave(){try{lsSet(LS_KEY,JSON.stringify({v:1,at:Date.now(),
+  terms:D.map(d=>({id:d.id,ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags,s:d._s})),
+  users:U,
+  cats:cats.map(c=>({id:c.id,ord:c.ord,name:c.name})),
+  tags:tags.map(t=>({id:t.id,name:t.name,catId:t.catId})),
+  queue:Q,seq:_qseq}));}catch(e){ts('تعذر الحفظ المحلي — مساحة المتصفح ممتلئة','er');}}
+function cacheLoad(){try{const o=JSON.parse(lsGet(LS_KEY)||'null');if(!o||!Array.isArray(o.terms)||!o.terms.length)return false;
+  D=o.terms.map(t=>{const d=Object.assign({},t);d._tags=parseTags(d.tags);d._s=Array.isArray(t.s)?t.s:sEmpty();delete d.s;return d;});
+  if(Array.isArray(o.users)&&o.users.length===MAX_U)U=o.users;
+  cats=o.cats||[];tags=o.tags||[];Q=o.queue||[];_qseq=o.seq||0;linkTags();return true;}catch(e){return false;}}
+
+// ── إضافة عملية للطابور مع دمج العمليات المتتالية على نفس الكلمة ──
+function qPush(op){
+  if(op.op==='update'){
+    const a=Q.find(x=>x.op==='add'&&x.tmp===op.id);
+    if(a){a.ar=op.ar;a.en=op.en;a.zh=op.zh;a.pin=op.pin;a.tags=op.tags;qDone();return;}
+    const i=Q.findIndex(x=>x.op==='update'&&x.id===op.id);
+    if(i>=0){Q[i]=op;qDone();return;}
+  }else if(op.op==='delete'){
+    const ai=Q.findIndex(x=>x.op==='add'&&x.tmp===op.id);
+    Q=Q.filter(x=>!((x.op==='update')&&x.id===op.id));
+    if(ai>=0){Q=Q.filter(x=>!(x.op==='add'&&x.tmp===op.id));qDone();return;} // لم تُرحَّل أصلاً
+  }
+  Q.push(op);qDone();}
+function qDone(){cacheSave();syncBadge();syncSoon();}
+// بلا تخزين محلي لا نؤجّل: نرحّل فوراً حتى لا يضيع شيء عند إغلاق الصفحة
+function syncSoon(ms){clearTimeout(_syncT);_syncT=setTimeout(()=>syncNow(false),CAN_STORE?(ms||1500):300);}
+
+// ── شريط الحالة أعلى التطبيق ──
+function syncBadge(){const b=$('syncbar');if(!b)return;clearTimeout(_okTimer);
+  const n=Q.length;
+  if(syncing){b.className='syncbar no-pr on busy';b.innerHTML=`⏳ جاري ترحيل البيانات إلى جوجل شيت... <span class="dt">${n}</span> متبقية`;return;}
+  if(!n){
+    if(_syncErr){_syncErr='';}
+    if(!CAN_STORE){b.className='syncbar no-pr on pend';
+      b.innerHTML='⚠️ التخزين المحلي معطّل في هذا المتصفح — التغييرات تُرحَّل فوراً ولا تُحفظ على الجهاز';return;}
+    b.className='syncbar no-pr on okk';b.innerHTML='✅ كل البيانات مُرحَّلة إلى جوجل شيت';
+    _okTimer=setTimeout(()=>{if(!Q.length&&!syncing)b.className='syncbar no-pr';},3000);return;}
+  if(!isOnline()){b.className='syncbar no-pr on pend';
+    b.innerHTML=`📴 غير متصل بالإنترنت — <span class="dt">${n}</span> تغييرات محفوظة على جهازك وستُرحَّل عند عودة الاتصال`;return;}
+  b.className='syncbar no-pr on '+(_syncErr?'err':'pend');
+  b.innerHTML=`${_syncErr?'⚠️ تعثر الترحيل مؤقتاً —':'⚠️ لديك'} <span class="dt">${n}</span> تغييرات لم تُرحَّل إلى جوجل شيت`
+    +` <button onclick="syncNow(true)">⬆ ترحيل الآن</button>`
+    +(_syncErr?`<span class="sb-more" style="font-weight:400;font-size:10px">بياناتك محفوظة على جهازك وسيعيد التطبيق المحاولة تلقائياً (${esc(_syncErr)})</span>`:'');}
+
+// ── الترحيل: عملية تلو الأخرى، مع معالجة المعرّفات المؤقتة ──
+async function syncNow(manual){
+  if(syncing)return;
+  if(!Q.length){syncBadge();if(manual)ts('لا توجد تغييرات للترحيل','ok');return;}
+  if(!isOnline()){syncBadge();if(manual)ts('لا يوجد اتصال بالإنترنت','er');return;}
+  syncing=true;_syncErr='';syncBadge();
+  try{
+    while(Q.length){
+      const op=Q[0];
+      // معرّف محلي لم يُنشأ على الخادم قط: لا معنى لإرساله
+      if(op.op!=='add'&&/^L\d+$/.test(String(op.id||''))){Q.shift();cacheSave();syncBadge();continue;}
+      try{
+        if(op.op==='add'){
+          const r=await apiOnce({action:'addTerm',ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags},25000);
+          const real=String(r.id),tmp=op.tmp;
+          const d=D.find(x=>String(x.id)===tmp);if(d)d.id=real;
+          Q.forEach(x=>{if(x.id===tmp)x.id=real;if(x.tmp===tmp)x.tmp=real;});
+          if(selW.has(tmp)){selW.delete(tmp);selW.add(real);}
+        }else if(op.op==='update'){
+          await apiOnce({action:'updateTerm',id:op.id,ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags},25000);
+        }else if(op.op==='delete'){
+          await apiOnce({action:'deleteTerm',id:op.id},25000);
+        }else if(op.op==='scores'){
+          const r=await apiOnce({action:'saveScores',code:op.code,bid:op.bid,items:JSON.stringify(op.items)},30000);
+          if(!r||!r.scores){const er=new Error('كود Apps Script لم يُحدَّث — انشر الإصدار الجديد ليتم حفظ درجات الاختبار');er.old=true;throw er;}
+          applySrvScores(op.code,r.scores);
+        }else if(op.op==='clearScores'){
+          const r=await apiOnce({action:'clearScores',code:op.code,ids:op.ids.join(',')},30000);
+          if(!r||r.cleared===undefined){const er=new Error('كود Apps Script لم يُحدَّث — انشر الإصدار الجديد ليتم مسح الدرجات');er.old=true;throw er;}
+        }
+        Q.shift();cacheSave();syncBadge();
+      }catch(e){
+        if(API_NET.test(e.message)||e.old)throw e;          // تعثر شبكة أو كود قديم: نوقف ونعيد لاحقاً
+        op._e=(op._e||0)+1;                                  // خطأ من السكربت نفسه
+        if(op._e>=3){const lbl=/scores/i.test(op.op)?'درجات الاختبار':(op.ar||op.en||op.id);Q.shift();cacheSave();
+          ts(`تعذر ترحيل "${lbl}" — ${e.message}`,'er');}
+        else{cacheSave();await new Promise(r=>setTimeout(r,800));}
+      }
+    }
+    syncing=false;syncBadge();
+    if(manual)ts('تم ترحيل كل التغييرات ✓','ok');
+    loadFromSheet(true).catch(()=>{});                       // مطابقة نهائية صامتة مع الشيت
+  }catch(e){
+    syncing=false;_syncErr=e.message;syncBadge();
+    if(manual)ts('تعثر الترحيل: '+e.message,'er');
+    syncSoon(e.old?120000:15000);
+  }}
+
+// ── التحميل من جوجل شيت ──
+let _lRes=null,_lRej=null;
+function lS(u,onErr){const s=document.createElement('script');s.src=u;
+  s.onerror=()=>{s.remove();if(onErr)onErr(new Error('تعذر الوصول إلى جوجل شيت'));};
+  s.onload=()=>setTimeout(()=>s.remove(),0);document.body.appendChild(s);}
+function loadFromSheet(silent){
+  if(Q.length)return Promise.reject(new Error('يوجد تغييرات لم تُرحَّل'));  // لا نطمس العمل المحلي
+  return new Promise((res,rej)=>{
+    if(!silent)sL('جاري تحميل البيانات...');
+    _lRes=()=>{if(!silent)hL();res();};
+    _lRej=e=>{if(!silent)hL();rej(e);};
+    lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onT&headers=1`,_lRej);});}
+function onT(r){if(r.status==='error'){if(_lRej)_lRej(new Error('خطأ في قراءة الشيت'));return;}
+  const h=r.table.cols.map(c=>(c.label||'').trim());
+  D=r.table.rows.map(rw=>{const o={};h.forEach((k,i)=>{const c=rw.c[i];
+    o[k]=c?(c.f!=null?String(c.f):String(c.v!=null?c.v:'')).trim():'';
+  });o._s=Array.from({length:MAX_U},(_,k)=>parseSc(rw.c[SC_COL0+k]));return o;}).filter(r=>r.ar||r.en||r.zh);
+  D.forEach(d=>{d._tags=parseTags(d.tags);});
+  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onC&sheet=${encodeURIComponent('التصنيفات')}`,_lRej);}
+function onC(r){if(r.status==='ok')cats=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),ord:String(rw.c[1]?.v||'').trim(),name:(rw.c[2]?.v||'').trim()})).filter(c=>c.id&&c.name);cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
+  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onG&sheet=${encodeURIComponent('التاجات')}`,_lRej);}
+function onG(r){if(r.status==='ok')tags=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),name:(rw.c[1]?.v||'').trim(),catId:String(rw.c[2]?.v||'').trim()})).filter(g=>g.id&&g.name);
+  loadUsersThen();}
+function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();$('ld').style.display='none';$('app').style.display='block';syncBadge();}
+
+// ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
+async function boot(){
+  const cached=cacheLoad();
+  if(cached){paint();hL();checkApiVer();}
+  if(Q.length){                       // تغييرات من جلسة سابقة: نرحّلها قبل أي تحديث
+    ts(`لديك ${Q.length} تغييرات من جلسة سابقة — جاري ترحيلها`,'ok');
+    await syncNow(false);
+  }
+  if(!Q.length){
+    try{await loadFromSheet(!!cached);}
+    catch(e){if(!cached){$('ld').innerHTML='<h2 style="color:var(--acc)">⚠️ تعذر تحميل البيانات</h2><p style="color:var(--dm);font-size:12px">'+esc(e.message)+'</p>';return;}
+      ts('تعذر التحديث من الشيت — تعرض النسخة المحفوظة على جهازك','er');}
+  }
+  if(!cached){hL();checkApiVer();}
+  syncBadge();}
+function reload(){if(Q.length){ts('رحّل التغييرات أولاً','er');return;}loadFromSheet(false).catch(e=>ts(e.message,'er'));}
+window.addEventListener('online',()=>{syncBadge();if(Q.length)syncSoon(500);});
+window.addEventListener('offline',()=>syncBadge());
+window.addEventListener('beforeunload',e=>{if(Q.length||(QZ&&!QZ.saved&&QZ.items.some(x=>x.done))){e.preventDefault();e.returnValue='';return '';}});
+// خادم Apps Script يفشل أحياناً فشلاً عابراً (رد فارغ بعد ~20 ثانية)، لذلك:
+// مهلة محددة + إعادة محاولة تلقائية للإجراءات الآمنة فقط (التي لا تُنشئ صفوفاً جديدة)
+let _n=0;
+const API_SAFE=/^(version|translate|updateTerm|deleteTerm|updateCat|deleteCat|updateTag|deleteTag|reorderCats|fixTags|saveUser|saveScores|resetScores|clearScores|setupQuiz)$/;
+const API_NET=/فشل الاتصال|انتهت مهلة/;
+function apiOnce(p,ms){return new Promise((ok,no)=>{
+  const cn='_c'+(++_n)+'_'+Date.now();
+  const q=Object.assign({},p);q.callback=cn;
+  const qs=Object.entries(q).map(([k,v])=>encodeURIComponent(k)+'='+encodeURIComponent(v)).join('&');
+  const s=document.createElement('script');let done=false;
+  const clean=()=>{done=true;clearTimeout(tm);try{delete window[cn];}catch(e){}setTimeout(()=>s.remove(),0);};
+  window[cn]=d=>{if(done)return;clean();(d&&d.success===false)?no(new Error(d.error||'خطأ')):ok(d);};
+  const tm=setTimeout(()=>{if(done)return;done=true;window[cn]=()=>{};s.remove();no(new Error('انتهت مهلة الاتصال'));},ms||35000);
+  s.onerror=()=>{if(done)return;clean();no(new Error('فشل الاتصال'));};
+  s.src=AU+'?'+qs;document.body.appendChild(s);});}
+async function api(p){
+  const safe=API_SAFE.test(String(p.action||''));
+  // الإجراءات القابلة للتكرار: مهلة قصيرة ثم إعادة محاولة.
+  // الكتابة غير القابلة للتكرار: مهلة طويلة لأن قطعها قد يترك الصف محفوظاً بلا تأكيد.
+  const tries=safe?3:1,ms=safe?25000:60000;
+  let last;
+  for(let i=0;i<tries;i++){
+    try{return await apiOnce(p,ms);}
+    catch(e){last=e;
+      if(!API_NET.test(e.message))throw e;              // خطأ حقيقي من السكربت: لا نكرر
+      if(i<tries-1){ts(`تعثر الاتصال بجوجل — إعادة المحاولة ${i+2}/${tries}...`);await new Promise(r=>setTimeout(r,1200));}}}
+  throw last;}
+async function checkApiVer(){
+  const el=$('verSt');if(!el)return;
+  try{
+    const d=await api({action:'version'});          // يعيد المحاولة 3 مرات تلقائياً
+    const ver=d.version||'';
+    if(ver===EXPECTED_VER){el.innerHTML='✅ v'+ver.replace('v',':');el.style.color='var(--gn)';el.title='الاتصال سليم';}
+    else{el.innerHTML='⚠️ API قديم';el.style.color='var(--acc)';el.style.fontWeight='700';el.title='كود Apps Script المنشور أقدم من المتوقع';ts('⚠️ كود Apps Script قديم!','er');}
+  }catch(e){
+    el.innerHTML='❌ فشل';el.style.color='var(--acc)';el.title='تعذر الوصول: '+e.message+' — افتح الإعدادات واضغط فحص الاتصال';
+  }}
+
+// ── تشخيص الاتصال: يميّز بين انقطاع الإنترنت ومشكلة في رابط Apps Script ──
+function probeUrl(u,ms){return new Promise(res=>{const t0=Date.now();
+  const cn='_p'+Date.now();window[cn]=()=>{};
+  const s=document.createElement('script');let done=false;
+  const fin=ok=>{if(done)return;done=true;clearTimeout(tm);s.remove();res({ok,ms:Date.now()-t0});};
+  const tm=setTimeout(()=>fin(false),ms||15000);
+  s.onload=()=>fin(true);s.onerror=()=>fin(false);
+  s.src=u.replace('__CB__',cn);document.body.appendChild(s);});}
+async function diagnose(){
+  const box=$('diagBox');if(!box)return;
+  box.innerHTML='<span style="color:var(--dm)">جاري الفحص...</span>';
+  const isCustom=AU!==DEFAULT_AU;
+  const net=isOnline();
+  const sheet=await probeUrl(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:__CB__`,15000);
+  const script=await probeUrl(AU+'?action=version&callback=__CB__',30000);
+  let verdict='',color='var(--gn)';
+  if(!net){verdict='لا يوجد اتصال بالإنترنت على هذا الجهاز.';color='var(--acc)';}
+  else if(sheet.ok&&script.ok){verdict='الاتصال سليم بالكامل. لو ظهر خطأ أثناء الترحيل فهو تعثر مؤقت من جوجل وسيُعاد تلقائياً.';}
+  else if(sheet.ok&&!script.ok){color='var(--acc)';
+    verdict='قراءة الشيت تعمل لكن رابط Apps Script لا يستجيب. الأسباب المحتملة: '
+      +(isCustom?'الرابط المخصص المحفوظ لديك لم يعد صالحاً (اضغط زر «الافتراضي» بالأسفل)، أو ':'')
+      +'مانع إعلانات أو إضافة في المتصفح تحجب script.google.com، أو تعثر مؤقت من جوجل.';}
+  else if(!sheet.ok&&!script.ok){color='var(--acc)';verdict='لا يصل التطبيق إلى جوجل إطلاقاً. تحقق من الإنترنت أو من جدار الحماية.';}
+  else{color='var(--acc)';verdict='رابط Apps Script يعمل لكن قراءة الشيت تعثرت. جرّب بعد قليل.';}
+  box.innerHTML=`<div style="color:${color};font-weight:700;margin-bottom:4px">${esc(verdict)}</div>`
+    +`<div style="font-size:10px;color:var(--ft);font-family:var(--fm)">`
+    +`الإنترنت: ${net?'متصل':'غير متصل'} · قراءة الشيت: ${sheet.ok?'نجحت ('+sheet.ms+'ms)':'فشلت'} · Apps Script: ${script.ok?'نجح ('+script.ms+'ms)':'فشل'}`
+    +`<br>الرابط: ${isCustom?'مخصص':'الافتراضي'}</div>`;}
+
+// ── BUILD VIEW: each term × each tag = display row ──
+function buildView(){
+  const q=$('si').value.trim().toLowerCase();
+  const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  let fd=D.filter(d=>(!q||[d.ar,d.en,d.zh,d.pin].some(v=>(v||'').toLowerCase().includes(q))));
+  if(selT.size>0) fd=fd.filter(d=>{for(const t of selT){if(d._tags.has(t))return true;}return false;});
+  if(selC.size>0){
+    const catTags=new Set();tags.forEach(t=>{if(selC.has(t.catId))catTags.add(t.id);});
+    const incNone=selC.has('_none');
+    fd=fd.filter(d=>{
+      const validTags=[...d._tags].filter(tid=>tMap.has(tid));
+      if(!validTags.length)return incNone;
+      for(const t of validTags){if(catTags.has(t))return true;}
+      return false;
+    });
+  }
+  if(sfActive())fd=fd.filter(sfPass);
+
+  // Group terms by tag (each term appears once per tag it has)
+  const tagTerms=new Map();
+  const untagged=[];
+  fd.forEach(d=>{
+    let found=false;
+    d._tags.forEach(tid=>{
+      if(!tMap.has(tid))return;found=true;
+      if(!tagTerms.has(tid))tagTerms.set(tid,[]);
+      // Only include if tag passes filter
+      if(selT.size===0||selT.has(tid)){tagTerms.get(tid).push(d);}
+      else if(selT.size>0&&!selT.has(tid)){/* skip */}
+    });
+    if(!found)untagged.push(d);
+  });
+  // Sort each tag's terms alphabetically
+  const tcmp=termCmp();tagTerms.forEach(arr=>arr.sort(tcmp));
+
+  // Sorted tags: catOrd → tagName alphabetical
+  const sortedTags=[...tags].filter(t=>tagTerms.has(t.id)&&(selT.size===0||selT.has(t.id))).sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar'));
+
+  V=[];
+  sortedTags.forEach(tag=>{
+    const arr=tagTerms.get(tag.id);
+    arr.forEach(d=>V.push({d,tagId:tag.id,tagName:tag.name,catId:tag.catId,catName:tag.catName,catOrd:tag.catOrd}));
+  });
+  untagged.sort(tcmp);
+  untagged.forEach(d=>V.push({d,tagId:'_none',tagName:'بدون تصنيف',catId:'_none',catName:'بدون تصنيف',catOrd:9999}));
+
+  ai=Math.min(ai,Math.max(0,V.length-1));
+  $('sT').textContent=fd.length;$('sC').textContent=selC.size>0?selC.size:cats.length;$('sG').textContent=selT.size>0?selT.size:tags.length;
+  ren();
+}
+function cntTag(tid){return V.filter(v=>v.tagId===tid).length;}
+
+// ── DROPDOWNS ──
+function bDD(){
+  const hasUntagged=D.some(d=>!d._tags.size||![...d._tags].some(tid=>tags.find(t=>t.id===tid)));
+  const catsPlus=[...cats];if(hasUntagged)catsPlus.push({id:'_none',ord:'999',name:'بدون تصنيف'});
+  bD('c',catsPlus,selC);bD('g',aG(),selT);bF();
+}
+function aG(){return selC.size===0?tags:tags.filter(t=>selC.has(t.catId));}
+const DD_M={c:'cm',g:'gm',f:'fm',s:'sm'},DD_T={c:'cdd',g:'gdd',f:'fdd',s:'sdd'};
+function bD(t,items,sel){const m=$(DD_M[t]);
+  let h=`<button class="ddi all" onclick="clSl('${t}')">✦ الكل</button>`;
+  h+=`<div class="dd-search"><input placeholder="بحث..." oninput="filterDD('${t}',this.value)"></div>`;
+  items.forEach(it=>{const s=sel.has(it.id)?'sel':'';
+    const star=t==='g'?`<span class="fav${favT.has(it.id)?'':' off'}" onclick="favTog('${it.id}',event)" title="تاج مفضل — يظهر في الشريط العلوي">${favT.has(it.id)?'★':'☆'}</span>`:'';
+    h+=`<button class="ddi ${s} dd-tag-item" data-name="${esc(it.name)}" onclick="tI('${t}','${it.id}')"><span class="chk">${s?'✓':''}</span>${star}${esc(it.name)}</button>`;});
+  m.innerHTML=h;const bd=$(t==='c'?'cb':'gb'),tg=bd.parentElement;if(sel.size>0){bd.textContent=sel.size;bd.style.display='inline';tg.classList.add('act');}else{bd.style.display='none';tg.classList.remove('act');}}
+function filterDD(t,q){q=q.toLowerCase();document.querySelectorAll('#'+DD_M[t]+' .dd-tag-item').forEach(el=>{el.style.display=(!q||(el.dataset.name||'').toLowerCase().includes(q))?'flex':'none';});}
+function tDD(t){const m=$(DD_M[t]),tg=m.parentElement.querySelector('.ddt'),o=m.classList.contains('opn');document.querySelectorAll('.ddm').forEach(x=>x.classList.remove('opn'));document.querySelectorAll('.ddt').forEach(x=>x.classList.remove('opn'));if(!o){m.classList.add('opn');tg.classList.add('opn');ddFit(m);}}
+// إبقاء القائمة المنسدلة داخل الشاشة مهما كان مكان زرها بعد التفاف الشريط
+function ddFit(m){m.style.left='';m.style.right='';if(isMob()){m.style.maxWidth='';return;}m.style.maxWidth='calc(100vw - 8px)';const vw=document.documentElement.clientWidth;
+  const r=m.getBoundingClientRect(),sh=r.left<4?4-r.left:(r.right>vw-4?vw-4-r.right:0);
+  if(sh){m.style.right='auto';m.style.left=(m.offsetLeft+sh)+'px';}}
+function tI(t,id){const s=t==='c'?selC:selT;s.has(id)?s.delete(id):s.add(id);
+  if(t==='c'){const vl=new Set(aG().map(g=>g.id));selT.forEach(gi=>{if(!vl.has(gi))selT.delete(gi);});}
+  bDD();rFav();$(DD_M[t]).classList.add('opn');$(DD_T[t]).querySelector('.ddt').classList.add('opn');ai=0;buildView();}
+function clSl(t){if(t==='c')selC.clear();else selT.clear();bDD();rFav();ai=0;buildView();}
+document.addEventListener('click',e=>{if(!e.target.closest('.dd')){document.querySelectorAll('.ddm').forEach(m=>m.classList.remove('opn'));document.querySelectorAll('.ddt').forEach(t=>t.classList.remove('opn'));}});
+$('si').addEventListener('input',function(){$('sc').classList.toggle('s',this.value.length>0);buildView();});function clrS(){$('si').value='';$('sc').classList.remove('s');buildView();}
+
+// ── FIELD VISIBILITY (إظهار/إخفاء الأعمدة) ──
+const VF_W={ar:'1.4fr',en:'1.4fr',zh:'.7fr',pin:'1fr'},VF_L={ar:'عربي',en:'English',zh:'中文',pin:'Pīnyīn'};
+const VF={ar:true,en:true,zh:true,pin:true};
+try{const sv=JSON.parse(lsGet('dictFields')||'{}');Object.keys(VF).forEach(k=>{if(k in sv)VF[k]=!!sv[k];});}catch(e){}
+if(!Object.keys(VF).some(k=>VF[k]))VF.ar=true;
+function vfOn(){return ['ar','en','zh','pin'].filter(k=>VF[k]);}
+function vfCols(){document.documentElement.style.setProperty('--fcols',(vfOn().map(k=>VF_W[k]).join(' ')||'1fr')+(cuCode()?' 44px':''));}
+function rHdr(){const L={ar:'<span>عربي</span>',en:'<span style="direction:ltr;text-align:left">English</span>',zh:'<span style="text-align:center">中文</span>',pin:'<span>Pīnyīn</span>'};
+  const el=$('lhd');if(el)el.innerHTML='<span class="sb" id="hdrSb" onclick="selHdrTog()" title="تحديد / إلغاء تحديد كل الكلمات المعروضة"></span>'+vfOn().map(k=>L[k]).join('')+(cuCode()?'<span style="text-align:center" title="درجة الحفظ للمستخدم الحالي">🎯</span>':'');}
+function bF(){const m=$('fm');if(!m)return;
+  m.innerHTML=['ar','en','zh','pin'].map(k=>`<button class="ddi ${VF[k]?'sel':''}" onclick="vfTog('${k}')"><span class="chk">${VF[k]?'✓':''}</span>${VF_L[k]}</button>`).join('')
+    +`<button class="ddi all" onclick="vfAll()">✦ إظهار الكل</button>`;
+  const off=4-vfOn().length;const bd=$('fb'),tg=bd.parentElement;
+  if(off>0){bd.textContent=off;bd.style.display='inline';tg.classList.add('act');}else{bd.style.display='none';tg.classList.remove('act');}}
+function vfSave(){lsSet('dictFields',JSON.stringify(VF));vfCols();bF();rHdr();ren();}
+function vfTog(k){if(VF[k]&&vfOn().length===1){ts('يجب إظهار حقل واحد على الأقل','er');return;}VF[k]=!VF[k];vfSave();}
+function vfAll(){['ar','en','zh','pin'].forEach(k=>VF[k]=true);vfSave();}
+
+// ── FAVOURITE TAGS (فلترة سريعة من الشريط العلوي) ──
+const favT=new Set((lsGet('dictFavTags')||'').split(',').map(x=>x.trim()).filter(Boolean));
+function favTog(id,ev){if(ev)ev.stopPropagation();favT.has(id)?favT.delete(id):favT.add(id);lsSet('dictFavTags',[...favT].join(','));bDD();rFav();}
+function rFav(){const el=$('favbar');if(!el)return;
+  const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  const list=[...favT].map(id=>tMap.get(id)).filter(Boolean);
+  if(!list.length){el.style.display='none';el.innerHTML='';return;}
+  el.style.display='flex';
+  el.innerHTML=list.map(t=>`<button class="favc${selT.has(t.id)?' on':''}" onclick="favFilter('${t.id}')" title="${esc(t.catName||'')} — فلترة سريعة">🏷 ${esc(t.name)} <span class="c">${cntTag(t.id)}</span></button>`).join('');}
+function favFilter(id){const t=tags.find(x=>x.id===id);
+  // لو التصنيف الحالي يخفي هذا التاج، نلغي فلتر التصنيف حتى لا تظهر شاشة فارغة
+  if(!selT.has(id)&&t&&selC.size&&!selC.has(t.catId))selC.clear();
+  selT.has(id)?selT.delete(id):selT.add(id);
+  bDD();rFav();ai=0;buildView();}
+
+// ── CSV EXPORT (الكلمات المعروضة) ──
+function csvCell(v){v=String(v==null?'':v);return /[",\n\r;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+function expCSV(){
+  if(!V.length){ts('لا توجد كلمات معروضة للتصدير','er');return;}
+  const rows=[['id','عربي','English','中文','Pinyin','التصنيف','التاج']];
+  V.forEach(v=>rows.push([v.d.id,v.d.ar,v.d.en,v.d.zh,v.d.pin,v.catName,v.tagName]));
+  const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');
+  try{
+    const a=document.createElement('a');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.href=url;a.download=`قاموس-${new Date().toISOString().slice(0,10)}.csv`;
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1500);
+    ts(`تم تصدير ${V.length} صف ✓`,'ok');
+  }catch(e){ts('تعذر التصدير: '+e.message,'er');}}
+
+// ── RENDER ──
+function sV(v){cv=v;document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$('lhd').style.display=v==='list'?'grid':'none';$('wl').style.display=v==='list'?'block':'none';$('cg').style.display=v==='cards'?'block':'none';ren();}
+// ── SELECTION (for printing selected words only) ──
+const selW=new Set();
+function selUpd(){const n=selW.size;const b=$('selbar');if(b){b.style.display=n?'flex':'none';$('selN').textContent=n;}
+  document.body.classList.toggle('selmode',selMode||n>0);rBnav();
+  // مربع الرأس: ✓ لو كل المعروض محدد، و— لو جزء منه
+  const h=$('hdrSb');if(h){const ids=[...new Set(V.map(v=>String(v.d.id)))],k=ids.filter(id=>selW.has(id)).length;
+    const all=ids.length>0&&k===ids.length;h.className='sb'+(all?' on':k?' part':'');h.textContent=all?'✓':k?'−':'';}}
+function selHdrTog(){const ids=[...new Set(V.map(v=>String(v.d.id)))];if(!ids.length)return;
+  const all=ids.every(id=>selW.has(id));ids.forEach(id=>all?selW.delete(id):selW.add(id));ren();
+  ts(all?'تم إلغاء تحديد الكلمات المعروضة':`تم تحديد ${ids.length} كلمة معروضة ✓`,'ok');}
+function selTog(id){if(selW.has(id))selW.delete(id);else selW.add(id);
+  document.querySelectorAll('.sb').forEach(el=>{const m=el.getAttribute('onclick').match(/selTog\('([^']+)'\)/);if(m&&m[1]===id){el.classList.toggle('on',selW.has(id));el.textContent=selW.has(id)?'✓':'';}});
+  selUpd();}
+function selAllView(){V.forEach(v=>selW.add(v.d.id));ren();selUpd();ts(`تم تحديد ${selW.size} كلمة`,'ok');}
+function selClear(){selMode=false;selW.clear();ren();selUpd();}
+function ren(){if(cv==='list')rL();else rC();rNc();selUpd();}
+
+function rL(){const el=$('wl');if(!V.length){el.innerHTML='<div class="empt">لا توجد نتائج</div>';return;}let h='',lt='';
+  V.forEach((v,i)=>{const d=v.d;const tk=v.catId+'-'+v.tagId;
+    if(tk!==lt){h+=`<div class="gs"><span class="cat-n">${esc(v.catName)} </span><span style="color:var(--ft)">›</span> <span class="tag-n">🏷 ${esc(v.tagName)} <span class="cnt">${cntTag(v.tagId)}</span></span></div>`;lt=tk;}
+    let cl='';if(VF.ar)cl+=`<span class="ra">${esc(d.ar)}</span>`;if(VF.en)cl+=`<span class="re">${esc(d.en)}</span>`;if(VF.zh)cl+=`<span class="rz">${esc(d.zh)}</span>`;if(VF.pin)cl+=`<span class="rp">${esc(d.pin)}</span>`;if(cuCode())cl+=sBadge(d);
+    let mr='';if(VF.ar)mr+=`<div class="m-ar">${esc(d.ar)}</div>`;if(VF.en)mr+=`<div class="m-en">${esc(d.en)}</div>`;
+    let ml='';if(VF.zh)ml+=`<div class="m-zh">${esc(d.zh)}</div>`;if(VF.pin)ml+=`<div class="m-pn">${esc(d.pin)}</div>`;
+    h+=`<div class="wr${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="w${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cl}<div class="wr-mob-r">${mr}</div><div class="wr-mob-l">${ml}</div></div>`;
+  });el.innerHTML=h;const r=$('w'+ai);if(r)r.scrollIntoView({block:'nearest'});}
+
+function rC(){const el=$('cg');if(!V.length){el.innerHTML='<div class="empt">لا توجد نتائج</div>';return;}let h='',lt='',lc='';
+  V.forEach((v,i)=>{const d=v.d;const ck=v.catId,tk=v.catId+'-'+v.tagId;
+    if(ck!==lc){h+=`<div class="cgs"><span class="cat-n">${esc(v.catName)}</span></div>`;lc=ck;}
+    if(tk!==lt){h+=`<div class="cgs" style="font-size:11px;margin-top:2px;border-bottom:1px solid var(--bdl)"><span class="tag-n">🏷 ${esc(v.tagName)} <span class="cnt">${cntTag(v.tagId)}</span></span></div><div class="ccg">`;lt=tk;}
+    let ci='';if(VF.ar)ci+=`<div class="ca">${esc(d.ar)}</div>`;if(VF.en)ci+=`<div class="ce">${esc(d.en)}</div>`;if(VF.zh)ci+=`<div class="cz">${esc(d.zh)}</div>`;if(VF.pin)ci+=`<div class="cp">${esc(d.pin)}</div>`;
+    h+=`<div class="tc${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="k${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cuCode()?sBadge(d):''}${ci}</div>`;
+  });el.innerHTML=h;const c=$('k'+ai);if(c)c.scrollIntoView({block:'nearest'});}
+
+// ── EDIT MODAL (بديل اللوحة الجانبية) ──
+let _selTagsSp=new Set();
+function oEditW(idx){
+  if(idx==null||idx===undefined)idx=ai;
+  const v=V[idx];if(!v){ts('لا توجد كلمة لتعديلها','er');return;}
+  ai=idx;ren();const d=v.d;_selTagsSp=new Set(d._tags);
+  $('mo').innerHTML=`<h2>✏️ تعديل كلمة <span style="font-size:10px;color:var(--ft);font-family:var(--fm);font-weight:400">ID: ${d.id||'—'}</span></h2>
+  <div class="fg">
+    <div class="fi fu"><label>عربي</label><div style="display:flex;gap:4px"><input id="efa" value="${esc(d.ar)}" style="flex:1;min-width:0" oninput="dupChk('efa','efe','dupWarnE','${d.id}')"><button class="tr-btn" style="padding:4px 10px" onclick="trPanel(true,'ar')" title="ترجمة من العربي إلى باقي الحقول">🌐</button></div></div>
+    <div class="fi fu"><label>English</label><div style="display:flex;gap:4px"><input id="efe" value="${esc(d.en)}" dir="ltr" style="flex:1;min-width:0;font-family:var(--fe)" oninput="dupChk('efa','efe','dupWarnE','${d.id}')"><button class="tr-btn" style="padding:4px 10px" onclick="trPanel(true,'en')" title="ترجمة من الإنجليزي إلى باقي الحقول">🌐</button></div></div>
+    <div class="fi"><label>中文</label><input id="efz" value="${esc(d.zh)}" class="zi" style="font-family:var(--fz);font-size:18px;color:var(--acc)"></div>
+    <div class="fi"><label>Pīnyīn</label><input id="efp" value="${esc(d.pin)}" dir="ltr" style="font-family:var(--fe);color:var(--pin)"></div>
+    <div class="fi fu"><label>التاجات</label>
+      <div class="tag-search"><input id="spSI" placeholder="بحث عن تاج..." oninput="spTagSrch(this)" onfocus="spTagSrch(this)" onblur="setTimeout(()=>$('spDD').classList.remove('show'),200)"><div class="tag-dd" id="spDD"></div></div>
+      <div id="spTags" class="tag-chips" style="margin-top:6px"></div>
+      <div id="spSug" class="tag-chips" style="margin-top:4px"></div>
+    </div>
+    <div class="fu" id="dupWarnE" style="display:none"></div>
+  </div>
+  <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="md" onclick="cDel(${idx})">🗑 حذف</button><button class="ms" onclick="svPanel()">💾 حفظ</button></div>`;
+  oM();rEditTags();setTimeout(()=>$('efa')?.focus(),50);}
+function rEditTags(){const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  let chips='';_selTagsSp.forEach(tid=>{const t=tMap.get(tid);if(t)chips+=`<span class="tag-chip on">${esc(t.name)} <span class="x" onclick="_selTagsSp.delete('${tid}');rEditTags()">✕</span></span>`;});
+  const el=$('spTags');if(el)el.innerHTML=chips||'<span style="color:var(--ft);font-size:10px">بدون تاجات</span>';
+  const sg=$('spSug');if(sg){const pool=tags.filter(t=>!_selTagsSp.has(t.id)).sort((a,b)=>a.name.localeCompare(b.name,'ar')).slice(0,8);
+    sg.innerHTML=pool.length?'<span style="color:var(--ft);font-size:9px;margin-left:3px">مقترحات:</span>'+pool.map(t=>`<span class="tag-chip" onclick="addTagSp('${t.id}')">${esc(t.name)}</span>`).join(''):'';}}
+function spTagSrch(input){
+  const q=input.value.trim().toLowerCase();const dd=$('spDD');if(!dd)return;
+  const filtered=tags.filter(t=>!_selTagsSp.has(t.id)&&(!q||t.name.toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+  if(!filtered.length){dd.innerHTML='<div class="tag-dd-item" style="color:var(--ft)">لا نتائج</div>';dd.classList.add('show');return;}
+  let h='';filtered.forEach(t=>{const cat=cats.find(c=>c.id===t.catId);h+=`<div class="tag-dd-item" onmousedown="addTagSp('${t.id}')">${esc(t.name)} <span class="cat-hint">${esc(cat?.name||'')}</span></div>`;});
+  dd.innerHTML=h;dd.classList.add('show');}
+function addTagSp(tid){_selTagsSp.add(tid);const si=$('spSI');if(si)si.value='';$('spDD')?.classList.remove('show');rEditTags();}
+function rNc(){$('nc').textContent=V.length?`${ai+1}/${V.length}`:'0/0';if($('ncm'))$('ncm').textContent=$('nc').textContent;}
+
+function svPanel(){if(!V[ai])return;
+  const a=$('efa').value.trim(),e=$('efe').value.trim();
+  if(!a&&!e){ts('أدخل الكلمة بالعربي أو الإنجليزي','er');return;}
+  askMissingTr('panel',doSvPanel);}
+function doSvPanel(){trBump();if(!V[ai])return;const d=V[ai].d;
+  const ar=$('efa').value.trim(),en=$('efe').value.trim(),zh=$('efz').value.trim(),pin=$('efp').value.trim();
+  const tagsStr=[..._selTagsSp].join(',');
+  Object.assign(d,{ar,en,zh,pin,tags:tagsStr});d._tags=parseTags(tagsStr);
+  qPush({op:'update',id:String(d.id),ar,en,zh,pin,tags:tagsStr});
+  recTPush([..._selTagsSp]);cM();refresh(d.id);ts('تم الحفظ ✓','ok');}
+
+function sw(i){ai=i;ren();}function goF(){ai=0;ren();}function goP(){if(ai>0){ai--;ren();}}function goN(){if(ai<V.length-1){ai++;ren();}}function goL(){ai=Math.max(0,V.length-1);ren();}
+document.addEventListener('keydown',e=>{if($('mov').classList.contains('opn'))return;const t=document.activeElement?.tagName;if(t==='INPUT'||t==='SELECT'||t==='TEXTAREA')return;if(e.key==='ArrowDown'||e.key==='ArrowLeft'){e.preventDefault();goN();}if(e.key==='ArrowUp'||e.key==='ArrowRight'){e.preventDefault();goP();}if(e.key===' '&&V[ai]){e.preventDefault();selTog(V[ai].d.id);}});
+
+// ═══ AUTO TRANSLATE (Apps Script LanguageApp، وإلا رابط جوجل المجاني) + pinyin-pro ═══
+// المصدر: عربي أو إنجليزي. الباقي (وأيضاً الصيني والبينيين) يُملأ تلقائياً.
+const TRC=new Map();let _pyP=null;const TR_LC={ar:'ar',en:'en',zh:'zh-CN'};
+const TR_NM={ar:'عربي',en:'English',zh:'中文',pin:'Pīnyīn'};
+function loadPinyin(){if(window.pinyinPro)return Promise.resolve();if(_pyP)return _pyP;
+  _pyP=new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/pinyin-pro@3.26.0/dist/index.js';s.onload=ok;s.onerror=()=>{_pyP=null;no(new Error('تعذر تحميل مكتبة البينيين'));};document.head.appendChild(s);});return _pyP;}
+function toPin(zh){if(window.pinyinPro&&zh){try{return pinyinPro.pinyin(zh,{toneType:'symbol'}).toLowerCase().replace(/\s+/g,' ').trim();}catch(e){}}return '';}
+async function gtx(q,tl,sl){const c=new AbortController();const t=setTimeout(()=>c.abort(),8000);
+  try{const r=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl||'ar'}&tl=${tl}&dt=t&dt=rm&q=${encodeURIComponent(q)}`,{signal:c.signal});
+    if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();let txt='',rm='';
+    (j[0]||[]).forEach(x=>{if(!x)return;if(x[0])txt+=x[0];if(x[2])rm=x[2];});return{txt:txt.trim(),rm:rm.trim()};}
+  catch(e){throw new Error(e.name==='AbortError'?'انتهت مهلة الاتصال بجوجل':(/Failed to fetch|NetworkError/i.test(e.message||'')?'جوجل أوقف الرابط المجاني مؤقتاً (كثرة الطلبات)':(e.message||'فشل الاتصال بجوجل')));}
+  finally{clearTimeout(t);}}
+function tCase(s){return (s||'').replace(/(^|[\s\-\/(])([a-z])/g,(m,p,c)=>p+c.toUpperCase());}
+// _trAS : null = لم يُفحص | true = Apps Script يدعم الترجمة | false = لا يدعمها
+// _trAS2: true = الكود المنشور يقبل المصدر (from) أي يترجم من الإنجليزي أيضاً
+let _trAS=null,_trAS2=null,_trFail=0,_trErr='';
+const TR_RETRY=60000; // بعد دقيقة نعيد تجربة Apps Script بدل التعليق على فشل قديم
+async function trAS(text,src){const d=await api({action:'translate',text:text,from:src});
+  if(!d)throw new Error('لا يوجد رد من Apps Script');
+  if(src!=='ar'&&d.from!==src){_trAS2=false;_trFail=Date.now();throw new Error('كود Apps Script المنشور قديم ولا يدعم الترجمة من الإنجليزي');}
+  if(d.from===src)_trAS2=true;
+  const o={ar:String(d.ar||''),en:String(d.en||''),zh:String(d.zh||'')};
+  if(!o.ar&&!o.en&&!o.zh)throw new Error('Apps Script لا يدعم الترجمة');
+  return o;}
+// src: 'ar' أو 'en' — يعيد {الحقول الأخرى + pin}
+async function autoTr(text,src){text=(text||'').trim();src=src||'ar';
+  if(!text)throw new Error('اكتب الكلمة بالعربي أو الإنجليزي أولاً');
+  const key=src+'|'+text;if(TRC.has(key))return TRC.get(key);
+  const py=loadPinyin().catch(()=>{});
+  const tgt=(src==='ar'?['en']:['ar']).concat('zh');
+  let got=null,rm='';
+  const fresh=Date.now()-_trFail>TR_RETRY;
+  if((_trAS!==false||fresh)&&(src==='ar'||_trAS2!==false||fresh)){
+    try{const r=await trAS(text,src);_trAS=true;_trErr='';
+      if(tgt.every(k=>(r[k]||'').trim())){got={};tgt.forEach(k=>got[k]=r[k]);}}
+    catch(e){_trErr=e.message;_trFail=Date.now();if(_trAS!==true)_trAS=false;}}
+  if(!got){
+    try{const rs=await Promise.all(tgt.map(k=>gtx(text,TR_LC[k],TR_LC[src])));
+      got={};tgt.forEach((k,i)=>{got[k]=rs[i].txt;if(k==='zh')rm=rs[i].rm;});}
+    catch(e){throw new Error(e.message+(_trAS?'':' — لتفادي هذا الحد حدّث كود Apps Script من إعدادات الاتصال 🔗'));}}
+  await py;
+  const res={};tgt.forEach(k=>res[k]=got[k]||'');
+  if(res.en)res.en=tCase(res.en);
+  res.pin=toPin(res.zh)||(rm||'').toLowerCase();
+  TRC.set(key,res);return res;}
+const TR_AS_CODE=`// ===== الترجمة التلقائية (LanguageApp) — من العربي أو الإنجليزي =====
+// 1) استبدل دالة translateTerm عندك بهذه (أو أضفها إن لم تكن موجودة):
+function translateTerm(p){
+  p = p || { text: 'اختبار' };            // للتشغيل اليدوي من المحرر
+  var t = String(p.text || '').trim();
+  if (!t) return { success: false, error: 'نص فارغ' };
+  var from = (String(p.from || 'ar') === 'en') ? 'en' : 'ar';
+  var r = { success: true, from: from };
+  if (from === 'ar') { r.en = LanguageApp.translate(t, 'ar', 'en'); }
+  else               { r.ar = LanguageApp.translate(t, 'en', 'ar'); }
+  r.zh = LanguageApp.translate(t, from, 'zh-CN');
+  return r;
+}
+// 2) داخل doGet تأكد من وجود سطر معالجة الإجراء:
+//    if (p.action == 'translate') result = translateTerm(p);
+// 3) انشر إصداراً جديداً: Deploy > Manage deployments > Edit > Version: New version > Deploy`;
+async function checkTrAS(){const el=$('trStat');if(!el)return;el.textContent='جاري الفحص...';
+  _trAS=null;_trAS2=null;_trFail=0;_trErr='';
+  let netFail=false;
+  try{await trAS('اختبار','ar');_trAS=true;}
+  catch(e){_trAS=false;_trErr=e.message;netFail=API_NET.test(e.message);}
+  if(!_trAS){
+    // نفرّق بين تعثر شبكة مؤقت من جوجل وبين كود منشور لا يدعم الترجمة
+    el.innerHTML=netFail
+      ?'<span style="color:#b45309">⚠️ تعذّر الوصول إلى Apps Script الآن — تعثر مؤقت من خوادم جوجل</span>'
+       +`<div style="font-size:9px;color:var(--ft);margin-top:3px">الكود المنشور غالباً سليم. الترجمة تعمل مؤقتاً عبر الرابط المجاني، واضغط "إعادة الفحص" بعد لحظات.<br>التفصيل: ${esc(_trErr||'')}</div>`
+      :'<span style="color:var(--acc)">⚠️ Apps Script لا يدعم الترجمة — تعمل عبر رابط جوجل المجاني المحدود</span>'
+       +`<div style="font-size:9px;color:var(--ft);margin-top:3px">سبب الفشل: ${esc(_trErr||'غير معروف')}<br>تأكد أنك نشرت <b>إصداراً جديداً</b> (Deploy > Manage deployments > ✏️ > New version)، ثم اضغط إعادة الفحص.</div>`;
+    return;}
+  try{await trAS('test','en');_trAS2=true;}catch(e){_trAS2=false;_trErr=e.message;}
+  el.innerHTML=_trAS2?'<span style="color:var(--gn)">✅ تعمل عبر Apps Script — من العربي ومن الإنجليزي</span>'
+    :'<span style="color:#b45309">⚠️ تعمل من العربي فقط — حدّث الكود بالأسفل لدعم الترجمة من الإنجليزي</span>'
+     +`<div style="font-size:9px;color:var(--ft);margin-top:3px">${esc(_trErr||'')}</div>`;}
+function copyTrCode(){const ta=$('trCode');ta.select();try{navigator.clipboard.writeText(ta.value).then(()=>ts('تم نسخ الكود ✓','ok'));}catch(e){document.execCommand('copy');ts('تم نسخ الكود ✓','ok');}}
+// ما الذي يُملأ؟ cur = القيم الحالية للحقول الأربعة | ow=true يستبدل كل الحقول عدا المصدر
+async function trCompute(src,srcText,cur,ow){
+  const need=['ar','en','zh','pin'].filter(k=>k!==src&&(ow||!(cur[k]||'').trim()));
+  if(!need.length)return{};
+  const out={};
+  // البينيين يُشتق من الصيني الموجود بدون طلب شبكة
+  if(!ow&&need.includes('pin')&&(cur.zh||'').trim()){await loadPinyin().catch(()=>{});const p=toPin(cur.zh);if(p)out.pin=p;}
+  const rest=need.filter(k=>!(k in out));
+  if(rest.length){const r=await autoTr(srcText,src);rest.forEach(k=>out[k]=r[k]||'');}
+  return out;}
+const TR_IDS={panel:{ar:'efa',en:'efe',zh:'efz',pin:'efp'},add:{ar:'fa',en:'fen',zh:'fzh',pin:'fpn'}};
+// اختيار المصدر تلقائياً: العربي إن وُجد، وإلا الإنجليزي
+function trPick(v){return (v.ar||'').trim()?'ar':((v.en||'').trim()?'en':'');}
+let _trGen=0;
+function trBump(){_trGen++;}
+async function trFill(which,ow,src){const ids=TR_IDS[which];const gen=_trGen;
+  const cur={};['ar','en','zh','pin'].forEach(k=>cur[k]=$(ids[k])?.value||'');
+  src=src||trPick(cur);
+  if(!src||!(cur[src]||'').trim()){if(ow)ts('اكتب الكلمة بالعربي أو الإنجليزي أولاً','er');return;}
+  const need=['ar','en','zh','pin'].filter(k=>k!==src&&(ow||!cur[k].trim()));
+  if(!need.length)return;
+  need.forEach(k=>$(ids[k])?.classList.add('trl'));
+  try{const out=await trCompute(src,cur[src],cur,ow);
+    if(gen!==_trGen)return;                       // أُغلقت النافذة أو حُفظت قبل وصول الترجمة
+    Object.entries(out).forEach(([k,v])=>{const el=$(ids[k]);if(el&&v)el.value=v;});
+    ts(`🌐 تمت الترجمة من ${TR_NM[src]} — راجعها قبل الحفظ`,'ok');}
+  catch(e){ts('فشلت الترجمة التلقائية: '+e.message,'er');}
+  finally{need.forEach(k=>$(ids[k])?.classList.remove('trl'));}}
+// ── تنبيه عند الحفظ لو بقيت حقول بلا ترجمة ──
+let _trAsk=null,_trAskSkip=false;
+function trMissing(which){const ids=TR_IDS[which];
+  return ['ar','en','zh','pin'].filter(k=>!(($(ids[k])||{}).value||'').trim());}
+function askMissingTr(which,proceed){
+  const miss=_trAskSkip?[]:trMissing(which);
+  if(!miss.length){proceed();return;}
+  _trAsk={which,proceed};
+  const holder=document.createElement('div');holder.className='mov opn';holder.id='trAskMov';holder.style.zIndex='620';
+  holder.innerHTML=`<div class="mo" style="max-width:430px">
+    <h2>🌐 حقول بلا ترجمة</h2>
+    <p style="font-size:12px;color:var(--dm);line-height:1.8;margin-bottom:6px">هذه الحقول ما زالت فارغة:<br><b style="color:var(--acc)">${esc(miss.map(k=>TR_NM[k]).join('  ·  '))}</b></p>
+    <p style="font-size:12px;color:var(--dm);margin-bottom:8px">هل تريد ملأها بالترجمة التلقائية قبل الحفظ؟</p>
+    <label class="po-chk" style="font-size:11px;color:var(--ft)"><input type="checkbox" id="trAskSkip"> لا تسألني مرة أخرى في هذه الجلسة</label>
+    <div class="mbt"><button class="mc" onclick="closeTrAsk()">إلغاء</button><button class="mc" onclick="trAskGo(false)">حفظ كما هو</button><button class="ms" onclick="trAskGo(true)">🌐 ترجم ثم احفظ</button></div>
+  </div>`;
+  document.body.appendChild(holder);}
+function closeTrAsk(){const el=$('trAskMov');if(el)el.remove();_trAsk=null;}
+async function trAskGo(doTr){
+  const a=_trAsk;const sk=$('trAskSkip');if(sk&&sk.checked)_trAskSkip=true;
+  closeTrAsk();if(!a)return;
+  if(doTr){await trFill(a.which,false);}   // يملأ الفارغ فقط ولا يمس ما كتبته
+  a.proceed();}
+
+// ── ترجمة جماعية لمجموعة كلمات ──
+let _trStop=false;
+function trProgress(txt){sL(txt);
+  if(!$('trStopBtn')){const b=document.createElement('button');b.id='trStopBtn';b.className='ab d';
+    b.textContent='⏹ إيقاف';b.onclick=()=>{_trStop=true;b.textContent='جاري الإيقاف...';};$('lov').appendChild(b);}}
+function trProgressEnd(){const b=$('trStopBtn');if(b)b.remove();hL();}
+async function trBulk(){
+  const selIds=[...selW].filter(id=>D.some(d=>String(d.id)===String(id)));
+  const pool=selIds.length?selIds.map(id=>D.find(d=>String(d.id)===String(id))):[...new Set(V.map(v=>v.d))];
+  const need=pool.filter(d=>d&&trPick(d)&&['ar','en','zh','pin'].some(k=>!(d[k]||'').trim()));
+  if(!need.length){ts(selIds.length?'الكلمات المحددة مترجمة بالكامل':'لا توجد كلمات معروضة تنقصها ترجمة','ok');return;}
+  const scope=selIds.length?`${need.length} من الكلمات المحددة ✓`:`${need.length} من الكلمات المعروضة`;
+  if(!confirm(`ترجمة ${scope}؟\nستُملأ الحقول الفارغة فقط ولن يُمس ما كتبته بنفسك.\nيمكنك الإيقاف في أي وقت.`))return;
+  _trStop=false;let ok=0,fail=0;
+  for(let i=0;i<need.length;i++){
+    if(_trStop)break;
+    const d=need[i];const src=trPick(d);
+    trProgress(`🌐 ترجمة ${i+1} من ${need.length} — ${d.ar||d.en||''}`);
+    try{
+      const out=await trCompute(src,d[src],{ar:d.ar,en:d.en,zh:d.zh,pin:d.pin},false);
+      const got=Object.keys(out).filter(k=>(out[k]||'').trim());
+      if(got.length){got.forEach(k=>d[k]=out[k]);
+        qPush({op:'update',id:String(d.id),ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags||''});
+        ok++;fail=0;}
+    }catch(e){fail++;if(fail>=3){ts('توقفت الترجمة بعد 3 أخطاء متتالية: '+e.message,'er');break;}}
+    await new Promise(r=>setTimeout(r,_trAS?120:600));
+  }
+  trProgressEnd();refresh();
+  ts(_trStop?`تم إيقاف الترجمة — تُرجمت ${ok} كلمة`:`تمت ترجمة ${ok} كلمة ✓`,ok?'ok':'er');}
+function trPanel(ow,src){return trFill('panel',ow,src);}
+function trAdd(ow,src){return trFill('add',ow,src);}
+
+
+// ═══ LOCAL UPDATE (بدون إعادة تحميل الشيت بالكامل) ═══
+// يعيد بناء العرض من الذاكرة ويحاول البقاء على نفس الكلمة
+function refresh(keepId){
+  const id=keepId!==undefined&&keepId!==null?String(keepId):(V[ai]?String(V[ai].d.id):null);
+  buildView();
+  if(id){const i=V.findIndex(v=>String(v.d.id)===id);if(i>=0){ai=i;ren();}}
+}
+// تطبيع النص للمقارنة: تشكيل، همزات، ة/ه، ى/ي، مسافات
+function norm(s){return String(s||'').trim().toLowerCase()
+  .replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,' ');}
+function findDup(ar,en,exceptId){
+  const na=norm(ar),ne=norm(en);if(!na&&!ne)return [];
+  return D.filter(d=>{
+    if(exceptId!=null&&String(d.id)===String(exceptId))return false;
+    return (na&&norm(d.ar)===na)||(ne&&norm(d.en)===ne);});}
+// boxId = مكان التحذير | exceptId = الكلمة التي نعدّلها حالياً
+function dupChk(arId,enId,boxId,exceptId){
+  const box=$(boxId);if(!box)return;
+  const hits=findDup($(arId)?.value||'',$(enId)?.value||'',exceptId);
+  if(!hits.length){box.innerHTML='';box.style.display='none';return;}
+  const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  box.style.display='block';
+  box.innerHTML=hits.slice(0,3).map(d=>{
+    const tn=[...d._tags].map(t=>tMap.get(t)?.name).filter(Boolean);
+    return `<div class="dupw"><span>⚠️ <b>${esc(d.ar||d.en)}</b> موجودة بالفعل ${tn.length?'تحت: '+esc(tn.join('، ')):'(بدون تاج)'}</span><button onclick="gotoWord('${d.id}')">فتحها</button></div>`;}).join('')
+    +(hits.length>3?`<div style="font-size:10px;color:var(--ft);margin-top:2px">و ${hits.length-3} أخرى</div>`:'');}
+// الانتقال لكلمة موجودة، مع إلغاء الفلاتر إن كانت تخفيها
+function gotoWord(id){cM();id=String(id);
+  let i=V.findIndex(v=>String(v.d.id)===id);
+  if(i<0){$('si').value='';$('sc').classList.remove('s');selC.clear();selT.clear();bDD();rFav();buildView();i=V.findIndex(v=>String(v.d.id)===id);}
+  if(i<0){ts('تعذر العثور على الكلمة','er');return;}
+  ai=i;ren();const el=$((cv==='list'?'w':'k')+ai);if(el)el.scrollIntoView({block:'center'});ts('تم الانتقال إلى الكلمة','ok');}
+// التاجات المستخدمة مؤخراً (وإلا الأكثر استخداماً في البيانات)
+let recT=(lsGet('dictRecentTags')||'').split(',').map(x=>x.trim()).filter(Boolean);
+function recTPush(ids){(ids||[]).forEach(id=>{recT=recT.filter(x=>x!==id);recT.unshift(String(id));});recT=recT.slice(0,20);lsSet('dictRecentTags',recT.join(','));}
+function recTTop(n){const out=[],seen=new Set();
+  recT.forEach(id=>{if(out.length<n&&!seen.has(id)&&tags.some(t=>t.id===id)){out.push(id);seen.add(id);}});
+  if(out.length<n){const cnt={};D.forEach(d=>d._tags.forEach(t=>cnt[t]=(cnt[t]||0)+1));
+    tags.map(t=>t.id).sort((a,b)=>(cnt[b]||0)-(cnt[a]||0)).forEach(id=>{if(out.length<n&&!seen.has(id)&&(cnt[id]||0)>0){out.push(id);seen.add(id);}});}
+  return out;}
+
+// ═══ ADD MODAL ═══
+let _selTagsAdd=new Set();
+function oAdd(){_selTagsAdd=new Set();
+  // التاج الافتراضي: تاج الصف الذي تقف عليه تحديداً
+  const v=V[ai];if(v&&v.tagId&&v.tagId!=='_none')_selTagsAdd=new Set([v.tagId]);
+  const h=`<h2>➕ إضافة كلمة</h2><div class="fg">
+  <div class="fi fu" id="recTRow"></div>
+  <div class="fi fu"><label>التاجات</label>
+    <div class="tag-search"><input id="addSI" placeholder="بحث..." oninput="addTagSrch(this)" onfocus="addTagSrch(this)" onblur="setTimeout(()=>$('addDD').classList.remove('show'),200)"><div class="tag-dd" id="addDD"></div></div>
+    <div id="addSel" class="tag-chips" style="margin-top:6px"></div>
+  </div>
+  <div class="fi fu"><label>عربي</label><div style="display:flex;gap:4px"><input id="fa" style="flex:1;min-width:0" oninput="dupChk('fa','fen','dupWarn')"><button class="tr-btn" style="padding:4px 10px" onclick="trAdd(true,'ar')" title="ترجمة من العربي إلى باقي الحقول">🌐 ترجمة</button></div></div>
+  <div class="fi fu"><label>English</label><div style="display:flex;gap:4px"><input id="fen" dir="ltr" style="flex:1;min-width:0" oninput="dupChk('fa','fen','dupWarn')"><button class="tr-btn" style="padding:4px 10px" onclick="trAdd(true,'en')" title="ترجمة من الإنجليزي إلى باقي الحقول">🌐 ترجمة</button></div></div>
+  <div class="fu" style="font-size:10px;color:var(--ft);margin-top:-4px">💡 اضغط 🌐 بجانب الحقل الذي تريد الترجمة منه، أو اتركها فارغة وسيسألك التطبيق عند الحفظ</div>
+  <div class="fi"><label>中文</label><input id="fzh" class="zi"></div>
+  <div class="fi"><label>Pīnyīn</label><input id="fpn" dir="ltr"></div>
+  <div class="fu" id="dupWarn" style="display:none"></div></div>
+  <div class="mbt"><button class="mc" onclick="cM()">إغلاق</button><button class="ms" onclick="svAdd()" title="يحفظ ويُبقي النافذة مفتوحة لإضافة الكلمة التالية بنفس التاج">💾 حفظ وإضافة أخرى</button></div>`;
+  $('mo').innerHTML=h;oM();renderAddTags();setTimeout(()=>$('fa')?.focus(),50);}
+function renderRecT(){const el=$('recTRow');if(!el)return;
+  const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  const list=recTTop(5).map(id=>tMap.get(id)).filter(Boolean);
+  if(!list.length){el.innerHTML='';return;}
+  const only=_selTagsAdd.size===1?[..._selTagsAdd][0]:null;
+  el.innerHTML='<label>التاجات الأخيرة <span style="font-weight:400;color:var(--ft)">(نقرة لتغيير التاج)</span></label><div class="tag-chips">'
+    +list.map(t=>`<span class="tag-chip${only===t.id?' on':''}" onclick="setAddTag('${t.id}')" title="${esc(t.catName||'')}">${esc(t.name)}</span>`).join('')+'</div>';}
+function setAddTag(id){_selTagsAdd=new Set([id]);renderAddTags();}
+function renderAddTags(){const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  let h='';_selTagsAdd.forEach(tid=>{const t=tMap.get(tid);if(t)h+=`<span class="tag-chip on">${esc(t.name)} <span class="x" onclick="_selTagsAdd.delete('${tid}');renderAddTags()">✕</span></span>`;});
+  $('addSel').innerHTML=h||'<span style="color:var(--ft);font-size:11px">لا توجد</span>';renderRecT();}
+function addTagSrch(input){const q=input.value.trim().toLowerCase();const dd=$('addDD');
+  const filtered=tags.filter(t=>!_selTagsAdd.has(t.id)&&(!q||t.name.toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+  if(!filtered.length){dd.innerHTML='<div class="tag-dd-item" style="color:var(--ft)">لا نتائج</div>';dd.classList.add('show');return;}
+  let h='';filtered.forEach(t=>{const cat=cats.find(c=>c.id===t.catId);h+=`<div class="tag-dd-item" onmousedown="_selTagsAdd.add('${t.id}');$('addSI').value='';$('addDD').classList.remove('show');renderAddTags()">${esc(t.name)} <span class="cat-hint">${esc(cat?.name||'')}</span></div>`;});
+  dd.innerHTML=h;dd.classList.add('show');}
+// الإضافة تتم محلياً وفوراً، ثم تُرحَّل في الخلفية
+function svAdd(){
+  const a=$('fa').value.trim(),e=$('fen').value.trim();
+  if(!a&&!e){ts('أدخل الكلمة بالعربي أو الإنجليزي','er');return;}
+  askMissingTr('add',doSvAdd);}
+function doSvAdd(){trBump();
+  const ar=$('fa').value.trim(),en=$('fen').value.trim();
+  const zh=$('fzh').value.trim(),pin=$('fpn').value.trim(),tagsStr=[..._selTagsAdd].join(',');
+  const tmp='L'+(++_qseq);
+  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr};nd._tags=parseTags(tagsStr);
+  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr});
+  recTPush([..._selTagsAdd]);addClear();refresh(tmp);
+  ts(`تم حفظ "${ar||en}" ✓ — أضف التالية`,'ok');}
+// تفريغ الحقول مع الإبقاء على التاج والنافذة مفتوحة
+function addClear(){['fa','fen','fzh','fpn'].forEach(id=>{const el=$(id);if(el)el.value='';});
+  const w=$('dupWarn');if(w){w.innerHTML='';w.style.display='none';}
+  renderAddTags();setTimeout(()=>$('fa')?.focus(),30);}
+
+// زر الحذف: لو كان هناك كلمات محددة ✓ يحذفها كلها، وإلا يحذف الكلمة الحالية
+function oDelW(){
+  const sel=[...selW].filter(id=>D.some(d=>String(d.id)===String(id)));
+  if(sel.length){oDelMany(sel);return;}
+  if(!V[ai]){ts('لا توجد كلمة لحذفها','er');return;}
+  cDel(ai);}
+function delRow(d){return esc(d.ar||'')+(d.en?` <span style="color:var(--bl);direction:ltr">${esc(d.en)}</span>`:'')+(d.zh?` <span style="color:var(--acc);font-family:var(--fz)">${esc(d.zh)}</span>`:'');}
+function cDel(idx){const v=V[idx];if(!v)return;const d=v.d;
+  $('mo').innerHTML=`<h2>🗑 حذف كلمة</h2>
+  <p style="color:var(--dm);font-size:12px;margin-bottom:6px">سيتم حذف هذه الكلمة نهائياً:</p>
+  <div style="background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:10px;font-size:14px;font-weight:700">${delRow(d)}</div>
+  <div style="font-size:11px;color:var(--acc);margin-top:8px">⚠️ لا يمكن التراجع بعد ترحيلها إلى جوجل شيت.</div>
+  <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="md" onclick="delT('${d.id}')">🗑 نعم، احذف</button></div>`;oM();}
+let _delIds=[];
+function oDelMany(ids){_delIds=ids.map(String);
+  const rows=_delIds.slice(0,10).map(id=>{const d=D.find(x=>String(x.id)===id);
+    return d?`<div style="padding:3px 0;border-bottom:1px solid var(--bdl)">${delRow(d)}</div>`:'';}).join('');
+  $('mo').innerHTML=`<h2>🗑 حذف ${_delIds.length} كلمة</h2>
+  <p style="color:var(--dm);font-size:12px;margin-bottom:6px">سيتم حذف الكلمات المحددة ✓ نهائياً:</p>
+  <div style="max-height:220px;overflow-y:auto;background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:8px;font-size:13px">${rows}
+    ${_delIds.length>10?`<div style="color:var(--ft);font-size:11px;margin-top:5px">و ${_delIds.length-10} كلمة أخرى</div>`:''}</div>
+  <div style="font-size:11px;color:var(--acc);margin-top:8px">⚠️ لا يمكن التراجع بعد ترحيلها إلى جوجل شيت.</div>
+  <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="md" onclick="delMany()">🗑 نعم، احذف ${_delIds.length} كلمة</button></div>`;oM();}
+function delMany(){let n=0;
+  _delIds.forEach(id=>{const i=D.findIndex(x=>String(x.id)===id);
+    if(i>=0){D.splice(i,1);n++;}selW.delete(id);qPush({op:'delete',id});});
+  _delIds=[];cM();refresh();selUpd();ts(`تم حذف ${n} كلمة ✓`,'ok');}
+function delT(id){id=String(id);
+  const i=D.findIndex(x=>String(x.id)===id);if(i>=0)D.splice(i,1);
+  selW.delete(id);qPush({op:'delete',id});
+  cM();refresh();ts('تم الحذف ✓','ok');}
+
+// Esc يغلق النافذة المفتوحة (إلا أثناء اختبار لم يُحفظ)
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&$('mov').classList.contains('opn')&&!(QZ&&!QZ.saved))cM();
+});
+
+// ═══ MANAGE ═══
+function oMng(){$('mo').innerHTML=`<h2>⚙ إدارة</h2><div style="display:flex;gap:3px;margin-bottom:10px"><button class="vb on" id="mtc" onclick="mTb('c')">التصنيفات</button><button class="vb" id="mtg" onclick="mTb('g')">التاجات</button></div><div id="mct"></div><div id="mgt" style="display:none"></div><div class="mbt"><button class="mc" onclick="cM()">إغلاق</button></div>`;rMC();rMG();oM();}
+function mTb(t){$('mct').style.display=t==='c'?'block':'none';$('mgt').style.display=t==='g'?'block':'none';$('mtc').classList.toggle('on',t==='c');$('mtg').classList.toggle('on',t==='g');}
+function rMC(){let h=`<div style="display:flex;gap:4px;margin-bottom:6px"><input id="ncn" placeholder="تصنيف جديد" style="flex:1;padding:5px 8px;border:1px solid var(--bd);border-radius:4px;font-size:12px;font-family:var(--fa)"><button class="ab g" onclick="addC()">+</button><button class="ab" onclick="oRoCats()">↕</button></div><div style="max-height:260px;overflow-y:auto">`;cats.forEach(c=>{h+=`<div class="mg-row"><span class="mg-id">${c.id}</span><input value="${c.ord}" id="mco${c.id}" style="width:35px;text-align:center;font-family:var(--fm);font-size:11px;flex:none" oninput="$('mcs${c.id}').classList.add('show')"><input value="${esc(c.name)}" id="mc${c.id}" oninput="$('mcs${c.id}').classList.add('show')"><button class="mg-sv" id="mcs${c.id}" onclick="updC('${c.id}')">حفظ</button><button class="mg-dl" onclick="dlC('${c.id}')">🗑</button></div>`;});h+='</div>';$('mct').innerHTML=h;}
+function rMG(){let h=`<div style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap"><select id="ngc" style="padding:5px;border:1px solid var(--bd);border-radius:4px;font-size:11px;font-family:var(--fa)">${cats.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}</select><input id="ngn" placeholder="تاج جديد" style="flex:1;padding:5px 8px;border:1px solid var(--bd);border-radius:4px;font-size:12px;font-family:var(--fa)"><button class="ab g" onclick="addTg()">+</button></div><div style="max-height:260px;overflow-y:auto">`;
+  [...tags].sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar')).forEach(t=>{const cs=cats.map(c=>`<option value="${c.id}"${c.id===t.catId?' selected':''}>${c.name}</option>`).join('');h+=`<div class="mg-row"><span class="mg-id">${t.id}</span><select style="font-size:10px;padding:2px;border:1px solid var(--bdl);border-radius:3px;font-family:var(--fa);background:var(--sf);min-width:60px" id="tgc${t.id}" onchange="$('tgs${t.id}').classList.add('show')">${cs}</select><input value="${esc(t.name)}" id="tg${t.id}" oninput="$('tgs${t.id}').classList.add('show')"><button class="mg-sv" id="tgs${t.id}" onclick="updTg('${t.id}')">حفظ</button><button class="mg-dl" onclick="dlTg('${t.id}')">🗑</button></div>`;});h+='</div>';$('mgt').innerHTML=h;}
+function afterMeta(){linkTags();cacheSave();bDD();rFav();buildView();}
+async function addC(){const n=$('ncn').value.trim();if(!n){ts('أدخل الاسم','er');return;}sL();cM();
+  try{const r=await api({action:'addCat',name:n});
+    let mo=0;cats.forEach(c=>{const o=parseInt(c.ord)||0;if(o>mo)mo=o;});
+    cats.push({id:String(r.id),ord:String(mo+1),name:n});
+    cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
+    hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+async function updC(id){const n=$('mc'+id).value.trim();const o=$('mco'+id).value.trim();if(!n)return;sL();cM();
+  try{await api({action:'updateCat',id,name:n,ord:o});
+    const c=cats.find(x=>x.id===id);if(c){c.name=n;if(o)c.ord=String(o);}
+    cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
+    hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+async function dlC(id){if(!confirm('حذف؟'))return;sL();cM();
+  try{await api({action:'deleteCat',id});cats=cats.filter(c=>c.id!==id);
+    hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+async function addTg(){const cid=$('ngc').value,n=$('ngn').value.trim();if(!n){ts('أدخل الاسم','er');return;}sL();cM();
+  try{const r=await api({action:'addTag',name:n,catId:cid});
+    tags.push({id:String(r.id),name:n,catId:String(cid)});
+    hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+async function updTg(id){const n=$('tg'+id).value.trim();const cid=$('tgc'+id).value;if(!n)return;sL();cM();
+  try{await api({action:'updateTag',id,name:n,catId:cid});
+    const t=tags.find(x=>x.id===id);if(t){t.name=n;if(cid)t.catId=String(cid);}
+    hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+async function dlTg(id){if(!confirm('حذف؟'))return;sL();cM();
+  try{await api({action:'deleteTag',id});tags=tags.filter(t=>t.id!==id);favT.delete(id);
+    lsSet('dictFavTags',[...favT].join(','));hL();afterMeta();ts('تم','ok');}catch(e){hL();ts(e.message,'er');}}
+
+let roCL=[],roCSel=0;function oRoCats(){roCL=cats.map(c=>({id:c.id,name:c.name}));roCSel=0;rrCL();}
+function rrCL(){let h=`<h2>↕ ترتيب التصنيفات</h2><div style="display:flex;gap:4px;margin-bottom:8px;padding:6px;background:var(--sf);border-radius:var(--r)"><button class="ab" onclick="roCMv('first')">⏫</button><button class="ab" onclick="roCMv('up')">🔼</button><button class="ab" onclick="roCMv('down')">🔽</button><button class="ab" onclick="roCMv('last')">⏬</button></div><div style="max-height:320px;overflow-y:auto;border:1px solid var(--bd);border-radius:var(--r)">`;roCL.forEach((it,i)=>{h+=`<div onclick="roCSel=${i};rrCL()" style="padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--bdl);${i===roCSel?'background:var(--bll);border-right:3px solid var(--bl)':''}"><span style="font-family:var(--fm);color:var(--ft);margin-left:8px">${i+1}</span>${esc(it.name)}</div>`;});h+=`</div><div class="mbt"><button class="mc" onclick="oMng()">رجوع</button><button class="ms" onclick="svRoCL()">💾 حفظ</button></div>`;$('mo').innerHTML=h;if(!$('mov').classList.contains('opn'))oM();}
+function roCMv(d){const i=roCSel;if(d==='up'&&i>0){[roCL[i],roCL[i-1]]=[roCL[i-1],roCL[i]];roCSel=i-1;}else if(d==='down'&&i<roCL.length-1){[roCL[i],roCL[i+1]]=[roCL[i+1],roCL[i]];roCSel=i+1;}else if(d==='first'&&i>0){roCL.unshift(roCL.splice(i,1)[0]);roCSel=0;}else if(d==='last'&&i<roCL.length-1){roCL.push(roCL.splice(i,1)[0]);roCSel=roCL.length-1;}rrCL();}
+async function svRoCL(){sL();cM();
+  try{await api({action:'reorderCats',ids:roCL.map(x=>x.id).join(',')});
+    roCL.forEach((it,n)=>{const c=cats.find(x=>x.id===it.id);if(c)c.ord=String(n+1);});
+    cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
+    hL();afterMeta();ts('تم ✓','ok');}catch(e){hL();ts(e.message,'er');}}
+
+// ═══ SETUP ═══
+function oSetup(){
+  const isCustom=AU!==DEFAULT_AU;
+  $('mo').innerHTML=`<h2>🔗 إعدادات الاتصال</h2>
+    <div style="background:var(--sf);padding:10px;border-radius:6px;margin-bottom:10px;font-size:11px;color:var(--dm);line-height:1.6">
+      <div><b>الرابط الحالي:</b></div>
+      <div style="font-family:var(--fm);font-size:10px;word-break:break-all;color:var(--bl);margin-top:4px">${esc(AU)}</div>
+      <div style="margin-top:6px;font-size:10px;color:${isCustom?'var(--bl)':'var(--ft)'}">${isCustom?'🔧 رابط مخصص':'📌 الافتراضي'}</div>
+    </div>
+    <div style="background:var(--sf);padding:10px;border-radius:6px;margin-bottom:10px;font-size:11px;color:var(--dm);line-height:1.6">
+      <div><b>مصدر البيانات (Google Sheets):</b></div>
+      <div style="font-family:var(--fm);font-size:10px;word-break:break-all;color:var(--ft);margin-top:4px">${esc(SID)}</div>
+      <a href="https://docs.google.com/spreadsheets/d/${SID}/edit" target="_blank" rel="noopener" class="ab" style="display:inline-block;margin-top:6px;text-decoration:none">📊 فتح ملف جوجل شيت</a>
+    </div>
+    <div class="fi fu" style="margin-bottom:10px"><label>تغيير الرابط</label><input id="newAU" placeholder="https://script.google.com/macros/s/.../exec" dir="ltr" style="font-family:var(--fm);font-size:10px;padding:6px;border:1px solid var(--bd);border-radius:5px;width:100%;outline:0;background:var(--sf)"></div>
+    <div style="font-size:10px;color:var(--dm);line-height:1.5;margin-bottom:10px">💡 بعد نشر Apps Script بإصدار جديد، الصق الرابط هنا.</div>
+    <div style="margin-bottom:10px;padding:8px;background:var(--sf);border-radius:6px;font-size:11px;border:1px solid var(--bd)">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><b>🔍 تشخيص الاتصال:</b><button class="ab" onclick="diagnose()">فحص الآن</button></div>
+      <div id="diagBox" style="margin-top:5px;line-height:1.6"></div>
+    </div>
+    <div style="margin-bottom:10px;padding:8px;background:var(--sf);border-radius:6px;font-size:11px;border:1px solid var(--bd)">
+      <div><b>🌐 الترجمة التلقائية:</b> <span id="trStat">جاري الفحص...</span></div>
+      <div style="font-size:10px;color:var(--dm);line-height:1.5;margin-top:4px">رابط جوجل المجاني يتوقف مؤقتاً عند كثرة الطلبات. لجعل الترجمة ثابتة أضف هذا الكود في Apps Script وانشر إصداراً جديداً:</div>
+      <textarea id="trCode" readonly dir="ltr" style="width:100%;height:110px;margin-top:6px;font-family:var(--fm);font-size:9px;padding:6px;border:1px solid var(--bd);border-radius:5px;background:#fff;resize:vertical;white-space:pre;overflow:auto">${esc(TR_AS_CODE)}</textarea>
+      <button class="ab" style="margin-top:4px" onclick="copyTrCode()">📋 نسخ الكود</button>
+      <button class="ab" style="margin-top:4px" onclick="checkTrAS()">🔄 إعادة الفحص</button>
+    </div>
+    <div style="margin-bottom:10px;padding:8px;background:var(--yl);border-radius:6px;font-size:11px;border:1px solid #f59e0b50"><b>🔧 إصلاح التاجات:</b> لو الكلمات متعددة التاجات مش بتظهر صح، اضغط الزر ده مرة واحدة بعد نشر الكود الجديد:<br><button class="ab" style="margin-top:4px" onclick="fixTagsFmt()">🔧 إصلاح تنسيق عمود التاجات</button></div>
+    <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button>${isCustom?'<button class="md" onclick="resetAU()">الافتراضي</button>':''}<button class="ms" onclick="saveAU()">💾 حفظ</button></div>`;
+  oM();checkTrAS();}
+function saveAU(){const v=$('newAU').value.trim();if(!v){ts('أدخل الرابط','er');return;}if(!v.startsWith('https://script.google.com/')){ts('رابط غير صحيح','er');return;}lsSet('dictApiUrl',v);AU=v;cM();setTimeout(()=>checkApiVer(),300);ts('تم ✓','ok');}
+async function fixTagsFmt(){
+  if(Q.length){ts('رحّل التغييرات أولاً قبل هذه العملية','er');return;}
+  sL('جاري إصلاح تنسيق التاجات...');cM();
+  try{const r=await api({action:'fixTags'});hL();ts(`تم إصلاح ${r.fixed} صف ✓`,'ok');reload();}catch(e){hL();ts(e.message,'er');}}
+function resetAU(){lsDel('dictApiUrl');AU=DEFAULT_AU;cM();setTimeout(()=>checkApiVer(),300);ts('استعادة ✓','ok');}
+
+function oM(){$('mov').classList.add('opn');}function cM(){trBump();$('mov').classList.remove('opn');$('mov').classList.remove('po');$('mov').classList.remove('qz');$('mov').classList.remove('wide');$('mov').classList.remove('qzrun');}
+function ts(m,t){const e=$('tst');e.textContent=m;e.className='tst '+(t||'')+' sh';setTimeout(()=>e.classList.remove('sh'),2500);}
+
+// ═══ PRINT OPTIONS ═══
+const PO_SZ_DEF={cards:{zh:18,pin:11,ar:9,en:8},list:{zh:11,pin:9,ar:9,en:10},flash:{zh:20,pin:12,ar:15,en:12}};
+const PO_DEF={mode:'cards',paper:'A4',orient:'portrait',scope:'view',cols:3,rows:5,fAr:true,fEn:true,fZh:true,fPin:true,frame:'solid',hdr:false,pbCat:true,sz:JSON.parse(JSON.stringify(PO_SZ_DEF))};
+let PO=JSON.parse(JSON.stringify(PO_DEF));try{const sv=JSON.parse(lsGet('dictPrOpt')||'{}');Object.keys(PO_DEF).forEach(k=>{if(k==='sz'){if(sv.sz)Object.keys(PO_SZ_DEF).forEach(m=>{if(sv.sz[m])Object.assign(PO.sz[m],sv.sz[m]);});}else if(k in sv)PO[k]=sv[k];});}catch(e){}
+function poSet(k,v){PO[k]=v;lsSet('dictPrOpt',JSON.stringify(PO));}
+function poReset(){PO=JSON.parse(JSON.stringify(PO_DEF));lsSet('dictPrOpt',JSON.stringify(PO));oPrOpt();}
+// page margins (mm): top, sides, bottom; title/footer heights reserved on non-flash pages
+const PO_M={top:8,side:10,bot:14,botFlash:8,title:10,footer:7};
+function poPage(){let w=PO.paper==='A5'?148:210,h=PO.paper==='A5'?210:297;if(PO.orient==='landscape'){const t=w;w=h;h=t;}return{w,h};}
+function poGrid(){const{w,h}=poPage();const flash=PO.mode==='flash';const gap=3;const cols=Math.max(1,+PO.cols||3),rows=Math.max(1,+PO.rows||5);
+  const uw=w-PO_M.side*2,uh=h-PO_M.top-(flash?PO_M.botFlash:PO_M.bot+PO_M.title+PO_M.footer);
+  const r1=x=>Math.floor(x*10)/10;
+  return{cols,rows,gap,cw:r1((uw-gap*(cols-1))/cols),ch:r1((uh-gap*(rows-1))/rows)};}
+function poRows(){if(!V.length)return[];const cur=V[ai];
+  if(PO.scope==='tag'&&cur)return V.filter(v=>v.tagId===cur.tagId&&v.catId===cur.catId);
+  if(PO.scope==='cat'&&cur)return V.filter(v=>v.catId===cur.catId);
+  if(PO.scope==='sel')return V.filter(v=>selW.has(v.d.id));
+  return V;}
+function poSzMode(){return PO.sz[PO.mode]?PO.mode:'cards';}
+function poSzVars(){const z=PO.sz[poSzMode()];return `--pzh:${z.zh}pt;--ppn:${z.pin}pt;--par:${z.ar}pt;--pen:${z.en}pt`;}
+function poSz(f,d){const z=PO.sz[poSzMode()];z[f]=Math.min(60,Math.max(4,(+z[f]||10)+d));lsSet('dictPrOpt',JSON.stringify(PO));const el=$('sz_'+f);if(el)el.value=z[f];poInfo();}
+function poSzSet(f,v){const z=PO.sz[poSzMode()];z[f]=Math.min(60,Math.max(4,Math.round(+v)||z[f]));lsSet('dictPrOpt',JSON.stringify(PO));const el=$('sz_'+f);if(el)el.value=z[f];poInfo();}
+function poStep(f,l){const z=PO.sz[poSzMode()];return `<span class="po-step"><span class="lb">${l}</span><button onclick="poSz('${f}',-1)" title="أصغر">−</button><input type="number" id="sz_${f}" value="${z[f]}" min="4" max="60" onchange="poSzSet('${f}',this.value)"><button onclick="poSz('${f}',1)" title="أكبر">+</button></span>`;}
+function poInfo(){const el=$('poInfo');if(!el)return;const n=poRows().length;const flash=PO.mode==='flash';
+  if(PO.mode==='list'){el.innerHTML=`<div class="po-big"><b>${n}</b>كلمة</div><div class="po-sub">قائمة جدولية مقسمة بالتصنيف والتاج</div>`;}
+  else{const g=poGrid();const pp=g.cols*g.rows;const pages=Math.ceil(n/pp)*(flash?2:1);
+    el.innerHTML=`<div class="po-big"><b>${pp}</b>كرت في الصفحة</div><div class="po-sub">${g.cols} أعمدة × ${g.rows} صفوف<br>مقاس الكرت ${g.cw} × ${g.ch} مم<br>${n} كلمة → ${pages} صفحة${flash?' (وجه وظهر)':''}</div>`;}
+  poPreview();}
+function poPreview(){const box=$('pvBox');if(!box)return;const rows=poRows();const{w,h}=poPage();const flash=PO.mode==='flash';
+  const W=flash?118:236;const scale=W/(w*3.7795);const H=Math.round(h*3.7795*scale);
+  const page=inner=>`<div class="pv-page" style="width:${W}px;height:${H}px"><div class="pvp" style="width:${w}mm;height:${h}mm;padding:${PO_M.top}mm ${PO_M.side}mm ${flash?PO_M.botFlash:PO_M.bot}mm;transform:scale(${scale});${poSzVars()}">${inner}</div></div>`;
+  box.innerHTML=flash?`<div style="display:flex;gap:8px;justify-content:center"><div>${page(prHTML(rows,'front'))}<div class="pv-lbl">الوجه</div></div><div>${page(prHTML(rows,'back'))}<div class="pv-lbl">الظهر</div></div></div>`
+    :page(prHTML(rows,'page'))+'<div class="pv-lbl">الصفحة الأولى</div>';}
+function poSeg(k,opts){return `<div class="po-seg">${opts.map(([v,l])=>`<button class="${String(PO[k])===String(v)?'on':''}" onclick="poSet('${k}',${typeof v==='number'?v:`'${v}'`});oPrOpt()">${l}</button>`).join('')}</div>`;}
+function oPrOpt(){if(!V.length){ts('لا توجد كلمات للطباعة','er');return;}
+  const cb=(k,l)=>`<label class="po-chk"><input type="checkbox" ${PO[k]?'checked':''} onchange="poSet('${k}',this.checked);oPrOpt()"> ${l}</label>`;
+  const isL=PO.mode==='list',isF=PO.mode==='flash';const cur=V[ai];
+  $('mo').innerHTML=`<h2>🖨 خيارات الطباعة</h2><div class="po-wrap"><div class="po-opts">
+  <div class="po-row"><label>النوع</label>${poSeg('mode',[['list','📋 قائمة'],['cards','🃏 كروت'],['flash','🔄 فلاش كارد وجهين']])}</div>
+  <div class="po-row"><label>النطاق</label>${poSeg('scope',[['view','كل المعروض'],['tag',`التاج الحالي${cur?': '+esc(cur.tagName):''}`],['cat',`التصنيف الحالي${cur?': '+esc(cur.catName):''}`],['sel',`✓ المحددة فقط (${selW.size})`]])}</div>
+  ${PO.scope==='sel'&&!selW.size?`<div style="font-size:10px;color:var(--acc);margin:-4px 0 8px 86px">لم تحدد أي كلمة بعد. حدد الكلمات من المربع ✓ بجانب كل كلمة في الشاشة الرئيسية، أو بمفتاح المسافة على الكلمة الحالية.</div>`:''}
+  <div class="po-row"><label>الورقة</label>${poSeg('paper',[['A4','A4'],['A5','A5']])}${poSeg('orient',[['portrait','طولي'],['landscape','عرضي']])}</div>
+  ${isL?'':`<div class="po-row"><label>الأعمدة</label>${poSeg('cols',[[1,'1'],[2,'2'],[3,'3'],[4,'4'],[5,'5'],[6,'6']])}</div>
+  <div class="po-row"><label>الصفوف</label>${poSeg('rows',[[1,'1'],[2,'2'],[3,'3'],[4,'4'],[5,'5'],[6,'6'],[7,'7'],[8,'8']])}</div>
+  <div class="po-row"><label>الإطار</label>${poSeg('frame',[['solid','متصل'],['dashed','متقطع للقص'],['none','بدون']])}</div>`}
+  <div class="po-row"><label>الحقول</label>${cb('fAr','عربي')}${cb('fEn','English')}${cb('fZh','中文')}${cb('fPin','Pīnyīn')}</div>
+  <div class="po-row"><label>حجم الخط (pt)</label>${poStep('zh','中文')}${poStep('pin','Pīnyīn')}${poStep('ar','عربي')}${poStep('en','English')}</div>
+  ${isF?`<div style="font-size:10px;color:var(--dm);line-height:1.5;margin-bottom:6px">🔄 كل صفحة أمامية (صيني + بينيين) يليها ظهرها (عربي + إنجليزي) معكوس الترتيب. اطبع على الوجهين مع القلب على الحافة الطويلة.</div>`
+       :`<div class="po-row"><label>الترتيب</label>${cb('pbCat','صفحة جديدة لكل تصنيف')}${isL?'':cb('hdr','عناوين التصنيف والتاج (تقلل الكروت في الصفحة)')}</div>`}
+  <div style="font-size:10px;color:var(--ft);margin-top:6px">النافذة تبقى مفتوحة بعد الطباعة لتعديل الإعدادات وإعادة المحاولة. للإغلاق: إلغاء أو Esc أو النقر خارج النافذة.</div>
+  </div><div class="po-side"><div id="poInfo"></div><div id="pvBox"></div></div></div>
+  <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="mc" onclick="poReset()">↺ الافتراضي</button><button class="ms" onclick="doPr()">🖨 طباعة</button></div>`;
+  oM();$('mov').classList.add('po');poInfo();}
+
+// ═══ PRINT ═══
+// pv: false = full document; 'page' = first page only; 'front'/'back' = first flash page face only
+function prHTML(rows,pv){
+  const ds=new Date().toLocaleDateString('ar-EG',{year:'numeric',month:'long',day:'numeric'});
+  const flash=PO.mode==='flash';const g=poGrid();const F={ar:!!PO.fAr,en:!!PO.fEn,zh:!!PO.fZh,pin:!!PO.fPin};
+  const gridStyle=`grid-template-columns:repeat(${g.cols},${g.cw}mm);gap:${g.gap}mm;justify-content:start`;
+  const cardH=`style="height:${g.ch}mm"`;
+  // side: null = all fields on one card, 'front' = zh+pin only, 'back' = ar+en only
+  const card=(d,side)=>{let i='';
+    if(F.zh&&side!=='back')i+=`<div class="xz">${esc(d.zh)}</div>`;
+    if(F.pin&&side!=='back')i+=`<div class="xp">${esc(d.pin)}</div>`;
+    if(F.ar&&side!=='front')i+=`<div class="xa${side==='back'?' big':''}">${esc(d.ar)}</div>`;
+    if(F.en&&side!=='front')i+=`<div class="xe${side==='back'?' big':''}">${esc(d.en)}</div>`;
+    return `<div class="pc f-${PO.frame}" ${cardH}>${i}</div>`;};
+  let h=flash?'':`<div class="p-title">قاموس المصطلحات الفنية — عربي · English · 中文</div>`,lc='',lt='',isFC=true;
+  const brk=()=>PO.pbCat&&!isFC&&!pv?' brk':'';
+  const pp=g.cols*g.rows;
+  if(PO.mode==='list'){
+    const rs=pv?rows.slice(0,60):rows;
+    const ths=(F.ar?'<th>عربي</th>':'')+(F.en?'<th class="eh">English</th>':'')+(F.zh?'<th class="zh">中文</th>':'')+(F.pin?'<th class="zh">Pīnyīn</th>':'');
+    rs.forEach(v=>{const d=v.d;const ck=v.catId,tk=v.catId+'-'+v.tagId;
+      if(ck!==lc){if(lt)h+='</tbody></table>';h+=`<div class="p-cat${brk()}">${esc(v.catName)}</div>`;lc=ck;lt='';isFC=false;}
+      if(tk!==lt){if(lt)h+='</tbody></table>';h+=`<div class="p-tag">🏷 ${esc(v.tagName)}</div><table class="pt"><thead><tr>${ths}</tr></thead><tbody>`;lt=tk;}
+      h+=`<tr>${F.ar?`<td class="ta">${esc(d.ar)}</td>`:''}${F.en?`<td class="te">${esc(d.en)}</td>`:''}${F.zh?`<td class="tz">${esc(d.zh)}</td>`:''}${F.pin?`<td class="tp">${esc(d.pin)}</td>`:''}</tr>`;});
+    if(lt)h+='</tbody></table>';
+  } else if(flash){
+    const pages=[];if(pv)pages.push(rows.slice(0,pp));else for(let p=0;p<rows.length;p+=pp)pages.push(rows.slice(p,p+pp));
+    pages.forEach((page,pi)=>{
+      if(pv!=='back'){h+=`<div class="pcg${pi?' pg-brk':''}" style="${gridStyle}">`;page.forEach(v=>h+=card(v.d,'front'));h+='</div>';}
+      if(pv!=='front'){h+=`<div class="pcg${pv?'':' pg-brk'}" style="${gridStyle}">`;
+        const usedRows=Math.ceil(page.length/g.cols);
+        for(let r=0;r<usedRows;r++){const rc=[];for(let c=0;c<g.cols;c++)rc.push(page[r*g.cols+c]||null);rc.reverse().forEach(v=>h+=v?card(v.d,'back'):`<div class="pc ph" ${cardH}></div>`);}
+        h+='</div>';}});
+  } else {
+    const rs=pv?rows.slice(0,pp):rows;
+    h+=`<div class="pcg" style="${gridStyle}">`;
+    rs.forEach(v=>{const d=v.d;const ck=v.catId,tk=v.catId+'-'+v.tagId;
+      if(PO.hdr){if(ck!==lc){h+=`<div class="p-cgs-cat${brk()}">${esc(v.catName)}</div>`;lc=ck;lt='';isFC=false;}
+        if(tk!==lt){h+=`<div class="p-cgs-tag">🏷 ${esc(v.tagName)}</div>`;lt=tk;}}
+      h+=card(d,null);});
+    h+='</div>';
+  }
+  if(!flash)h+=`<div class="p-footer"><span></span><span>${ds}</span></div>`;
+  return h;}
+function doPr(){const z=$('pz');const rows=poRows();if(!rows.length){ts('لا توجد كلمات للطباعة','er');return;}
+  const flash=PO.mode==='flash';const zv=PO.sz[poSzMode()];
+  z.style.setProperty('--pzh',zv.zh+'pt');z.style.setProperty('--ppn',zv.pin+'pt');z.style.setProperty('--par',zv.ar+'pt');z.style.setProperty('--pen',zv.en+'pt');
+  let st=$('prPage');if(!st){st=document.createElement('style');st.id='prPage';document.head.appendChild(st);}
+  st.textContent=`@page{size:${PO.paper} ${PO.orient};margin:${PO_M.top}mm ${PO_M.side}mm ${flash?PO_M.botFlash:PO_M.bot}mm ${PO_M.side}mm}`;
+  z.innerHTML=prHTML(rows,false);setTimeout(()=>window.print(),120);}
+// ═══════════ المستخدمون ودرجات الحفظ والاختبارات ═══════════
+// جدول «المستخدمين» في الشيت: 10 صفوف ثابتة، الكود 1-10 لا يتغير (يتغير الاسم فقط).
+// درجة المستخدم رقم k لكل كلمة في العمود 6+k من «مصطلحات» (G..P). الخلية الفارغة = لم تُختبر بعد.
+const QL={ar:'عربي',zh:'رمز',pin:'بينين',en:'إنجليزي'},QK=['ar','zh','pin','en'];
+const QL_REV={'عربي':'ar','رمز':'zh','بينين':'pin','بينيين':'pin','إنجليزي':'en','انجليزي':'en'};
+const S_MIN=-5,S_MAX=5,MAX_U=10,SC_COL0=6;
+function uDef(){return Array.from({length:MAX_U},(_,i)=>({code:i+1,name:'',q:'zh',a:'ar',x1:'',x2:''}));}
+let U=uDef();
+let CU=parseInt(lsGet('dictQuizUser')||'0')||0;
+let QS=null,QZ=null;
+function uNamed(){return U.filter(u=>u.name);}
+function curU(){const u=U[CU-1];return u&&u.name?u:null;}
+function cuCode(){return curU()?CU:0;}
+function setCU(c){CU=c||0;lsSet('dictQuizUser',String(CU));uBtn();vfCols();rHdr();buildView();bS();}
+function clampS(v){return Math.max(S_MIN,Math.min(S_MAX,v));}
+function sEmpty(){return new Array(MAX_U).fill(null);}
+function sOf(d,code){code=code||cuCode();if(!code||!d._s)return null;const v=d._s[code-1];return v==null||v===''?null:+v;}
+function sCls(s){return s==null?'s-n':s<=-1?'s-w':s>=3?'s-g':'s-m';}
+function sTxt(s){return s==null?'—':(s>0?'+'+s:String(s));}
+function sBadge(d){const s=sOf(d);return `<span class="rs ${sCls(s)}" title="${s==null?'لم تُختبر بعد':'درجة الحفظ: '+sTxt(s)}">${sTxt(s)}</span>`;}
+function parseSc(c){if(!c||c.v==null||c.v==='')return null;const n=Number(c.v);return isNaN(n)?null:clampS(Math.round(n));}
+// نتيجة الخادم هي المرجع، إلا لو بقيت دفعات أخرى لنفس المستخدم في الطابور (قيمتها المحلية أحدث)
+function applySrvScores(code,map){if(Q.some(x=>x!==Q[0]&&/scores/i.test(x.op)&&x.code===code))return;
+  Object.keys(map||{}).forEach(id=>{const d=D.find(x=>String(x.id)===String(id));if(!d)return;
+    if(!d._s)d._s=sEmpty();d._s[code-1]=map[id]==null?null:clampS(+map[id]);});}
+
+// ── تحميل جدول المستخدمين بعد المصطلحات والتاجات (لا يوقف التحميل لو الجدول غير موجود) ──
+let _uDone=true,_uT=null;
+function loadUsersThen(){_uDone=false;clearTimeout(_uT);_uT=setTimeout(finishLoad,15000);
+  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onU&headers=1&sheet=${encodeURIComponent('المستخدمين')}`,()=>finishLoad());}
+function onU(r){
+  try{if(r&&r.status==='ok'&&r.table&&((r.table.cols[0]||{}).label||'').trim()==='الكود'){
+    const nu=uDef();
+    r.table.rows.forEach(rw=>{const c=rw.c||[];const code=Number(c[0]&&c[0].v);if(!(code>=1&&code<=MAX_U))return;
+      const g=i=>String((c[i]&&c[i].v)!=null?c[i].v:'').trim();
+      Object.assign(nu[code-1],{name:g(1),q:QL_REV[g(2)]||'zh',a:QL_REV[g(3)]||'ar',x1:QL_REV[g(4)]||'',x2:QL_REV[g(5)]||''});});
+    U=nu;}}catch(e){}
+  finishLoad();}
+function finishLoad(){if(_uDone)return;_uDone=true;clearTimeout(_uT);linkTags();cacheSave();paint();if(_lRes)_lRes();}
+
+function uBtn(){const b=$('uBtn');if(!b)return;const u=curU();
+  b.innerHTML=`👤 <span class="ab-txt">${u?esc(u.name):'المستخدم'}</span>`;b.classList.toggle('act',!!u);}
+
+// ── فلترة وترتيب القائمة حسب درجة الحفظ ──
+const SF_DEF={mode:'all',min:-5,max:0,sort:''};
+let SF=Object.assign({},SF_DEF);try{Object.assign(SF,JSON.parse(lsGet('dictScoreFilter')||'{}'));}catch(e){}
+const SF_M={weak:['🔴 ضعيفة','−1 فأقل',S_MIN,-1],mid:['🟡 متوسطة','0 إلى 2',0,2],strong:['🟢 قوية','3 فأكثر',3,S_MAX],none:['⚪ لم تُختبر',''],range:['🎚 مخصص','']};
+function sfSave(){lsSet('dictScoreFilter',JSON.stringify(SF));}
+function sfActive(){return !!cuCode()&&SF.mode!=='all'&&!!SF_M[SF.mode];}
+function sfPass(d){const s=sOf(d);
+  if(SF.mode==='none')return s==null;
+  if(SF.mode==='range')return s!=null&&s>=Math.min(SF.min,SF.max)&&s<=Math.max(SF.min,SF.max);
+  const m=SF_M[SF.mode];return !m||(s!=null&&s>=m[2]&&s<=m[3]);}
+function sfCount(mode){const o=SF.mode;SF.mode=mode;const n=D.filter(sfPass).length;SF.mode=o;return n;}
+function termCmp(){const ab=(a,b)=>(a.ar||'').localeCompare(b.ar||'','ar');
+  if(!cuCode()||!SF.sort)return ab;const dir=SF.sort==='desc'?-1:1;
+  return (a,b)=>{const x=sOf(a),y=sOf(b);if(x==null&&y==null)return ab(a,b);if(x==null)return 1;if(y==null)return -1;return (x-y)*dir||ab(a,b);};}
+function bS(){const m=$('sm');if(!m)return;const u=curU();
+  const bd=$('sfb'),tg=bd.parentElement;
+  if(sfActive()){bd.textContent=SF.mode==='range'?`${Math.min(SF.min,SF.max)}…${Math.max(SF.min,SF.max)}`:SF_M[SF.mode][0].split(' ')[0];bd.style.display='inline';tg.classList.add('act');}
+  else{bd.style.display='none';tg.classList.remove('act');}
+  if(!u){m.innerHTML=`<div class="sf-box"><div class="qz-note">اختر المستخدم أولاً لعرض درجات الحفظ والفلترة بها.</div><button class="ab" style="margin-top:6px" onclick="oUsers()">👤 اختيار المستخدم</button></div>`;return;}
+  const chip=(k,l,sub,n)=>`<span class="qz-opt${SF.mode===k?' on':''}" onclick="sfSet('${k}')">${l}${sub?` <small style="opacity:.7">(${sub})</small>`:''}${n!=null?` <span class="cnt">${n}</span>`:''}</span>`;
+  let h=`<div class="sf-box"><div style="font-size:11px;color:var(--dm);margin-bottom:6px">درجات <b>${esc(u.name)}</b> — من ${S_MIN} إلى +${S_MAX}</div><div class="qz-opts">`
+    +chip('all','✦ الكل','',D.length)+['weak','mid','strong','none'].map(k=>chip(k,SF_M[k][0],SF_M[k][1],sfCount(k))).join('')+chip('range','🎚 مخصص','',null)+'</div>';
+  if(SF.mode==='range')h+=`<div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px">من <input type="number" min="${S_MIN}" max="${S_MAX}" value="${SF.min}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('min',this.value)"> إلى <input type="number" min="${S_MIN}" max="${S_MAX}" value="${SF.max}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('max',this.value)"> <span class="cnt">${sfCount('range')}</span></div>`;
+  h+=`<div style="margin-top:10px;font-size:11px;color:var(--dm);font-weight:700">الترتيب داخل كل تاج:</div><div class="qz-opts" style="margin-top:4px">`
+    +[['','أبجدي'],['asc','الأضعف أولاً'],['desc','الأقوى أولاً']].map(([k,l])=>`<span class="qz-opt${SF.sort===k?' on':''}" onclick="sfSort('${k}')">${l}</span>`).join('')+'</div>'
+    +`<button class="ab qz" style="margin-top:10px;width:100%;justify-content:center;padding:7px" onclick="tDD('s');oQuiz('view')">🎯 اختبرني في الكلمات المعروضة</button></div>`;
+  m.innerHTML=h;}
+function sfSet(k){SF.mode=k;sfSave();ai=0;buildView();bS();}
+function sfRange(w,v){SF[w]=clampS(parseInt(v)||0);sfSave();ai=0;buildView();bS();}
+function sfSort(k){SF.sort=k;sfSave();buildView();bS();}
+
+// ── إدارة المستخدمين ──
+function uSel(id,val,allowEmpty){return `<select id="${id}">${allowEmpty?'<option value="">— لا شيء —</option>':''}${QK.map(k=>`<option value="${k}"${val===k?' selected':''}>${QL[k]}</option>`).join('')}</select>`;}
+function oUsers(){
+  let h=`<h2>👤 المستخدمون <span style="font-size:10px;color:var(--ft);font-weight:400">10 مستخدمين كحد أقصى — الكود ثابت ويتغير الاسم فقط</span></h2>
+  <div class="qz-note" style="margin:0 0 8px">انقر ○ لتعيين المستخدم الحالي. الإعدادات الافتراضية تُطبَّق عند فتح شاشة الاختبار: <b>السؤال</b> و<b>الإجابة</b> إجباريان، و<b>المستثناة</b> (اختيارية) لا تُحدَّد عند «اختيار الكل». لا يجوز تكرار نفس اللغة في خانتين.</div><div class="us-list" style="max-height:58vh;overflow-y:auto">`;
+  U.forEach(u=>{const c=u.code,on=c===CU&&!!u.name;
+    h+=`<div class="us-row${on?' cur':''}"><div class="us-h">
+    <span class="qz-opt${on?' on':''}" style="padding:3px 8px" onclick="uPick(${c})" title="تعيين كمستخدم حالي">${on?'●':'○'}</span><span class="cd">${c}</span>
+    <input id="un${c}" value="${esc(u.name)}" placeholder="مستخدم ${c} — اكتب الاسم" maxlength="30" style="flex:1 1 120px;min-width:110px">
+    <button class="ab g" onclick="uSave(${c})" title="حفظ">💾</button>${u.name?`<button class="ab d" onclick="uReset(${c})" title="مسح كل درجات هذا المستخدم">🧹</button>`:''}</div>
+    <div class="us-fs"><label class="us-f"><small>سؤال</small>${uSel('uq'+c,u.q)}</label><label class="us-f"><small>إجابة</small>${uSel('ua'+c,u.a)}</label><label class="us-f"><small>مستثناة 1</small>${uSel('ux1'+c,u.x1,true)}</label><label class="us-f"><small>مستثناة 2</small>${uSel('ux2'+c,u.x2,true)}</label></div></div>`;});
+  h+=`</div><div class="mbt"><button class="mc" onclick="cM()">إغلاق</button><button class="ms2" onclick="oStats()">📊 الإحصائيات</button><button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzMain()">🎯 اختبار</button></div>`;
+  $('mo').innerHTML=h;$('mov').classList.remove('qz');$('mov').classList.add('wide');oM();}
+function uPick(c){if(!U[c-1].name){ts('اكتب اسم المستخدم واحفظه أولاً','er');return;}setCU(c);oUsers();ts(`المستخدم الحالي: ${U[c-1].name}`,'ok');}
+function uCheck(u){if(!u.q||!u.a)return 'السؤال والإجابة الافتراضيان إجباريان';
+  const v=[u.q,u.a,u.x1,u.x2].filter(Boolean);if(new Set(v).size!==v.length)return 'لا يجوز أن تتكرر نفس اللغة في خانتين';return '';}
+async function uSave(c){const g=id=>(($(id)||{}).value||'').trim();
+  const u={code:c,name:g('un'+c).slice(0,30),q:g('uq'+c),a:g('ua'+c),x1:g('ux1'+c),x2:g('ux2'+c)};
+  const err=uCheck(u);if(err){ts(err,'er');return;}
+  const old=U[c-1];
+  if(!u.name&&old.name&&!confirm(`إزالة اسم «${old.name}»؟\nدرجاته تبقى في الشيت حتى تمسحها بزر 🧹.`))return;
+  if(u.name&&U.some(x=>x.code!==c&&x.name&&norm(x.name)===norm(u.name))){ts('يوجد مستخدم آخر بنفس الاسم','er');return;}
+  sL('جاري حفظ المستخدم...');
+  try{const r=await api({action:'saveUser',code:c,name:u.name,q:QL[u.q],a:QL[u.a],x1:u.x1?QL[u.x1]:'',x2:u.x2?QL[u.x2]:''});
+    if(!r||!r.saved)throw new Error('كود Apps Script لم يُحدَّث — انشر الإصدار الجديد أولاً');
+    U[c-1]=u;if(!curU()&&u.name)CU=c;if(CU===c&&!u.name)CU=0;
+    cacheSave();hL();setCU(CU);oUsers();ts('تم حفظ المستخدم ✓','ok');}
+  catch(e){hL();ts(e.message,'er');}}
+async function uReset(c){const u=U[c-1];
+  if(Q.some(x=>/scores/i.test(x.op)&&x.code===c)){ts('يوجد درجات لم تُرحَّل بعد لهذا المستخدم — رحّلها أولاً','er');return;}
+  if(!confirm(`مسح كل درجات «${u.name}» من جميع الكلمات؟\nلا يمكن التراجع.`))return;
+  sL('جاري مسح الدرجات...');
+  try{const r=await api({action:'resetScores',code:c});
+    if(!r||!r.reset)throw new Error('كود Apps Script لم يُحدَّث — انشر الإصدار الجديد أولاً');
+    D.forEach(d=>{if(d._s)d._s[c-1]=null;});cacheSave();hL();refresh();bS();oUsers();ts('تم مسح الدرجات ✓','ok');}
+  catch(e){hL();ts(e.message,'er');}}
+
+// ── مسح الدرجات المسجلة من الكلمات المحددة ✓ ──
+// زرا الاختبار والطباعة الرئيسيان: عند وجود كلمات محددة ✓ يعملان عليها تلقائياً
+function selVisible(){return V.some(v=>selW.has(String(v.d.id)));}
+function qzMain(){oQuiz(D.some(d=>selW.has(String(d.id)))?'sel':undefined);}
+function prMain(){if(selVisible())poSet('scope','sel');else if(PO.scope==='sel')poSet('scope','view');oPrOpt();}
+function selIdsReal(){return [...selW].map(String).filter(id=>!/^L\d+$/.test(id)&&D.some(d=>String(d.id)===id));}
+let _clrIds=[];
+function oClrSel(forceId){let ids=forceId!=null?[String(forceId)]:selIdsReal();const sel=forceId==null&&ids.length>0;
+  if(!ids.length&&V[ai]&&!/^L\d+$/.test(String(V[ai].d.id)))ids=[String(V[ai].d.id)];
+  if(!ids.length){ts('حدد كلمات بعلامة ✓ أو اختر كلمة أولاً','er');return;}
+  _clrIds=ids;
+  const us=uNamed();if(!us.length){ts('لا يوجد مستخدمون بعد','er');return;}
+  const words=ids.map(id=>D.find(d=>String(d.id)===id));
+  $('mo').innerHTML=`<h2>🧹 مسح درجات ${sel?ids.length+' كلمة محددة':'الكلمة الحالية: '+esc(words[0].ar||words[0].en||'')}</h2>
+   <p style="font-size:12px;color:var(--dm);line-height:1.8;margin-bottom:8px">اختر المستخدمين الذين تُمسح درجاتهم من هذه الكلمات فقط. ستعود الكلمات إلى «⚪ لم تُختبر»، ولا تتأثر باقي الكلمات.</p>
+   <div class="qz-opts" id="clrUs">${us.map(u=>{const n=words.filter(d=>sOf(d,u.code)!=null).length;const on=u.code===CU;
+     return `<label class="qz-opt${on?' on':''}"><input type="checkbox" value="${u.code}"${on?' checked':''} onchange="this.parentElement.classList.toggle('on',this.checked)"> ${esc(u.name)} <span class="cnt" title="كلمات محددة لها درجة">${n}</span></label>`;}).join('')}</div>
+   <div style="font-size:10px;color:var(--ft);margin-top:5px">الرقم بجانب الاسم = عدد الكلمات المحددة التي لها درجة مسجلة عنده</div>
+   <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="md" onclick="doClrSel()">🧹 مسح الدرجات</button></div>`;
+  $('mov').classList.remove('qz','wide');oM();}
+function doClrSel(){const codes=[...document.querySelectorAll('#clrUs input:checked')].map(i=>+i.value);
+  if(!codes.length){ts('اختر مستخدماً واحداً على الأقل','er');return;}
+  const ids=_clrIds;let n=0;
+  codes.forEach(code=>{const hit=ids.filter(id=>{const d=D.find(x=>String(x.id)===id);return d&&sOf(d,code)!=null;});
+    hit.forEach(id=>{const d=D.find(x=>String(x.id)===id);d._s[code-1]=null;});n+=hit.length;
+    for(let i=0;i<hit.length;i+=60)Q.push({op:'clearScores',code,ids:hit.slice(i,i+60)});});
+  cM();
+  if(!n){ts('لا توجد درجات مسجلة لهذه الكلمات','ok');return;}
+  qDone();refresh();bS();ts(`تم مسح ${n} درجة ✓`,'ok');}
+
+// ── الإحصائيات والمقارنة ──
+function uStats(code){const r={w:0,m:0,g:0,n:0,sum:0,tot:D.length};
+  D.forEach(d=>{const s=sOf(d,code);if(s==null)r.n++;else{r.sum+=s;if(s<=-1)r.w++;else if(s>=3)r.g++;else r.m++;}});
+  r.tested=r.tot-r.n;r.pct=r.tot?Math.round(r.g*100/r.tot):0;return r;}
+function oStats(){const us=uNamed();if(!us.length){ts('أضف مستخدماً أولاً','er');oUsers();return;}
+  const u=curU()||us[0];const st=uStats(u.code);
+  const card=(k,l,n,c)=>`<div class="st-c" style="border-color:${c}" onclick="stGo('${k}',${u.code})"><b style="color:${c}">${n}</b><span style="font-size:11px">${l}</span></div>`;
+  let h=`<h2>📊 إحصائيات الحفظ</h2>
+   <div class="qz-opts" style="margin-bottom:12px">${us.map(x=>`<span class="qz-opt${x.code===u.code?' on':''}" onclick="setCU(${x.code});oStats()">👤 ${esc(x.name)}</span>`).join('')}</div>
+   <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+     <div class="st-ring" style="background:conic-gradient(var(--gn) ${st.pct*3.6}deg,var(--bdl) 0)"><div><b style="font-size:26px;font-family:var(--fm)">${st.pct}%</b><small style="font-size:10px;color:var(--dm)">إتقان</small></div></div>
+     <div style="flex:1;min-width:190px;font-size:12px;line-height:2;color:var(--dm)">
+       <div>عدد الكلمات: <b style="color:var(--tx)">${st.tot}</b></div>
+       <div>تم اختبارها: <b style="color:var(--tx)">${st.tested}</b> (${st.tot?Math.round(st.tested*100/st.tot):0}%)</div>
+       <div>مجموع الدرجات: <b style="font-family:var(--fm);color:var(--tx)">${sTxt(st.sum)}</b></div>
+       <div style="font-size:10px;color:var(--ft)">الإتقان = نسبة الكلمات القوية (3 فأكثر) من كل الكلمات</div></div></div>
+   <div class="st-cards">${card('strong','🟢 قوية',st.g,'#27ae60')}${card('mid','🟡 متوسطة',st.m,'#d97706')}${card('weak','🔴 ضعيفة',st.w,'#d63031')}${card('none','⚪ لم تُختبر',st.n,'#9ca3af')}</div>
+   <div style="font-size:10px;color:var(--ft);margin-top:4px">انقر أي خانة لعرض كلماتها في القائمة الرئيسية</div>`;
+  if(us.length>1&&isMob()){const rows=us.map(x=>({x,s:uStats(x.code)})).sort((a,b)=>b.s.pct-a.s.pct||b.s.sum-a.s.sum);
+    h+=`<div style="font-size:15px;font-weight:800;margin:16px 0 8px">🏆 مقارنة بين المستخدمين</div><div class="st-cmp">`
+      +rows.map((r,i)=>`<div class="st-cr${r.x.code===u.code?' cur':''}"><span class="st-rk">${['🥇','🥈','🥉'][i]||i+1}</span><div class="st-cn"><b>${esc(r.x.name)}</b><small>🟢 ${r.s.g} · 🟡 ${r.s.m} · 🔴 ${r.s.w} · ⚪ ${r.s.n} · المجموع ${sTxt(r.s.sum)}</small></div><div class="st-cp"><span class="qz-bar"><i style="width:${r.s.pct}%;background:var(--gn)"></i></span><b>${r.s.pct}%</b></div></div>`).join('')+'</div>';}
+  else if(us.length>1){const rows=us.map(x=>({x,s:uStats(x.code)})).sort((a,b)=>b.s.pct-a.s.pct||b.s.sum-a.s.sum);
+    h+=`<h2 style="margin-top:16px">🏆 مقارنة بين المستخدمين</h2><div style="overflow-x:auto"><table class="st-tbl"><thead><tr><th>#</th><th>المستخدم</th><th>🟢 قوية</th><th>🟡 متوسطة</th><th>🔴 ضعيفة</th><th>⚪ لم تُختبر</th><th>الإتقان</th><th>المجموع</th></tr></thead><tbody>`
+      +rows.map((r,i)=>`<tr${r.x.code===u.code?' style="background:#faf5ff"':''}><td>${['🥇','🥈','🥉'][i]||i+1}</td><td style="font-weight:700">${esc(r.x.name)}</td><td>${r.s.g}</td><td>${r.s.m}</td><td>${r.s.w}</td><td>${r.s.n}</td><td><span class="qz-bar" style="width:56px;display:inline-block;vertical-align:middle"><i style="width:${r.s.pct}%;background:var(--gn)"></i></span> ${r.s.pct}%</td><td style="font-family:var(--fm)">${sTxt(r.s.sum)}</td></tr>`).join('')
+      +'</tbody></table></div>';}
+  h+=`<div class="mbt"><button class="mc" onclick="cM()">إغلاق</button><button class="ms2" onclick="oUsers()">👤 المستخدمون</button><button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzMain()">🎯 اختبار</button></div>`;
+  $('mo').innerHTML=h;$('mov').classList.remove('qz');$('mov').classList.add('wide');oM();}
+function stGo(k,code){setCU(code);SF.mode=k;sfSave();cM();ai=0;buildView();bS();ts('تم تطبيق فلتر الحفظ ✓ — غيّره من زر 🎯 الحفظ','ok');}
+
+// ── البينيين بالأرقام: yǐ zi ⇄ yi3 zi0 ──
+const PY_T={};'āáǎà|ēéěè|īíǐì|ōóǒò|ūúǔù|ǖǘǚǜ'.split('|').forEach((g,i)=>[...g].forEach((ch,t)=>PY_T[ch]='aeiouv'[i]+(t+1)));
+Object.assign(PY_T,{'ń':'n2','ň':'n3','ǹ':'n4','ḿ':'m2'});
+// كل مقطع يأخذ رقم نغمته بعده، حتى لو كانت المقاطع ملتصقة في الشيت (yǐzi ← yi3zi)
+function pyNum(s){const isV=c=>'aeiouv'.includes(c||'#');
+  return String(s||'').toLowerCase().normalize('NFC').replace(/u:/g,'v').split(/[\s'’\-·]+/).filter(Boolean).map(tok=>{
+    let b='';const marks=[];
+    for(const ch of tok){const m=PY_T[ch];if(m){marks.push([b.length,m[1]]);b+=m[0];}else if(ch==='ü')b+='v';else if(/[a-z0-5]/.test(ch))b+=ch;}
+    if(!b)return '';
+    if(/[0-5]/.test(b))return b.replace(/5/g,'0');
+    if(!marks.length)return b+'0';
+    for(let n=marks.length-1;n>=0;n--){const [p,t]=marks[n];let e=p+1;while(isV(b[e]))e++;
+      if(b.substr(e,2)==='ng'&&!isV(b[e+2]))e+=2;else if((b[e]==='n'||b[e]==='r')&&!isV(b[e+1]))e+=1;
+      b=b.slice(0,e)+t+b.slice(e);}
+    return b;}).filter(Boolean).join(' ');}
+function pyKey(s){s=String(s||'').toLowerCase().normalize('NFC');
+  if(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜńňǹḿ]/.test(s))s=pyNum(s);
+  return s.replace(/u:/g,'v').replace(/ü/g,'v').replace(/5/g,'0').replace(/[^a-z0-9]/g,'').replace(/([jqxy])v/g,'$1u');}
+function pyMark(s){const tm={a:'āáǎà',e:'ēéěè',i:'īíǐì',o:'ōóǒò',u:'ūúǔù','ü':'ǖǘǚǜ'};
+  return String(s||'').replace(/([a-zü:]+)([0-5])/gi,(m,syl,t)=>{syl=syl.toLowerCase().replace(/u:|v/g,'ü');t=+t;if(!t||t===5)return syl;
+    let i=syl.search(/[ae]/);if(i<0)i=syl.indexOf('ou');
+    if(i<0){for(let k=syl.length-1;k>=0;k--){if('aeiouü'.includes(syl[k])){i=k;break;}}}
+    if(i<0)return syl;return syl.slice(0,i)+tm[syl[i]][t-1]+syl.slice(i+1);});}
+
+// ── مقارنة الإجابات ──
+function ansNorm(s){return norm(s).replace(/[()\[\]{}.,،؛;:!?؟"'`«»\-_/\\|]/g,' ').replace(/\s+/g,' ').trim().replace(/^(the|a|an|to) /,'').replace(/^ال(?=\S{2})/,'');}
+function zhNorm(s){return String(s||'').replace(/[\s，,、。．.·()（）]/g,'');}
+function cmpKey(s,k){return k==='zh'?zhNorm(s):k==='pin'?pyKey(s):ansNorm(s);}
+function ansVars(s,k){const raw=String(s||''),out=new Set();
+  [raw,...raw.split(k==='zh'?/[\/,，、;；|]/:/[\/,،;؛|]/)].forEach(p=>[p,p.replace(/[(（][^)）]*[)）]/g,'')].forEach(x=>{const c=cmpKey(x,k);if(c)out.add(c);}));
+  return out;}
+function ansOk(right,input,k){const v=ansVars(right,k),u=cmpKey(input,k);if(!u)return false;if(v.has(u))return true;
+  if(k==='pin'){const z=x=>x.replace(/0/g,'');for(const x of v)if(z(x)===z(u))return true;}   // يُقبل حذف صفر النغمة الساكنة
+  return false;}
+
+// ── اختيار الأسئلة: الكلمة الأضعف تُسأل أكثر ──
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function qWeight(d,code){const s=sOf(d,code);return s==null?6:Math.max(1,6-s);}
+function pickWeighted(pool,n,code){const a=pool.map(d=>({d,w:qWeight(d,code)})),out=[];
+  while(out.length<n&&a.length){let r=Math.random()*a.reduce((s,x)=>s+x.w,0),i=0;
+    for(;i<a.length-1;i++){r-=a[i].w;if(r<=0)break;}out.push(a.splice(i,1)[0].d);}
+  return out;}
+// خيارات خاطئة من نفس التاج أولاً ثم من باقي القاموس، بلا تكرار وبلا ما يطابق الإجابة الصحيحة
+function distractors(d,k,n){const seen=new Set([cmpKey(d[k],k)]),out=[];
+  const has=x=>x!==d&&(x[k]||'').trim();
+  const same=D.filter(x=>has(x)&&[...x._tags].some(t=>d._tags.has(t)));
+  for(const src of [shuffle(same),shuffle(D.filter(has))]){for(const x of src){if(out.length>=n)return out;
+    const c=cmpKey(x[k],k);if(!c||seen.has(c))continue;seen.add(c);out.push(x);}}
+  return out;}
+
+// ── شاشة إعداد الاختبار ──
+function oQuiz(src){const us=uNamed();
+  if(!us.length){ts('أضف مستخدماً أولاً (اكتب الاسم واضغط 💾)','er');oUsers();return;}
+  if(!curU())setCU(us[0].code);
+  const u=curU();QZ=null;
+  QS=qsLoad(u);if(src)QS.src=src;
+  if(QS.src==='sel'&&(!src||!D.some(d=>selW.has(String(d.id)))))QS.src='view';
+  $('mov').classList.remove('wide');$('mov').classList.add('qz');rQS();oM();}
+// آخر اختيارات الاختبار تُحفظ في المتصفح لكل مستخدم، وإلا تُستخدم إعداداته الافتراضية
+function qsLoad(u){let o=null;try{o=JSON.parse(lsGet('dictQuizCfg_'+u.code)||'null');}catch(e){}
+  const c={q:new Set([u.q]),a:u.a,type:'mc',n:10,src:'view',tags:new Set(),cats:new Set(),tq:''};
+  if(o){if(QK.includes(o.a))c.a=o.a;
+    const q=(o.q||[]).filter(k=>QK.includes(k)&&k!==c.a);if(q.length)c.q=new Set(q);
+    if(['mc','tf','write'].includes(o.type))c.type=o.type;
+    if(+o.n>=1&&+o.n<=200)c.n=+o.n;
+    if(['view','tags','cats','sel'].includes(o.src))c.src=o.src;
+    c.tags=new Set((o.tags||[]).filter(id=>tags.some(t=>t.id===id)));
+    c.cats=new Set((o.cats||[]).filter(id=>cats.some(x=>x.id===id)));}
+  if(c.q.has(c.a)){c.q.delete(c.a);if(!c.q.size)c.q.add(QK.find(k=>k!==c.a));}
+  return c;}
+function qsStore(){if(!QS||!cuCode())return;
+  lsSet('dictQuizCfg_'+CU,JSON.stringify({q:[...QS.q],a:QS.a,type:QS.type,n:QS.n,src:QS.src,tags:[...QS.tags],cats:[...QS.cats]}));}
+function qsOpt(on,dis,label,click){return `<span class="qz-opt${on?' on':''}${dis?' dis':''}"${dis?'':` onclick="${click}"`}>${label}</span>`;}
+function rQS(){qsStore();const u=curU();const X=new Set([u.x1,u.x2].filter(Boolean));
+  const qOpts=QK.map(k=>{const dis=k===QS.a,on=QS.q.has(k)&&!dis;
+    return qsOpt(on,dis,(on?'☑ ':'☐ ')+QL[k]+(dis?' <span class="x" style="color:var(--ft)">= الإجابة</span>':X.has(k)?' <span class="x">مستثناة</span>':''),`qsQ('${k}')`);}).join('');
+  const aOpts=QK.map(k=>qsOpt(QS.a===k,false,(QS.a===k?'◉ ':'○ ')+QL[k],`qsA('${k}')`)).join('');
+  const tOpts=[['mc','🔘 اختيار من متعدد','4 خيارات'],['tf','⚖️ صح أم خطأ',''],['write','⌨️ كتابة الإجابة','']]
+    .map(([k,l,s])=>qsOpt(QS.type===k,false,l+(s?` <small style="opacity:.7">(${s})</small>`:''),`qsSet('type','${k}')`)).join('');
+  const nOpts=[5,10,20].map(n=>qsOpt(QS.n===n,false,String(n),`qsN(${n})`)).join('')
+    +`<input type="number" min="1" max="200" value="${QS.n}" onchange="qsN(this.value)" title="عدد مخصص" style="width:64px;padding:5px;border:1px solid var(--bd);border-radius:6px;font-family:var(--fm);text-align:center">`;
+  const vN=new Set(V.map(v=>v.d)).size,sN=D.filter(d=>selW.has(String(d.id))).length;
+  const sOpts=[['view',`📋 الكلمات المعروضة (${vN})`],['tags','🏷 تاجات محددة'],['cats','📂 تصنيفات كاملة'],['sel',`✓ الكلمات المحددة (${sN})`]]
+    .map(([k,l])=>qsOpt(QS.src===k,k==='sel'&&!sN,l,`qsSet('src','${k}')`)).join('');
+  let list='';
+  if(QS.src==='tags')list=`<input placeholder="بحث عن تاج..." value="${esc(QS.tq)}" oninput="QS.tq=this.value;qsFilter(this.value)" style="width:100%;margin-top:6px;padding:5px 8px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fa);font-size:12px;outline:0"><div class="qz-list">`
+    +[...tags].sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar')).map(t=>`<span class="qz-opt qs-it${QS.tags.has(t.id)?' on':''}" data-n="${esc(t.name.toLowerCase())}" onclick="qsTog('tags','${t.id}',this)">${esc(t.name)} <small style="opacity:.55">${esc(t.catName||'')}</small></span>`).join('')+'</div>';
+  if(QS.src==='cats')list='<div class="qz-list">'+cats.map(c=>`<span class="qz-opt${QS.cats.has(c.id)?' on':''}" onclick="qsTog('cats','${c.id}',this)">${esc(c.name)}</span>`).join('')+'</div>';
+  const notes=[];
+  if(X.size)notes.push(`🚫 اللغات المستثناة في إعداداتك: <b>${[...X].map(k=>QL[k]).join('، ')}</b> — لا تُحدَّد عند «اختيار الكل»، لكن يمكنك تحديدها يدوياً.`);
+  if(QS.type==='write'&&QS.a==='pin')notes.push(`⌨️ اكتب البينيين <b>بالأرقام</b> بعد كل مقطع حسب النغمة: الأولى <b>1</b>، الثانية <b>2</b>، الثالثة <b>3</b>، الرابعة <b>4</b>، والساكنة <b>0</b>.<br>مثال: كرسي <b dir="ltr">yǐ zi</b> تُكتب <b dir="ltr">yi3 zi0</b> — المسافات اختيارية، ويُقبل حذف الصفر، وحرف <b dir="ltr">ü</b> يُكتب <b dir="ltr">v</b>.`);
+  if(QS.type==='write'&&QS.a==='zh')notes.push('⌨️ كتابة الرمز الصيني تحتاج لوحة مفاتيح صينية (Pinyin IME) مفعّلة على جهازك.');
+  const mob=isMob(),TYN={mc:'اختيار من متعدد',tf:'صح أم خطأ',write:'كتابة الإجابة'};
+  const srcN={view:'الكلمات المعروضة',tags:`${QS.tags.size} تاج`,cats:`${QS.cats.size} تصنيف`,sel:'الكلمات المحددة'}[QS.src];
+  const qN=[...QS.q].filter(k=>k!==QS.a).map(k=>QL[k]).join('، ');
+  // على الكمبيوتر: صفوف كما هي. على الجوال: أقسام قابلة للطي مع ملخص الاختيار الحالي
+  const sec=(k,title,sum,content,extra)=>mob
+    ?`<details class="qz-sec"${QS._op&&QS._op.has(k)?' open':''} ontoggle="qsSecTog('${k}',this.open)"><summary><span>${title}</span><span class="qs-v">${sum}</span></summary><div class="qs-b">${extra?`<div style="margin-bottom:8px">${extra}</div>`:''}${content}</div></details>`
+    :`<div class="qz-row"><div class="lb">${title}${extra?`<span style="flex:1"></span>${extra}`:''}</div>${content}</div>`;
+  const scoreNote='<div class="qz-note">الإجابة الصحيحة <b style="color:var(--gn)">+1</b> والخاطئة <b style="color:var(--acc)">−1</b>، ما عدا <b>كتابة الإجابة</b>: الصحيحة <b style="color:var(--gn)">+2</b> والخاطئة <b style="color:var(--acc)">−1</b>. استخدام التلميح 💡 ينقص نقطة من الإجابة الصحيحة. الدرجة محصورة بين −5 و +5.</div>';
+  const allBtn='<button class="ab" onclick="qsAll()" title="كل الأنواع عدا الإجابة واللغات المستثناة">☑ اختيار الكل</button>';
+  $('mo').innerHTML=`<h2>🎯 اختبار الكلمات</h2>
+   ${mob?`<div class="qs-go"><div class="qs-sum">👤 ${esc(u.name)}<br>${qN} ← ${QL[QS.a]}<br>${TYN[QS.type]} · ${QS.n} أسئلة · ${srcN}</div><button onclick="qzStart()">▶ ابدأ الاختبار</button><div class="qz-note" id="qsInfo"></div></div>`:''}
+   ${sec('u','👤 المستخدم',esc(u.name),`<div class="qz-opts">${uNamed().map(x=>qsOpt(x.code===CU,false,esc(x.name),`qsUser(${x.code})`)).join('')}</div>`)}
+   ${sec('q',`❓ نوع السؤال${mob?'':' <small style="font-weight:400">(يمكن اختيار أكثر من نوع)</small>'}`,qN,`<div class="qz-opts">${qOpts}</div>`,allBtn)}
+   ${sec('a',`✍️ نوع الإجابة${mob?'':' <small style="font-weight:400">(نوع واحد فقط، ولا يكون نفس نوع السؤال)</small>'}`,QL[QS.a],`<div class="qz-opts">${aOpts}</div>`)}
+   ${sec('t','🧩 شكل السؤال',TYN[QS.type],`<div class="qz-opts">${tOpts}</div>${scoreNote}`)}
+   ${sec('n','🔢 عدد الأسئلة',String(QS.n),`<div class="qz-opts" style="align-items:center">${nOpts}</div>`)}
+   ${sec('s','📚 مصدر الكلمات',srcN,`<div class="qz-opts">${sOpts}</div>${list}`)}
+   ${notes.map(n=>`<div class="qz-note w">${n}</div>`).join('')}
+   ${mob?'':'<div class="qz-note" id="qsInfo" style="margin-top:8px"></div>'}
+   <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="ms2" onclick="oStats()">📊 الإحصائيات</button><button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzStart()">🎯 ابدأ الاختبار</button></div>`;
+  $('mov').classList.remove('qzrun');
+  if(QS.src==='tags'&&QS.tq)qsFilter(QS.tq);
+  qsInfo();}
+function qsSecTog(k,open){if(!QS)return;QS._op=QS._op||new Set();open?QS._op.add(k):QS._op.delete(k);}
+function qsUser(c){const src=QS.src,op=QS._op;setCU(c);QS=qsLoad(curU());QS._op=op;if(src==='sel')QS.src=src;rQS();}
+function qsQ(k){if(k===QS.a)return;
+  if(QS.q.has(k)){if(QS.q.size===1){ts('يجب اختيار نوع سؤال واحد على الأقل','er');return;}QS.q.delete(k);}else QS.q.add(k);rQS();}
+function qsA(k){if(QS.a===k)return;QS.a=k;
+  if(QS.q.has(k)){QS.q.delete(k);
+    if(!QS.q.size){const u=curU();const X=[u.x1,u.x2];QS.q.add(QK.find(x=>x!==k&&!X.includes(x))||QK.find(x=>x!==k));}
+    ts(`أُلغي «${QL[k]}» من الأسئلة لأنه أصبح نوع الإجابة`);}
+  rQS();}
+function qsAll(){const u=curU();const X=[u.x1,u.x2];const s=QK.filter(k=>k!==QS.a&&!X.includes(k));
+  if(!s.length){ts('كل اللغات الأخرى مستثناة في إعداداتك — حدّدها يدوياً','er');return;}QS.q=new Set(s);rQS();}
+function qsSet(k,v){QS[k]=v;rQS();}
+function qsN(v){QS.n=Math.max(1,Math.min(200,parseInt(v)||10));rQS();}
+function qsTog(k,id,el){const s=QS[k];s.has(id)?s.delete(id):s.add(id);if(el)el.classList.toggle('on',s.has(id));qsStore();qsInfo();}
+function qsFilter(q){q=(q||'').toLowerCase();document.querySelectorAll('.qs-it').forEach(el=>el.style.display=(!q||el.dataset.n.includes(q))?'':'none');}
+function qEligible(d){return !/^L\d+$/.test(String(d.id))&&(d[QS.a]||'').trim()&&[...QS.q].some(k=>k!==QS.a&&(d[k]||'').trim());}
+function qsPool(){let p=[];
+  if(QS.src==='view')p=[...new Set(V.map(v=>v.d))];
+  else if(QS.src==='sel')p=D.filter(d=>selW.has(String(d.id)));
+  else if(QS.src==='tags')p=D.filter(d=>[...d._tags].some(t=>QS.tags.has(t)));
+  else if(QS.src==='cats'){const ct=new Set(tags.filter(t=>QS.cats.has(t.catId)).map(t=>t.id));p=D.filter(d=>[...d._tags].some(t=>ct.has(t)));}
+  return p.filter(qEligible);}
+function qsInfo(){const el=$('qsInfo');if(!el)return;const p=qsPool();
+  el.innerHTML=p.length?`✅ الكلمات الصالحة لهذا الاختيار: <b>${p.length}</b> — سيُسأل عن <b>${Math.min(QS.n,p.length)}</b> منها، والكلمات الأضعف تظهر أكثر.`
+    :`<span style="color:var(--acc)">⚠️ لا توجد كلمات صالحة: ${QS.src==='tags'&&!QS.tags.size?'اختر تاجاً واحداً على الأقل':QS.src==='cats'&&!QS.cats.size?'اختر تصنيفاً واحداً على الأقل':'تأكد أن الكلمات فيها نص في حقلي السؤال والإجابة'}</span>`;
+  const pend=D.filter(d=>/^L\d+$/.test(String(d.id))).length;
+  if(pend)el.innerHTML+=`<div style="font-size:10px;color:var(--ft)">الكلمات الجديدة التي لم تُرحَّل بعد (${pend}) لا تدخل في الاختبار.</div>`;}
+
+// ── تشغيل الاختبار ──
+function qzItem(d,cfg){const qs=cfg.q.filter(k=>k!==cfg.a&&(d[k]||'').trim());
+  const it={d,q:qs[Math.floor(Math.random()*qs.length)],a:cfg.a,type:cfg.type,base:sOf(d,cfg.code),done:false};
+  if(cfg.type==='mc'){it.right=d[cfg.a];it.opts=shuffle([d,...distractors(d,cfg.a,3)]).map(x=>x[cfg.a]);}
+  else if(cfg.type==='tf'){const ds=Math.random()<.5?distractors(d,cfg.a,1):[];it.truth=!ds.length;it.shown=ds.length?ds[0][cfg.a]:d[cfg.a];}
+  it.hintable=it.q==='zh'&&cfg.a!=='pin'&&!!(d.pin||'').trim();
+  return it;}
+function qzStart(pool,cfg){
+  cfg=cfg||{q:[...QS.q],a:QS.a,type:QS.type,n:QS.n,code:CU};
+  pool=pool||qsPool();if(!pool.length){ts('لا توجد كلمات صالحة للاختبار','er');return;}
+  const words=pickWeighted(pool,Math.min(cfg.n,pool.length),cfg.code);
+  QZ={cfg,items:words.map(d=>qzItem(d,cfg)),i:0,saved:false};
+  $('mov').classList.remove('wide');$('mov').classList.add('qz');rQZ();oM();}
+function qzTxt(t,k){return `<span class="l-${k}"${k==='en'||k==='pin'?' dir="ltr"':''}>${esc(t)}</span>`;}
+function rQZ(){const z=QZ,it=z.items[z.i],n=z.items.length,u=U[z.cfg.code-1];
+  const okN=z.items.filter(x=>x.done&&x.ok).length,badN=z.items.filter(x=>x.done&&!x.ok).length;
+  const ltr=k=>k==='en'||k==='pin'?' dir="ltr"':'';
+  let body='';
+  if(it.type==='mc'){
+    body='<div class="qz-ans">'+it.opts.map((o,i)=>{let c='';if(it.done){if(cmpKey(o,it.a)===cmpKey(it.right,it.a))c='ok';else if(i===it.pick)c='bad';}
+      return `<button class="l-${it.a} ${c}"${ltr(it.a)} ${it.done?'disabled':''} onclick="qzMC(${i})"><span class="k">${i+1}</span>${esc(o)}</button>`;}).join('')+'</div>';}
+  else if(it.type==='tf'){
+    body=`<div style="text-align:center;font-size:12px;color:var(--dm);margin:-4px 0 6px">هل هذه هي الترجمة الصحيحة؟</div><div class="qz-prompt l-${it.a}" style="font-size:22px;padding:12px;border-style:dashed">${qzTxt(it.shown,it.a)}</div><div class="qz-ans">`
+      +[[true,'✓ صح'],[false,'✗ خطأ']].map(([v,l])=>{let c='';if(it.done){if(v===it.truth)c='ok';else if(v===it.pick)c='bad';}
+        return `<button class="${c}" ${it.done?'disabled':''} onclick="qzTF(${v})"><span class="k">${v?1:2}</span>${l}</button>`;}).join('')+'</div>';}
+  else{
+    body=`<input id="qzIn" class="qz-in l-${it.a}"${ltr(it.a)} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${it.a==='pin'?'مثال: yi3 zi0':'اكتب الإجابة ثم Enter'}" value="${esc(it.input||'')}" ${it.done?'disabled':''} oninput="qzPrev(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();event.stopPropagation();qzWrite();}">`
+      +(it.a==='pin'?`<div id="qzPv" dir="ltr" style="text-align:center;font-family:var(--fe);color:var(--pin);font-size:15px;min-height:22px;margin-top:4px">${esc(pyMark(it.input||''))}</div>`:'')
+      +(it.done?'':`<div style="display:flex;gap:6px;margin-top:8px"><button class="ab" style="flex:1;justify-content:center;padding:9px" onclick="qzWrite(true)">🤷 لا أعرف</button><button class="ab qz" style="flex:2;justify-content:center;padding:9px;font-size:12px" onclick="qzWrite()">✔ تحقق (Enter)</button></div>`);}
+  let hint='';
+  if(it.hintable&&!it.done)hint=it.hint?`<div dir="ltr" style="text-align:center;font-family:var(--fe);color:var(--pin);font-size:16px;margin:-6px 0 10px">${esc(it.d.pin)}</div>`
+    :`<div style="text-align:center;margin:-6px 0 10px"><button class="ab" style="display:inline-flex" onclick="QZ.items[QZ.i].hint=true;rQZ()" title="ينقص نقطة من الإجابة الصحيحة">💡 إظهار البينيين</button></div>`;
+  let fb='';
+  if(it.done){const d=it.d,nv=clampS((it.base==null?0:it.base)+it.delta);
+    fb=`<div class="qz-fb ${it.ok?'ok':'bad'}"><b>${it.ok?'✅ إجابة صحيحة':'❌ إجابة خاطئة'}</b> <b style="font-family:var(--fm)">${it.delta>0?'+':''}${it.delta}</b> <span style="font-size:11px">(الدرجة: ${sTxt(it.base)} ← ${sTxt(nv)})</span>
+      ${it.ok&&it.type!=='write'?'':`<div>الإجابة الصحيحة: <b>${qzTxt(d[it.a],it.a)}</b>${it.a==='pin'?` <span dir="ltr" style="font-family:var(--fm);font-size:12px">(${esc(pyNum(d.pin))})</span>`:''}</div>`}
+      <div class="qz-word">${QK.filter(k=>(d[k]||'').trim()).map(k=>qzTxt(d[k],k)).join('<span style="color:var(--ft)">·</span>')}</div></div>
+      <button class="ab qz qz-nx" style="width:100%;justify-content:center;padding:10px;margin-top:10px;font-size:13px" onclick="qzNext()">${z.i<n-1?'التالي ← (Enter)':'🏁 عرض النتيجة (Enter)'}</button>`;}
+  $('mo').innerHTML=`<div class="qz-top"><span>👤 <b>${esc(u?u.name:'')}</b></span><span style="flex:1"></span><span style="color:var(--gn);font-weight:700">✓ ${okN}</span><span style="color:var(--acc);font-weight:700">✗ ${badN}</span><span dir="ltr" style="font-family:var(--fm);font-weight:700;color:#7c3aed">${z.i+1} / ${n}</span><button class="ab d" onclick="qzQuit()">إنهاء</button></div>
+   <div class="qz-bar"><i style="width:${Math.round((z.i+(it.done?1:0))*100/n)}%"></i></div>
+   <div class="qz-dir">${QL[it.q]} ← ${QL[it.a]} <span style="color:var(--ft);font-weight:400">· ${{mc:'اختيار من متعدد',tf:'صح أم خطأ',write:'كتابة الإجابة'}[it.type]}</span></div>
+   <div class="qz-prompt l-${it.q}">${qzTxt(it.d[it.q],it.q)}</div>${hint}${body}${fb}`;
+  $('mov').classList.add('qzrun');
+  if(it.type==='write'&&!it.done)setTimeout(()=>{const el=$('qzIn');if(el)el.focus();},30);
+  else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();}
+function qzScore(it,ok){it.done=true;it.ok=ok;it.delta=ok?(it.type==='write'?2:1)-(it.hint?1:0):-1;rQZ();}
+function qzMC(i){const it=QZ.items[QZ.i];if(it.done)return;it.pick=i;qzScore(it,cmpKey(it.opts[i],it.a)===cmpKey(it.right,it.a));}
+function qzTF(v){const it=QZ.items[QZ.i];if(it.done)return;it.pick=v;qzScore(it,v===it.truth);}
+function qzWrite(giveUp){const it=QZ.items[QZ.i];if(it.done)return;const v=giveUp?'':(($('qzIn')||{}).value||'').trim();
+  if(!giveUp&&!v){ts('اكتب إجابتك أولاً أو اضغط «لا أعرف»','er');return;}
+  it.input=v;qzScore(it,!giveUp&&ansOk(it.d[it.a],v,it.a));}
+function qzPrev(v){QZ.items[QZ.i].input=v;const el=$('qzPv');if(el)el.textContent=pyMark(v);}
+function qzNext(){if(QZ.i<QZ.items.length-1){QZ.i++;rQZ();}else qzFinish();}
+function qzQuit(){const n=QZ.items.filter(x=>x.done).length;
+  if(!confirm(n?`إنهاء الاختبار الآن؟\nستُحفظ درجات ${n} سؤال أجبت عنها.`:'إنهاء الاختبار؟ لم تجب عن أي سؤال بعد.'))return;
+  if(!n){QZ=null;cM();return;}qzFinish();}
+// الحفظ بعد انتهاء الاختبار: محلياً فوراً، ثم دفعات (40 كلمة) في طابور الترحيل
+function qzFinish(){const z=QZ;if(z.saved){rQR();return;}z.saved=true;const code=z.cfg.code,agg=new Map();
+  z.items.filter(x=>x.done).forEach(x=>{const id=String(x.d.id);agg.set(id,(agg.get(id)||0)+x.delta);});
+  const items=[];
+  agg.forEach((dl,id)=>{const d=D.find(x=>String(x.id)===id);if(!d)return;if(!d._s)d._s=sEmpty();
+    const cur=d._s[code-1];if(!dl&&cur!=null)return;          // دلتا صفر على كلمة مختبرة سابقاً: لا تغيير
+    d._s[code-1]=clampS((cur==null?0:+cur)+dl);items.push([id,dl]);});
+  for(let i=0;i<items.length;i+=40)Q.push({op:'scores',code,bid:code+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)+'-'+i,items:items.slice(i,i+40)});
+  if(items.length)qDone();
+  buildView();bS();rQR();}
+function rQR(){$('mov').classList.remove('qzrun');const z=QZ,done=z.items.filter(x=>x.done),ok=done.filter(x=>x.ok),bad=done.filter(x=>!x.ok);
+  const pct=done.length?Math.round(ok.length*100/done.length):0,pts=done.reduce((s,x)=>s+x.delta,0);
+  const col=pct>=80?'var(--gn)':pct>=50?'#d97706':'var(--acc)';
+  const row=x=>{const d=D.find(y=>String(y.id)===String(x.d.id))||x.d,nv=sOf(d,z.cfg.code);
+    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px solid var(--bdl)"><span class="rs ${sCls(nv)}" title="الدرجة الجديدة">${sTxt(nv)}</span><div style="flex:1;min-width:0">${qzTxt(d[x.q],x.q)} <span style="color:var(--ft)">←</span> <b>${qzTxt(d[x.a],x.a)}</b>${x.type==='write'&&x.input?`<div style="font-size:11px;color:var(--acc)">كتبت: <span dir="auto">${esc(x.input)}</span></div>`:''}</div></div>`;};
+  $('mo').innerHTML=`<h2>🏁 نتيجة الاختبار</h2><div class="qz-res"><div class="qz-pct" style="color:${col}">${pct}%</div>
+     <div style="font-size:13px;color:var(--dm)">✓ ${ok.length} صحيحة · ✗ ${bad.length} خاطئة${done.length<z.items.length?` · بلا إجابة ${z.items.length-done.length}`:''} · النقاط <b style="font-family:var(--fm)">${pts>0?'+':''}${pts}</b></div></div>
+   ${bad.length?`<div style="font-weight:700;font-size:12px;margin:8px 0 4px;color:var(--acc)">❌ الكلمات الخاطئة (${bad.length})</div><div style="max-height:40vh;overflow-y:auto">${bad.map(row).join('')}</div>`:'<div class="qz-note" style="text-align:center;font-size:13px">🎉 ممتاز! كل إجاباتك صحيحة</div>'}
+   <div class="qz-note" style="margin-top:8px">💾 حُفظت الدرجات على جهازك وتُرحَّل إلى جوجل شيت تلقائياً.</div>
+   <div class="mbt"><button class="mc" onclick="QZ=null;cM()">إغلاق</button><button class="ms2" onclick="QZ=null;oStats()">📊 الإحصائيات</button><button class="ms2" onclick="qzMain()">🎯 اختبار جديد</button>${bad.length?'<button class="ms" style="background:#7c3aed;border-color:#7c3aed" onclick="qzRetry()">🔁 أعد اختباري في الأخطاء فقط</button>':''}</div>`;}
+// بعد الترحيل يُعاد تحميل الشيت فتتغير كائنات الكلمات في D، لذلك نبحث بالمعرّف لا بالكائن
+function qzRetry(){const z=QZ;const ids=[...new Set(z.items.filter(x=>x.done&&!x.ok).map(x=>String(x.d.id)))];
+  const w=ids.map(id=>D.find(d=>String(d.id)===id)).filter(Boolean);
+  if(!w.length){ts('لا توجد كلمات خاطئة','ok');return;}qzStart(w,Object.assign({},z.cfg,{n:w.length}));}
+// لوحة المفاتيح أثناء الاختبار: 1-4 للخيارات، 1/2 لصح/خطأ، Enter للتالي
+document.addEventListener('keydown',e=>{
+  if(!QZ||QZ.saved||!$('mov').classList.contains('opn')||!$('mov').classList.contains('qz'))return;
+  const it=QZ.items[QZ.i];if(!it)return;
+  if(it.done){if(e.key==='Enter'){e.preventDefault();qzNext();}return;}
+  if(document.activeElement&&document.activeElement.id==='qzIn')return;
+  const k=parseInt(e.key,10);
+  if(it.type==='mc'&&k>=1&&k<=it.opts.length){e.preventDefault();qzMC(k-1);}
+  else if(it.type==='tf'&&(k===1||k===2)){e.preventDefault();qzTF(k===1);}});
+
+// ═══════════ واجهة الجوال (≤800px) ═══════════
+// شريط سفلي بمجموعات الأزرار، لوحات من الأسفل، بطاقة الكلمة، وضع التحديد بالضغط المطوّل،
+// وزر الرجوع في الهاتف يغلق ما هو مفتوح بدل الخروج من التطبيق. شكل الكمبيوتر لا يتغير.
+const MQ=window.matchMedia('(max-width:800px)');
+function isMob(){return MQ.matches;}
+let selMode=false;
+
+// ── لوحة من أسفل الشاشة (قوائم المجموعات وبطاقة الكلمة) ──
+function shOpen(title,html,cls){const s=$('sh');s.className='sh'+(cls?' '+cls:'');
+  s.innerHTML='<div class="sh-grab"></div>'+(title?`<div class="sh-t">${title}</div>`:'')+html;
+  $('shv').classList.add('opn');s.scrollTop=0;}
+function shClose(){$('shv').classList.remove('opn');}
+function shItems(items){return '<div class="sh-list">'+items.map(it=>`<button class="sh-it${it.cls?' '+it.cls:''}"${it.dis?' disabled':''} onclick="shClose();${it.fn}"><span class="sh-ic">${it.ic}</span><span class="sh-tx"><b>${it.t}</b>${it.s?`<small>${it.s}</small>`:''}</span></button>`).join('')+'</div>';}
+function shBadge(c,t){return `<span class="sh-badge" style="background:${c}">${t}</span>`;}
+function curWordLbl(){const v=V[ai];return v?esc(v.d.ar||v.d.en||v.d.zh||''):'';}
+function shWords(){const has=!!V[ai],w=curWordLbl();
+  shOpen(shBadge('#16a34a','📝 الكلمات'),shItems([
+    {ic:'✏️',t:'تعديل الكلمة',s:has?w:'اختر كلمة من القائمة أولاً',fn:'oEditW()',dis:!has},
+    {ic:'🧹',t:'مسح درجات الكلمة',s:has?w:'',fn:'oClrSel()',dis:!has},
+    {ic:'🗑',t:'حذف الكلمة',s:has?w:'',fn:'oDelW()',dis:!has,cls:'danger'},
+    {ic:'☑',t:'تحديد عدة كلمات',s:'أو اضغط مطوّلاً على أي كلمة',fn:'selEnter()'},
+    {ic:'🌐',t:'ترجمة الناقص',s:'للكلمات المعروضة التي تنقصها ترجمة',fn:'trBulk()'}]));}
+function shLearn(){const u=curU();
+  shOpen(shBadge('#7c3aed','🎓 الحفظ والاختبارات'),shItems([
+    {ic:'🎯',t:'اختبار',s:'يبدأ بآخر إعدادات اختبارك',fn:'qzMain()'},
+    {ic:'👤',t:'المستخدم',s:u?'الحالي: '+esc(u.name):'لم تختر مستخدماً بعد',fn:'oUsers()'},
+    {ic:'📊',t:'الإحصائيات',s:'الإتقان والمقارنة بين المستخدمين',fn:'oStats()'}]));}
+function shOut(){const vs=(($('verSt')||{}).textContent||'').trim();
+  shOpen(shBadge('#d97706','📤 الإخراج والإعدادات'),shItems([
+    {ic:'🖨',t:'طباعة',s:'الكلمات المعروضة',fn:'prMain()'},
+    {ic:'⬇',t:'تصدير CSV',s:`${V.length} صف معروض`,fn:'expCSV()'},
+    {ic:'⚙',t:'إدارة التصنيفات والتاجات',fn:'oMng()'},
+    {ic:'🔗',t:'إعدادات الاتصال',s:esc(vs),fn:'oSetup()'}]));}
+
+// ── الشريط السفلي: المجموعات، أو شريط التحديد في وضع التحديد ──
+function rBnav(){const b=$('bnav');if(!b)return;
+  if(document.body.classList.contains('selmode')){const n=selW.size,dis=n?'':' disabled';
+    b.className='bnav no-pr sel';
+    b.innerHTML=`<div class="bn-cnt">✓ ${n}</div>`
+      +`<button onclick="selHdrTog()"><span>☑</span><small>الكل</small></button>`
+      +`<button onclick="qzMain()"${dis}><span>🎯</span><small>اختبار</small></button>`
+      +`<button onclick="oClrSel()"${dis}><span>🧹</span><small>الدرجات</small></button>`
+      +`<button onclick="oDelW()"${dis}><span>🗑</span><small>حذف</small></button>`
+      +`<button onclick="prMain()"${dis}><span>🖨</span><small>طباعة</small></button>`
+      +`<button class="bn-x" onclick="selClear()"><span>✕</span><small>إنهاء</small></button>`;
+    return;}
+  b.className='bnav no-pr';
+  b.innerHTML=`<button class="bn-wrd" onclick="shWords()"><span>📝</span><small>الكلمات</small></button>`
+    +`<button class="bn-lrn" onclick="shLearn()"><span>🎓</span><small>الحفظ</small></button>`
+    +`<button class="bn-add" onclick="oAdd()"><span>+</span><small>إضافة</small></button>`
+    +`<button class="bn-out" onclick="shOut()"><span>📤</span><small>الإخراج</small></button>`;}
+
+// ── التحديد: الضغط المطوّل يدخل وضع التحديد، والنقر بعدها يحدد الكلمات ──
+function selEnter(){selMode=true;selUpd();ts('وضع التحديد — انقر الكلمات لتحديدها','ok');}
+let _lpT=null,_lpFired=false,_lpX=0,_lpY=0;
+function lpStart(e){if(!isMob())return;const row=e.target.closest('.wr,.tc');if(!row)return;
+  const i=parseInt(row.id.slice(1),10),t=e.touches[0];_lpX=t.clientX;_lpY=t.clientY;_lpFired=false;clearTimeout(_lpT);
+  _lpT=setTimeout(()=>{_lpFired=true;try{if(navigator.vibrate)navigator.vibrate(25);}catch(x){}
+    const v=V[i];const was=document.body.classList.contains('selmode');selMode=true;
+    if(v&&!selW.has(String(v.d.id)))selTog(String(v.d.id));else selUpd();
+    if(!was)ts('وضع التحديد — انقر الكلمات لتحديدها، و✕ للإنهاء','ok');},500);}
+function lpMove(e){const t=e.touches[0];if(Math.abs(t.clientX-_lpX)>10||Math.abs(t.clientY-_lpY)>10)clearTimeout(_lpT);}
+function lpEnd(){clearTimeout(_lpT);}
+['wl','cg'].forEach(id=>{const el=$(id);if(!el)return;
+  el.addEventListener('touchstart',lpStart,{passive:true});el.addEventListener('touchmove',lpMove,{passive:true});
+  el.addEventListener('touchend',lpEnd);el.addEventListener('touchcancel',lpEnd);
+  el.addEventListener('contextmenu',e=>{if(isMob())e.preventDefault();});});
+// النقر على كلمة: على الكمبيوتر يحددها كالعادة، وعلى الجوال يفتح بطاقتها أو يحددها في وضع التحديد
+function rowTap(i){if(_lpFired){_lpFired=false;return;}
+  if(!isMob()){sw(i);return;}
+  if(document.body.classList.contains('selmode')){const v=V[i];if(v)selTog(String(v.d.id));return;}
+  wCard(i);}
+
+// ── بطاقة الكلمة ──
+function wCard(i){const v=V[i];if(!v)return;ai=i;ren();const d=v.d;
+  const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
+  const tg=[...d._tags].map(t=>tMap.get(t)).filter(Boolean).map(t=>`<span class="tag-chip">${esc(t.name)}</span>`).join('');
+  const sc=uNamed().map(u=>{const s=sOf(d,u.code);return `<span class="wc-u${u.code===CU?' cur':''}">${esc(u.name)} <span class="rs ${sCls(s)}">${sTxt(s)}</span></span>`;}).join('');
+  const html=`<div class="wc" id="wcBox">
+    <div class="wc-top"><span class="wc-tag">${esc(v.catName)} › ${esc(v.tagName)}</span><span class="cnt" dir="ltr">${i+1} / ${V.length}</span></div>
+    ${d.zh?`<div class="wc-zh">${esc(d.zh)}</div>`:''}${d.pin?`<div class="wc-pn" dir="ltr">${esc(d.pin)}</div>`:''}
+    ${d.ar?`<div class="wc-ar">${esc(d.ar)}</div>`:''}${d.en?`<div class="wc-en" dir="ltr">${esc(d.en)}</div>`:''}
+    ${sc?`<div class="wc-sc">${sc}</div>`:''}${tg?`<div class="tag-chips">${tg}</div>`:''}
+    <div class="wc-act"><button onclick="shClose();oEditW(${i})"><span>✏️</span>تعديل</button><button onclick="shClose();oClrSel('${esc(String(d.id))}')"><span>🧹</span>مسح الدرجة</button><button class="del" onclick="shClose();cDel(${i})"><span>🗑</span>حذف</button></div>
+    <div class="wc-nav"><button onclick="wcGo(-1)"${i<=0?' disabled':''}>السابقة ▶</button><button onclick="wcGo(1)"${i>=V.length-1?' disabled':''}>◀ التالية</button></div>
+    <div class="wc-hint">اسحب يميناً أو يساراً للتنقل بين الكلمات</div></div>`;
+  shOpen('',html,'wcard');
+  const box=$('wcBox');let x0=0,y0=0;
+  box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  box.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)wcGo(dx>0?1:-1);});}   // في العربية: السحب نحو اليمين = التالية
+function wcGo(k){const j=ai+k;if(j<0||j>=V.length)return;wCard(j);}
+
+// ── زر ✕ في النوافذ بملء الشاشة ──
+function movX(){if(QZ&&!QZ.saved&&$('mov').classList.contains('qz')){qzQuit();return;}cM();}
+
+// ── زر الرجوع في الهاتف: يغلق الطبقة العليا (قائمة، لوحة، نافذة، وضع التحديد) ──
+let _hs=false,_skipPop=false,_loQ=false;
+function closeDD(){document.querySelectorAll('.ddm').forEach(m=>m.classList.remove('opn'));document.querySelectorAll('.ddt').forEach(t=>t.classList.remove('opn'));}
+function anyLayer(){return !!document.querySelector('.ddm.opn')||!!$('trAskMov')||$('shv').classList.contains('opn')||$('mov').classList.contains('opn')||document.body.classList.contains('selmode');}
+function closeTop(){
+  if(document.querySelector('.ddm.opn')){closeDD();return;}
+  if($('trAskMov')){closeTrAsk();return;}
+  if($('shv').classList.contains('opn')){shClose();return;}
+  if($('mov').classList.contains('opn')){movX();return;}
+  if(document.body.classList.contains('selmode'))selClear();}
+function layerSync(){if(!isMob())return;const a=anyLayer();
+  try{if(a&&!_hs){history.pushState({dictLayer:1},'');_hs=true;}
+    else if(!a&&_hs){_hs=false;_skipPop=true;history.back();}}catch(e){}}
+window.addEventListener('popstate',()=>{if(_skipPop){_skipPop=false;return;}
+  _hs=false;if(!isMob())return;closeTop();
+  if(anyLayer()){try{history.pushState({dictLayer:1},'');_hs=true;}catch(e){}}});
+function layersChanged(){const dd=!!document.querySelector('.ddm.opn');
+  $('ddBk').classList.toggle('on',isMob()&&dd);
+  document.body.classList.toggle('noscroll',isMob()&&(dd||$('shv').classList.contains('opn')||$('mov').classList.contains('opn')));
+  layerSync();}
+const _lo=new MutationObserver(()=>{if(_loQ)return;_loQ=true;Promise.resolve().then(()=>{_loQ=false;layersChanged();});});
+['mov','shv','cm','gm','sm','fm'].forEach(id=>{const el=$(id);if(el)_lo.observe(el,{attributes:true,attributeFilter:['class']});});
+_lo.observe(document.body,{attributes:true,attributeFilter:['class'],childList:true});
+MQ.addEventListener('change',()=>{if(!isMob()){shClose();selMode=false;}closeDD();ren();layersChanged();});
+
+boot();
+</script>
+</body>
+</html>
