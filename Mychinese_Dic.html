@@ -343,6 +343,13 @@
 .ug-mng:hover{border-color:#7c3aed;color:#7c3aed}
 .ug-empty{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;font-size:13px;color:var(--dm);line-height:1.8}
 #pz{display:none}
+.ip-block{display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#1a1d26,#2d2d3a 55%,#1a1d26);overflow-y:auto;padding:24px 16px;font-family:var(--fa);direction:rtl}
+.ip-block.on{display:flex;align-items:center;justify-content:center}
+.ip-box{max-width:440px;text-align:center;color:#fff}
+.ip-box .ip-ic{width:72px;height:72px;background:linear-gradient(135deg,#d63031,#e74c3c);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 16px}
+.ip-box h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.ip-box p{font-size:14px;color:#9ca3af;line-height:1.8;margin-bottom:6px}
+.ip-box .ip-addr{font-family:var(--fm);font-size:13px;color:#6b7280;background:rgba(255,255,255,.08);padding:6px 14px;border-radius:8px;margin-top:12px;display:inline-block;direction:ltr}
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{background:#fff!important;margin:0;padding:0;font-size:10pt}
   .hdr,.tb,.top-area,.nv,.nv-mob,.no-pr,.tst,.mov,.lov{display:none!important}.mn{display:none!important}
@@ -381,7 +388,7 @@
     <div class="dd" id="fdd"><button class="ddt" onclick="tDD('f')"><span>👁 <span class="ab-txt">الحقول</span></span><span class="ddb" id="fb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="fm"></div></div>
     <div class="vg"><button class="vb on" data-v="list" onclick="sV('list')">☰ <span class="ab-txt">قائمة</span></button><button class="vb" data-v="cards" onclick="sV('cards')">⊞ <span class="ab-txt">بطاقات</span></button></div>
   </div>
-  <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث..."><button class="clr" id="sc" onclick="clrS()">✕</button></div>
+  <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث... (dian shi · dian4 · صنب*ميا)" title="البحث بالبينيين: اكتب الحروف فقط (dian shi) لكل النغمات، أو أضف رقم النغمة بعد المقطع (dian4 shi4) لنغمة محددة: 1-4، والساكنة 0.&#10;علامة * بين جزأين تبحث عن كلمة تحتوي الجزأين بالترتيب في كل اللغات: dia*sh أو صنب*ميا"><button class="clr" id="sc" onclick="clrS()">✕</button></div>
   <div class="favbar" id="favbar"></div>
   <span class="tbrk"></span>
   <div class="tgrp g-wrd"><span class="tg-l">📝 الكلمات</span>
@@ -417,6 +424,15 @@
 <div class="shov no-pr" id="shv" onclick="if(event.target===this)shClose()"><div class="sh" id="sh"></div></div>
 <div id="pz"></div>
 <div class="mov" id="mov" onclick="if(event.target===this&&!(QZ&&!QZ.saved))cM()"><button class="mov-x" onclick="movX()" aria-label="إغلاق">✕</button><div class="mo" id="mo"></div></div>
+<div class="ip-block" id="ipBlock">
+<div class="ip-box">
+<div class="ip-ic">🚫</div>
+<h2>الوصول غير مسموح</h2>
+<p>هذا الجهاز غير مسجل في قائمة الأجهزة المسموح بها.</p>
+<p>تواصل مع المسؤول لإضافة عنوانك.</p>
+<div class="ip-addr" id="ipAddr"></div>
+</div>
+</div>
 <div class="tst" id="tst"></div>
 <script>
 const DEFAULT_AU='https://script.google.com/macros/s/AKfycbyGc5bBovlXeim5uwPCti8z3dRep8Qb4685BkS_Tvie7zeCx3vqApiLQUze8mTx6C7L/exec';
@@ -429,6 +445,40 @@ function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
 let AU=lsGet('dictApiUrl')||DEFAULT_AU;
 const SID='1Vxj5-4Uo0tZ_X0tx9a3FSNHdS_z-zDns7_tsZUM9gWA';
 const EXPECTED_VER='v5-quiz-2026f';
+
+// ═══════════ التحقق من IP الجهاز ═══════════
+let _ipChecked=false;
+async function checkIP(){
+  try{
+    const ipRes=await fetch('https://api.ipify.org?format=json');
+    const ipData=await ipRes.json();
+    const myIP=ipData.ip;
+    const allowed=await new Promise((res,rej)=>{
+      const cb='_ipCb'+Date.now();
+      window[cb]=r=>{
+        if(r.status==='error'){rej(new Error('تعذر قراءة شيت IP'));return;}
+        const ips=r.table.rows.map(rw=>(rw.c[0]?.v||'').toString().trim()).filter(Boolean);
+        res(ips);
+      };
+      const s=document.createElement('script');
+      s.src=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:${cb}&headers=1&sheet=${encodeURIComponent('IP')}`;
+      s.onerror=()=>rej(new Error('تعذر الوصول إلى شيت IP'));
+      document.body.appendChild(s);
+    });
+    if(!allowed.includes(myIP)){
+      document.getElementById('ipAddr').textContent='IP: '+myIP;
+      document.getElementById('ipBlock').classList.add('on');
+      document.getElementById('ld').style.display='none';
+      return false;
+    }
+    _ipChecked=true;
+    return true;
+  }catch(e){
+    _ipChecked=true;
+    return true;
+  }
+}
+
 let D=[],V=[],cats=[],tags=[],selC=new Set,selT=new Set,ai=0,cv='list';
 const $=id=>document.getElementById(id);const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 function sL(m){$('lm').textContent=m||'جاري التحديث...';$('lov').classList.add('on');}function hL(){$('lov').classList.remove('on');}
@@ -570,6 +620,8 @@ function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();$('ld').st
 
 // ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
 async function boot(){
+  const ipOk=await checkIP();
+  if(!ipOk)return;
   const cached=cacheLoad();
   if(cached){paint();hL();checkApiVer();}
   if(Q.length){                       // تغييرات من جلسة سابقة: نرحّلها قبل أي تحديث
@@ -656,9 +708,9 @@ async function diagnose(){
 
 // ── BUILD VIEW: each term × each tag = display row ──
 function buildView(){
-  const q=$('si').value.trim().toLowerCase();
+  const sm=mkSearch($('si').value);
   const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
-  let fd=D.filter(d=>(!q||[d.ar,d.en,d.zh,d.pin].some(v=>(v||'').toLowerCase().includes(q))));
+  let fd=sm?D.filter(sm):D.slice();
   if(selT.size>0) fd=fd.filter(d=>{for(const t of selT){if(d._tags.has(t))return true;}return false;});
   if(selC.size>0){
     const catTags=new Set();tags.forEach(t=>{if(selC.has(t.catId))catTags.add(t.id);});
@@ -1922,6 +1974,37 @@ function uGate(){if(_uChosen)return;const g=$('ugate');if(!g)return;
     <button class="ug-mng" onclick="uGateHide();oUsers()">${us.length?'⚙ إدارة المستخدمين':'➕ إضافة مستخدم'}</button></div>`;
   g.classList.add('on');}
 function uChoose(c){if(!U[c-1]||!U[c-1].name)return;_uChosen=false;setCU(c);ts(`أهلاً ${U[c-1].name} 👋`,'ok');}
+
+// ═══════════ البحث: عادي + بينيين بلا نغمات أو بأرقام النغمات + علامة * ═══════════
+// • dian shi   ← يطابق diàn shì بأي نغمة (الحروف فقط، والمسافات اختيارية)
+// • dian4 shi4 ← المقاطع ذات الرقم تطابق تلك النغمة فقط (1-4، والساكنة 0 أو 5)
+// • dia*sh / صنب*ميا ← كلمة تحتوي الأجزاء بالترتيب، في كل اللغات
+const _pyC=new Map();
+function pyKeys(pin){pin=String(pin||'');let k=_pyC.get(pin);if(k)return k;
+  const num=pyNum(pin).replace(/\s+/g,'');
+  k={base:pin.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,''),
+     syl:(num.match(/[a-z]+[0-5]/g)||[]).map(x=>[x.slice(0,-1).replace(/v/g,'u'),x.slice(-1)])};
+  _pyC.set(pin,k);return k;}
+function mkSearch(raw){const q=String(raw||'').trim().toLowerCase();if(!q)return null;
+  const plain=d=>[d.ar,d.en,d.zh,d.pin].some(v=>(v||'').toLowerCase().includes(q));
+  if(q.includes('*')){
+    const parts=q.split('*').map(x=>x.trim()).filter(Boolean);if(!parts.length)return null;
+    const np=parts.map(norm),lp=parts.map(x=>x.replace(/u:|ü|v/g,'u').replace(/[^a-z]/g,''));
+    const inOrder=(str,ps)=>{let i=0;for(const x of ps){if(!x)continue;const j=str.indexOf(x,i);if(j<0)return false;i=j+x.length;}return true;};
+    const latin=lp.every(Boolean);
+    return d=>[d.ar,d.en,d.zh,d.pin].some(v=>v&&inOrder(norm(v),np))||(latin&&!!d.pin&&inOrder(pyKeys(d.pin).base,lp));}
+  if(!/[a-z]/.test(q)||!/^[a-zü:'’\s0-5]+$/.test(q))return plain;   // ليس بينيين: بحث عادي
+  const qq=q.replace(/u:|ü|v/g,'u');
+  if(/[0-5]/.test(qq)){
+    const toks=(qq.match(/[a-z]+[0-5]?/g)||[]).map(t=>/\d$/.test(t)?[t.slice(0,-1),t.slice(-1).replace('5','0')]:[t,null]);
+    return d=>{if(plain(d))return true;if(!d.pin)return false;const sy=pyKeys(d.pin).syl;
+      for(let i=0;i+toks.length<=sy.length;i++){let ok=true;
+        for(let k=0;k<toks.length;k++){const [l,t]=toks[k],[L,T]=sy[i+k],last=k===toks.length-1;
+          if(t!=null?(l!==L||t!==T):!(l===L||(last&&L.startsWith(l)))){ok=false;break;}}
+        if(ok)return true;}
+      return false;};}
+  const qb=qq.replace(/[^a-z]/g,'');
+  return d=>plain(d)||(!!d.pin&&pyKeys(d.pin).base.includes(qb));}
 
 boot();
 </script>
