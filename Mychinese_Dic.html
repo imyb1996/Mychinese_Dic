@@ -343,13 +343,16 @@
 .ug-mng:hover{border-color:#7c3aed;color:#7c3aed}
 .ug-empty{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;font-size:13px;color:var(--dm);line-height:1.8}
 #pz{display:none}
-.ip-block{display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#1a1d26,#2d2d3a 55%,#1a1d26);overflow-y:auto;padding:24px 16px;font-family:var(--fa);direction:rtl}
-.ip-block.on{display:flex;align-items:center;justify-content:center}
-.ip-box{max-width:440px;text-align:center;color:#fff}
-.ip-box .ip-ic{width:72px;height:72px;background:linear-gradient(135deg,#d63031,#e74c3c);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 16px}
-.ip-box h2{font-size:22px;font-weight:800;margin-bottom:8px}
-.ip-box p{font-size:14px;color:#9ca3af;line-height:1.8;margin-bottom:6px}
-.ip-box .ip-addr{font-family:var(--fm);font-size:13px;color:#6b7280;background:rgba(255,255,255,.08);padding:6px 14px;border-radius:8px;margin-top:12px;display:inline-block;direction:ltr}
+.dev-block{display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(160deg,#1a1d26,#2d2d3a 55%,#1a1d26);overflow-y:auto;padding:24px 16px;font-family:var(--fa);direction:rtl}
+.dev-block.on{display:flex;align-items:center;justify-content:center}
+.dev-box{max-width:440px;text-align:center;color:#fff}
+.dev-box .dev-ic{width:72px;height:72px;background:linear-gradient(135deg,#d63031,#e74c3c);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 16px}
+.dev-box h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.dev-box p{font-size:14px;color:#9ca3af;line-height:1.8;margin-bottom:6px}
+.dev-box .dev-id{font-family:var(--fm);font-size:12px;color:#6b7280;background:rgba(255,255,255,.08);padding:6px 14px;border-radius:8px;margin-top:12px;display:inline-block;direction:ltr;user-select:all;cursor:text}
+.dev-box .dev-copy{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 24px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:10px;font-family:var(--fa);font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
+.dev-box .dev-copy:hover{background:rgba(255,255,255,.2)}
+.dev-box .dev-hint{margin-top:14px;font-size:12px;color:#6b7280;line-height:1.8}
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{background:#fff!important;margin:0;padding:0;font-size:10pt}
   .hdr,.tb,.top-area,.nv,.nv-mob,.no-pr,.tst,.mov,.lov{display:none!important}.mn{display:none!important}
@@ -424,13 +427,14 @@
 <div class="shov no-pr" id="shv" onclick="if(event.target===this)shClose()"><div class="sh" id="sh"></div></div>
 <div id="pz"></div>
 <div class="mov" id="mov" onclick="if(event.target===this&&!(QZ&&!QZ.saved))cM()"><button class="mov-x" onclick="movX()" aria-label="إغلاق">✕</button><div class="mo" id="mo"></div></div>
-<div class="ip-block" id="ipBlock">
-<div class="ip-box">
-<div class="ip-ic">🚫</div>
-<h2>الوصول غير مسموح</h2>
-<p>هذا الجهاز غير مسجل في قائمة الأجهزة المسموح بها.</p>
-<p>تواصل مع المسؤول لإضافة عنوانك.</p>
-<div class="ip-addr" id="ipAddr"></div>
+<div class="dev-block" id="devBlock">
+<div class="dev-box">
+<div class="dev-ic">🔒</div>
+<h2>هذا الجهاز غير مسجّل</h2>
+<p>انسخ معرّف جهازك وأرسله إلى مالك القاموس للسماح لك بالدخول.</p>
+<div class="dev-id" id="devId"></div>
+<button class="dev-copy" onclick="copyDevId()">📋 نسخ المعرّف</button>
+<p class="dev-hint">بعد إضافة المعرّف من قِبل المسؤول، أعد فتح الصفحة.</p>
 </div>
 </div>
 <div class="tst" id="tst"></div>
@@ -446,35 +450,43 @@ let AU=lsGet('dictApiUrl')||DEFAULT_AU;
 const SID='1Vxj5-4Uo0tZ_X0tx9a3FSNHdS_z-zDns7_tsZUM9gWA';
 const EXPECTED_VER='v5-quiz-2026f';
 
-// ═══════════ التحقق من IP الجهاز ═══════════
-let _ipChecked=false;
-async function checkIP(){
+// ═══════════ التحقق من الجهاز ═══════════
+const DEV_KEY='dictDeviceId';
+function getDeviceId(){
+  let id=lsGet(DEV_KEY);
+  if(!id){id=crypto.randomUUID?crypto.randomUUID():'xxxx-xxxx-xxxx'.replace(/x/g,()=>Math.floor(Math.random()*16).toString(16));lsSet(DEV_KEY,id);}
+  return id;
+}
+function copyDevId(){
+  const did=getDeviceId();
+  navigator.clipboard.writeText(did).then(()=>{
+    const btn=document.getElementById('devBlock').querySelector('.dev-copy');
+    btn.textContent='✅ تم النسخ';setTimeout(()=>{btn.innerHTML='📋 نسخ المعرّف';},2000);
+  }).catch(()=>{window.prompt('انسخ المعرّف يدوياً:',did);});
+}
+async function checkDevice(){
+  const did=getDeviceId();
   try{
-    const ipRes=await fetch('https://api.ipify.org?format=json');
-    const ipData=await ipRes.json();
-    const myIP=ipData.ip;
     const allowed=await new Promise((res,rej)=>{
-      const cb='_ipCb'+Date.now();
+      const cb='_devCb'+Date.now();
       window[cb]=r=>{
-        if(r.status==='error'){rej(new Error('تعذر قراءة شيت IP'));return;}
-        const ips=r.table.rows.map(rw=>(rw.c[0]?.v||'').toString().trim()).filter(Boolean);
-        res(ips);
+        if(r.status==='error'){rej(new Error('err'));return;}
+        const ids=r.table.rows.map(rw=>(rw.c[0]?.v||'').toString().trim()).filter(Boolean);
+        res(ids);
       };
       const s=document.createElement('script');
-      s.src=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:${cb}&headers=1&sheet=${encodeURIComponent('IP')}`;
-      s.onerror=()=>rej(new Error('تعذر الوصول إلى شيت IP'));
+      s.src=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:${cb}&headers=1&sheet=${encodeURIComponent('الأجهزة')}`;
+      s.onerror=()=>rej(new Error('err'));
       document.body.appendChild(s);
     });
-    if(!allowed.includes(myIP)){
-      document.getElementById('ipAddr').textContent='IP: '+myIP;
-      document.getElementById('ipBlock').classList.add('on');
+    if(!allowed.includes(did)){
+      document.getElementById('devId').textContent=did;
+      document.getElementById('devBlock').classList.add('on');
       document.getElementById('ld').style.display='none';
       return false;
     }
-    _ipChecked=true;
     return true;
   }catch(e){
-    _ipChecked=true;
     return true;
   }
 }
@@ -620,8 +632,8 @@ function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();$('ld').st
 
 // ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
 async function boot(){
-  const ipOk=await checkIP();
-  if(!ipOk)return;
+  const devOk=await checkDevice();
+  if(!devOk)return;
   const cached=cacheLoad();
   if(cached){paint();hL();checkApiVer();}
   if(Q.length){                       // تغييرات من جلسة سابقة: نرحّلها قبل أي تحديث
