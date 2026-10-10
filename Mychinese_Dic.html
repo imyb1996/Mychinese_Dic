@@ -397,6 +397,7 @@
   <div class="tgrp g-wrd"><span class="tg-l">📝 الكلمات</span>
     <button class="ab g" onclick="oAdd()">+ <span class="ab-txt">إضافة</span></button>
     <button class="ab" onclick="oEditW()" title="تعديل الكلمة الحالية (أو انقر نقرتين على الكلمة)">✏️ <span class="ab-txt">تعديل</span></button>
+    <button class="ab" onclick="oDup()" title="تكرار الكلمة الحالية — تفتح نافذة إضافة ببيانات الكلمة الحالية">📋 <span class="ab-txt">تكرار</span></button>
     <button class="ab" onclick="oClrSel()" title="مسح الدرجات المسجلة من الكلمات المحددة ✓، أو من الكلمة الحالية">🧹 <span class="ab-txt">مسح الدرجات</span></button>
     <button class="ab d" onclick="oDelW()" title="حذف الكلمة الحالية، أو كل الكلمات المحددة ✓">🗑 <span class="ab-txt">حذف</span></button>
     <button class="ab" onclick="trBulk()" title="ترجمة تلقائية للكلمات المحددة ✓، أو للمعروضة إن لم تحدد شيئاً">🌐 <span class="ab-txt">ترجمة</span></button>
@@ -1190,6 +1191,40 @@ function addClear(){['fa','fen','fzh','fpn'].forEach(id=>{const el=$(id);if(el)e
   const w=$('dupWarn');if(w){w.innerHTML='';w.style.display='none';}
   renderAddTags();setTimeout(()=>$('fa')?.focus(),30);}
 
+// ═══ DUPLICATE (تكرار كلمة) ═══
+function oDup(){
+  const v=V[ai];if(!v){ts('لا توجد كلمة لتكرارها','er');return;}
+  const d=v.d;_selTagsAdd=new Set(d._tags);
+  const h=`<h2>📋 تكرار كلمة</h2><div class="fg">
+  <div class="fi fu" id="recTRow"></div>
+  <div class="fi fu"><label>التاجات</label>
+    <div class="tag-search"><input id="addSI" placeholder="بحث..." oninput="addTagSrch(this)" onfocus="addTagSrch(this)" onblur="setTimeout(()=>$('addDD').classList.remove('show'),200)"><div class="tag-dd" id="addDD"></div></div>
+    <div id="addSel" class="tag-chips" style="margin-top:6px"></div>
+  </div>
+  <div class="fi fu"><label>عربي</label><div style="display:flex;gap:4px"><input id="fa" value="${esc(d.ar)}" style="flex:1;min-width:0" oninput="dupChk('fa','fen','dupWarn')"><button class="tr-btn" style="padding:4px 10px" onclick="trAdd(true,'ar')" title="ترجمة من العربي">🌐 ترجمة</button></div></div>
+  <div class="fi fu"><label>English</label><div style="display:flex;gap:4px"><input id="fen" value="${esc(d.en)}" dir="ltr" style="flex:1;min-width:0" oninput="dupChk('fa','fen','dupWarn')"><button class="tr-btn" style="padding:4px 10px" onclick="trAdd(true,'en')" title="ترجمة من الإنجليزي">🌐 ترجمة</button></div></div>
+  <div class="fi"><label>中文</label><input id="fzh" value="${esc(d.zh)}" class="zi"></div>
+  <div class="fi"><label>Pīnyīn</label><input id="fpn" value="${esc(d.pin)}" dir="ltr"></div>
+  <div class="fu" id="dupWarn" style="display:none"></div></div>
+  <div class="mbt"><button class="mc" onclick="cM()">إلغاء</button><button class="ms" onclick="svDup()">💾 حفظ</button></div>`;
+  $('mo').innerHTML=h;oM();renderAddTags();
+  dupChk('fa','fen','dupWarn');
+  setTimeout(()=>$('fa')?.focus(),50);}
+function svDup(){
+  const a=$('fa').value.trim(),e=$('fen').value.trim();
+  if(!a&&!e){ts('أدخل الكلمة بالعربي أو الإنجليزي','er');return;}
+  const hits=findDup(a,e);
+  if(hits.length){ts('هذه الكلمة موجودة بالفعل — عدّل البيانات أولاً','er');return;}
+  askMissingTr('add',doSvDup);}
+function doSvDup(){trBump();
+  const ar=$('fa').value.trim(),en=$('fen').value.trim();
+  const zh=$('fzh').value.trim(),pin=$('fpn').value.trim(),tagsStr=[..._selTagsAdd].join(',');
+  const tmp='L'+(++_qseq);
+  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr};nd._tags=parseTags(tagsStr);
+  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr});
+  recTPush([..._selTagsAdd]);cM();refresh(tmp);
+  ts(`تم حفظ "${ar||en}" ✓`,'ok');}
+
 // زر الحذف: لو كان هناك كلمات محددة ✓ يحذفها كلها، وإلا يحذف الكلمة الحالية
 function oDelW(){
   const sel=[...selW].filter(id=>D.some(d=>String(d.id)===String(id)));
@@ -1437,7 +1472,7 @@ function sEmpty(){return new Array(MAX_U).fill(null);}
 function sOf(d,code){code=code||cuCode();if(!code||!d._s)return null;const v=d._s[code-1];return v==null||v===''?null:+v;}
 function sCls(s){return s==null?'s-n':s<=-1?'s-w':s>=3?'s-g':'s-m';}
 function sTxt(s){return s==null?'—':(s>0?'+'+s:String(s));}
-function sBadge(d){const s=sOf(d);return `<span class="rs ${sCls(s)}" title="${s==null?'لم تُختبر بعد':'درجة الحفظ: '+sTxt(s)}">${sTxt(s)}</span>`;}
+function sBadge(d){const s=sOf(d);return `<span class="rs ${sCls(s)}" title="${s==null?'لم تُختبر بعد':sTxt(s)}">${sTxt(s)}</span>`;}
 function parseSc(c){if(!c||c.v==null||c.v==='')return null;const n=Number(c.v);return isNaN(n)?null:clampS(Math.round(n));}
 // نتيجة الخادم هي المرجع، إلا لو بقيت دفعات أخرى لنفس المستخدم في الطابور (قيمتها المحلية أحدث)
 function applySrvScores(code,map){if(Q.some(x=>x!==Q[0]&&/scores/i.test(x.op)&&x.code===code))return;
@@ -1701,7 +1736,7 @@ function rQS(){qsStore();const u=curU();const X=new Set([u.x1,u.x2].filter(Boole
   const sec=(k,title,sum,content,extra)=>mob
     ?`<details class="qz-sec"${QS._op&&QS._op.has(k)?' open':''} ontoggle="qsSecTog('${k}',this.open)"><summary><span>${title}</span><span class="qs-v">${sum}</span></summary><div class="qs-b">${extra?`<div style="margin-bottom:8px">${extra}</div>`:''}${content}</div></details>`
     :`<div class="qz-row"><div class="lb">${title}${extra?`<span style="flex:1"></span>${extra}`:''}</div>${content}</div>`;
-  const scoreNote='<div class="qz-note">الإجابة الصحيحة <b style="color:var(--gn)">+1</b> والخاطئة <b style="color:var(--acc)">−1</b>، ما عدا <b>كتابة الإجابة</b>: الصحيحة <b style="color:var(--gn)">+2</b> والخاطئة <b style="color:var(--acc)">−1</b>. استخدام التلميح 💡 ينقص نقطة من الإجابة الصحيحة. الدرجة محصورة بين −5 و +5.</div>';
+  const scoreNote='<div class="qz-note">الإجابة الصحيحة <b style="color:var(--gn)">+1</b> والخاطئة <b style="color:var(--acc)">−1</b>، ما عدا <b>كتابة الإجابة</b>: الصحيحة <b style="color:var(--gn)">+2</b> والخاطئة <b style="color:var(--acc)">−1</b>. استخدام التلميح 💡 ينقص نقطة من الإجابة الصحيحة.<br>الدرجة من <b>−5</b> إلى <b>+5</b> لكل كلمة.</div>';
   const allBtn='<button class="ab" onclick="qsAll()" title="كل الأنواع عدا الإجابة واللغات المستثناة">☑ اختيار الكل</button>';
   $('mo').innerHTML=`<h2>🎯 اختبار الكلمات</h2>
    ${mob?`<div class="qs-go"><div class="qs-sum">👤 ${esc(u.name)}<br>${qN} ← ${QL[QS.a]}<br>${TYN[QS.type]} · ${QS.n} أسئلة · ${srcN}</div><button onclick="qzStart()">▶ ابدأ الاختبار</button><div class="qz-note" id="qsInfo"></div></div>`:''}
@@ -1806,16 +1841,17 @@ function qzFinish(){const z=QZ;if(z.saved){rQR();return;}z.saved=true;const code
   z.items.filter(x=>x.done).forEach(x=>{const id=String(x.d.id);agg.set(id,(agg.get(id)||0)+x.delta);});
   const items=[];
   agg.forEach((dl,id)=>{const d=D.find(x=>String(x.id)===id);if(!d)return;if(!d._s)d._s=sEmpty();
-    const cur=d._s[code-1];if(!dl&&cur!=null)return;          // دلتا صفر على كلمة مختبرة سابقاً: لا تغيير
+    const cur=d._s[code-1];if(!dl&&cur!=null)return;
     d._s[code-1]=clampS((cur==null?0:+cur)+dl);items.push([id,dl]);});
-  for(let i=0;i<items.length;i+=40)Q.push({op:'scores',code,bid:code+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)+'-'+i,items:items.slice(i,i+40)});
+  const ts0=Date.now().toString(36);
+  for(let i=0;i<items.length;i+=40)Q.push({op:'scores',code,bid:code+'-'+ts0+'-'+Math.random().toString(36).slice(2,8)+'-'+i,items:items.slice(i,i+40)});
   if(items.length)qDone();
   buildView();bS();rQR();}
 function rQR(){$('mov').classList.remove('qzrun');const z=QZ,done=z.items.filter(x=>x.done),ok=done.filter(x=>x.ok),bad=done.filter(x=>!x.ok);
   const pct=done.length?Math.round(ok.length*100/done.length):0,pts=done.reduce((s,x)=>s+x.delta,0);
   const col=pct>=80?'var(--gn)':pct>=50?'#d97706':'var(--acc)';
   const row=x=>{const d=D.find(y=>String(y.id)===String(x.d.id))||x.d,nv=sOf(d,z.cfg.code);
-    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px solid var(--bdl)"><span class="rs ${sCls(nv)}" title="الدرجة الجديدة">${sTxt(nv)}</span><div style="flex:1;min-width:0">${qzTxt(d[x.q],x.q)} <span style="color:var(--ft)">←</span> <b>${qzTxt(d[x.a],x.a)}</b>${x.type==='write'&&x.input?`<div style="font-size:11px;color:var(--acc)">كتبت: <span dir="auto">${esc(x.input)}</span></div>`:''}</div></div>`;};
+    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px solid var(--bdl)"><span class="rs ${sCls(nv)}">${sTxt(nv)}</span><div style="flex:1;min-width:0">${qzTxt(d[x.q],x.q)} <span style="color:var(--ft)">←</span> <b>${qzTxt(d[x.a],x.a)}</b>${x.type==='write'&&x.input?`<div style="font-size:11px;color:var(--acc)">كتبت: <span dir="auto">${esc(x.input)}</span></div>`:''}</div></div>`;};
   $('mo').innerHTML=`<h2>🏁 نتيجة الاختبار</h2><div class="qz-res"><div class="qz-pct" style="color:${col}">${pct}%</div>
      <div style="font-size:13px;color:var(--dm)">✓ ${ok.length} صحيحة · ✗ ${bad.length} خاطئة${done.length<z.items.length?` · بلا إجابة ${z.items.length-done.length}`:''} · النقاط <b style="font-family:var(--fm)">${pts>0?'+':''}${pts}</b></div></div>
    ${bad.length?`<div style="font-weight:700;font-size:12px;margin:8px 0 4px;color:var(--acc)">❌ الكلمات الخاطئة (${bad.length})</div><div style="max-height:40vh;overflow-y:auto">${bad.map(row).join('')}</div>`:'<div class="qz-note" style="text-align:center;font-size:13px">🎉 ممتاز! كل إجاباتك صحيحة</div>'}
@@ -1917,7 +1953,7 @@ function wCard(i){const v=V[i];if(!v)return;ai=i;ren();const d=v.d;
     ${d.zh?`<div class="wc-zh">${esc(d.zh)}</div>`:''}${d.pin?`<div class="wc-pn" dir="ltr">${esc(d.pin)}</div>`:''}
     ${d.ar?`<div class="wc-ar">${esc(d.ar)}</div>`:''}${d.en?`<div class="wc-en" dir="ltr">${esc(d.en)}</div>`:''}
     ${sc?`<div class="wc-sc">${sc}</div>`:''}${tg?`<div class="tag-chips">${tg}</div>`:''}
-    <div class="wc-act"><button onclick="shClose();oEditW(${i})"><span>✏️</span>تعديل</button><button onclick="shClose();oClrSel('${esc(String(d.id))}')"><span>🧹</span>مسح الدرجة</button><button class="del" onclick="shClose();cDel(${i})"><span>🗑</span>حذف</button></div>
+    <div class="wc-act" style="grid-template-columns:repeat(4,1fr)"><button onclick="shClose();oEditW(${i})"><span>✏️</span>تعديل</button><button onclick="shClose();oDup()"><span>📋</span>تكرار</button><button onclick="shClose();oClrSel('${esc(String(d.id))}')"><span>🧹</span>مسح الدرجة</button><button class="del" onclick="shClose();cDel(${i})"><span>🗑</span>حذف</button></div>
     <div class="wc-nav"><button onclick="wcGo(-1)"${i<=0?' disabled':''}>السابقة ▶</button><button onclick="wcGo(1)"${i>=V.length-1?' disabled':''}>◀ التالية</button></div>
     <div class="wc-hint">اسحب يميناً أو يساراً للتنقل بين الكلمات</div></div>`;
   shOpen('',html,'wcard');
