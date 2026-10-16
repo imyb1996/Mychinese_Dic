@@ -84,7 +84,7 @@
   .nv-mob .nb{padding:5px 12px;font-size:12px}.nb-del{background:var(--accl)!important;color:var(--acc)!important;border-color:var(--acc)!important}
   .lhd{display:none!important}
   .wr{display:flex!important;gap:6px;padding:8px 10px;grid-template-columns:none}
-  .wr .ra,.wr .re,.wr .rz,.wr .rp{display:none}
+  .wr .ra,.wr .re,.wr .rz,.wr .rp,.wr .sk-t,.wr .skh{display:none}
   .wr .wr-mob-r,.wr .wr-mob-l{display:block}.wr .wr-mob-r{flex:1;min-width:0}.wr .wr-mob-r .m-ar{font-size:14px;font-weight:700;text-align:right}.wr .wr-mob-r .m-en{font-size:12px;color:var(--bl);text-align:right;font-family:var(--fe);font-weight:500;direction:ltr}
   .wr .wr-mob-l{text-align:center;flex-shrink:0;min-width:65px}.wr .wr-mob-l .m-zh{font-size:18px;color:var(--acc);font-family:var(--fz);font-weight:600;line-height:1.2}.wr .wr-mob-l .m-pn{font-size:10px;color:var(--pin);font-family:var(--fe);margin-top:1px}
   .ccg{grid-template-columns:1fr!important}.tc .tc-mob-r,.tc .tc-mob-l{display:none}
@@ -151,11 +151,15 @@
 .ab.act{border-color:#7c3aed;color:#6d28d9;background:#faf5ff}
 .rs{display:inline-flex;justify-content:center;align-items:center;min-width:32px;padding:1px 6px;border-radius:10px;font-family:var(--fm);font-size:11px;font-weight:700;line-height:1.5;flex:none}
 .s-w{background:#fde2e1;color:#c0392b}.s-m{background:#fef3c7;color:#92400e}.s-g{background:#dcfce7;color:#166534}.s-n{background:var(--sf);color:var(--ft);border:1px dashed var(--bd)}
+.skip-b{font-size:11px;opacity:.7;flex:none;cursor:pointer}.tc .skip-b{position:absolute;top:5px;right:5px}
+.sk-t{justify-self:center;font-size:13px;opacity:.15;width:24px;height:24px;display:flex;align-items:center;justify-content:center}.sk-t.on{opacity:1}.skh{text-align:center;font-size:11px}
 .wr .rs{justify-self:center}.tc .rs{position:absolute;top:5px;left:5px}
 #sm{min-width:300px;max-height:none}
 .sf-box{padding:8px}
 .mov.qz .mo{max-width:660px}.mov.wide .mo{max-width:880px}
 .qz-row{margin-bottom:12px}.qz-row>.lb{font-size:11px;font-weight:700;color:var(--dm);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sc-pop{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45)}.sc-pop-in{background:var(--card);border-radius:var(--rl);padding:20px;max-width:420px;width:92%;max-height:85vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.sc-tbl{width:100%;border-collapse:collapse;font-size:13px;text-align:center}.sc-tbl th,.sc-tbl td{padding:10px 6px;border-bottom:1px solid var(--bdl)}.sc-tbl th{font-size:11px;color:var(--dm);font-weight:700;background:var(--sf)}.sc-tbl td:first-child,.sc-tbl th:first-child{text-align:right}
 .qz-opts{display:flex;flex-wrap:wrap;gap:5px}
 .qz-opt{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--bd);background:var(--sf);border-radius:7px;padding:6px 11px;font-size:12px;font-family:var(--fa);cursor:pointer;color:var(--tx);user-select:none}
 .qz-opt:hover{border-color:#7c3aed}.qz-opt.on{background:#ede9fe;border-color:#7c3aed;color:#5b21b6;font-weight:700}
@@ -222,6 +226,7 @@
 .wc-u{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--dm);background:var(--sf);border:1px solid var(--bdl);border-radius:14px;padding:2px 4px 2px 8px}
 .wc-u.cur{border-color:#7c3aed;color:#5b21b6;font-weight:700}
 .wc .tag-chips{justify-content:center;margin-top:8px}
+.wc-skip{text-align:center;color:var(--acc);font-size:12px;font-weight:700;margin-top:8px;padding:4px 8px;background:var(--accl);border-radius:8px}
 .wc-act{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
 .wc-act button{min-height:52px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);font-family:var(--fa);font-size:12.5px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--tx)}
 .wc-act button span{font-size:19px}.wc-act .del{color:var(--acc);background:var(--accl);border-color:#d6303140}
@@ -389,8 +394,9 @@
     <div class="dd" id="cdd"><button class="ddt" onclick="tDD('c')"><span>📂 <span class="ab-txt">التصنيف</span></span><span class="ddb" id="cb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="cm"></div></div>
     <div class="dd" id="gdd"><button class="ddt" onclick="tDD('g')"><span>🏷 <span class="ab-txt">التاج</span></span><span class="ddb" id="gb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="gm"></div></div>
     <div class="dd" id="sdd"><button class="ddt" onclick="tDD('s')" title="فلترة الكلمات حسب درجة حفظ المستخدم الحالي"><span>🎯 <span class="ab-txt">الحفظ</span></span><span class="ddb" id="sfb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="sm"></div></div>
+    <div class="dd" id="kdd"><button class="ddt" onclick="tDD('k')" title="فلترة حسب حالة الاستبعاد"><span>🚫 <span class="ab-txt">الاستبعاد</span></span><span class="ddb" id="skfb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="km"></div></div>
     <div class="dd" id="fdd"><button class="ddt" onclick="tDD('f')"><span>👁 <span class="ab-txt">الحقول</span></span><span class="ddb" id="fb" style="display:none">0</span><span class="dda">▼</span></button><div class="ddm" id="fm"></div></div>
-    <button class="ab" id="clrAllBtn" onclick="clrAllF()" title="مسح كل الفلاتر (البحث + التصنيف + التاج + الحفظ)" style="display:none">✕ <span class="ab-txt">مسح الفلترة</span></button>
+    <button class="ab" id="clrAllBtn" onclick="clrAllF()" title="مسح كل الفلاتر (البحث + التصنيف + التاج + الحفظ + الاستبعاد)" style="display:none">✕ <span class="ab-txt">مسح الفلترة</span></button>
     <div class="vg"><button class="vb on" data-v="list" onclick="sV('list')">☰ <span class="ab-txt">قائمة</span></button><button class="vb" data-v="cards" onclick="sV('cards')">⊞ <span class="ab-txt">بطاقات</span></button></div>
   </div>
   <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث... (dian shi · dian4 · صنب*ميا)" title="البحث بالبينيين: اكتب الحروف فقط (dian shi) لكل النغمات، أو أضف رقم النغمة بعد المقطع (dian4 shi4) لنغمة محددة: 1-4، والساكنة 0.&#10;علامة * بين جزأين تبحث عن كلمة تحتوي الجزأين بالترتيب في كل اللغات: dia*sh أو صنب*ميا"><button class="clr" id="sc" onclick="clrS()">✕</button><div class="sh-dd" id="shDD"></div></div>
@@ -400,6 +406,7 @@
     <button class="ab g" onclick="oAdd()">+ <span class="ab-txt">إضافة</span></button>
     <button class="ab" onclick="oEditW()" title="تعديل الكلمة الحالية (أو انقر نقرتين على الكلمة)">✏️ <span class="ab-txt">تعديل</span></button>
     <button class="ab" onclick="oDup()" title="تكرار الكلمة الحالية — تفتح نافذة إضافة ببيانات الكلمة الحالية">📋 <span class="ab-txt">تكرار</span></button>
+    <button class="ab" onclick="oSkipSel()" title="استبعاد/إلغاء استبعاد الكلمات المحددة ✓ من الاختبارات، أو الكلمة الحالية">🚫 <span class="ab-txt">استبعاد</span></button>
     <button class="ab" onclick="oClrSel()" title="مسح الدرجات المسجلة من الكلمات المحددة ✓، أو من الكلمة الحالية">🧹 <span class="ab-txt">مسح الدرجات</span></button>
     <button class="ab d" onclick="oDelW()" title="حذف الكلمة الحالية، أو كل الكلمات المحددة ✓">🗑 <span class="ab-txt">حذف</span></button>
     <button class="ab" onclick="trBulk()" title="ترجمة تلقائية للكلمات المحددة ✓، أو للمعروضة إن لم تحدد شيئاً">🌐 <span class="ab-txt">ترجمة</span></button>
@@ -412,7 +419,7 @@
   <div class="tgrp g-out"><span class="tg-l">📤 الإخراج</span>
     <button class="ab p" onclick="prMain()" title="طباعة — للكلمات المحددة ✓ إن وُجدت">🖨 <span class="ab-txt">طباعة</span></button>
     <button class="ab" onclick="expCSV()" title="تصدير الكلمات المعروضة إلى ملف CSV">⬇ <span class="ab-txt">CSV</span></button>
-    <button class="ab" onclick="oMng()" title="إدارة التصنيفات والتاجات">⚙ <span class="ab-txt">إدارة</span></button>
+    <button class="ab" onclick="oMng()" title="إدارة التصنيفات والتاجات والدرجات">⚙ <span class="ab-txt">إدارة</span></button>
     <button class="ab" onclick="oSetup()" title="إعدادات الاتصال">🔗 <span class="ab-txt">الاتصال</span></button>
   </div>
   <div class="selbar" id="selbar" style="display:none"><span>✓ <b id="selN">0</b></span><button onclick="selAllView()" title="تحديد كل الكلمات المعروضة">تحديد المعروض</button><button onclick="selClear()" title="إلغاء التحديد">✕</button></div>
@@ -516,13 +523,13 @@ const CAN_STORE=(function(){try{localStorage.setItem('__probe','1');const ok=loc
 function linkTags(){const m=new Map();cats.forEach(c=>m.set(c.id,c));
   tags.forEach(t=>{const c=m.get(t.catId);t.catName=c?c.name:'';t.catOrd=c?parseInt(c.ord)||0:999;});}
 function cacheSave(){try{lsSet(LS_KEY,JSON.stringify({v:1,at:Date.now(),
-  terms:D.map(d=>({id:d.id,ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags,s:d._s})),
+  terms:D.map(d=>({id:d.id,ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags,s:d._s,skip:d.skip||''})),
   users:U,
   cats:cats.map(c=>({id:c.id,ord:c.ord,name:c.name})),
   tags:tags.map(t=>({id:t.id,name:t.name,catId:t.catId})),
   queue:Q,seq:_qseq}));}catch(e){ts('تعذر الحفظ المحلي — مساحة المتصفح ممتلئة','er');}}
 function cacheLoad(){try{const o=JSON.parse(lsGet(LS_KEY)||'null');if(!o||!Array.isArray(o.terms)||!o.terms.length)return false;
-  D=o.terms.map(t=>{const d=Object.assign({},t);d._tags=parseTags(d.tags);d._s=Array.isArray(t.s)?t.s:sEmpty();delete d.s;return d;});
+  D=o.terms.map(t=>{const d=Object.assign({},t);d._tags=parseTags(d.tags);d._s=Array.isArray(t.s)?t.s:sEmpty();delete d.s;d.skip=d.skip||'';return d;});
   if(Array.isArray(o.users)&&o.users.length===MAX_U){U=o.users;uNorm();}
   cats=o.cats||[];tags=o.tags||[];Q=o.queue||[];_qseq=o.seq||0;linkTags();return true;}catch(e){return false;}}
 
@@ -530,7 +537,7 @@ function cacheLoad(){try{const o=JSON.parse(lsGet(LS_KEY)||'null');if(!o||!Array
 function qPush(op){
   if(op.op==='update'){
     const a=Q.find(x=>x.op==='add'&&x.tmp===op.id);
-    if(a){a.ar=op.ar;a.en=op.en;a.zh=op.zh;a.pin=op.pin;a.tags=op.tags;qDone();return;}
+    if(a){a.ar=op.ar;a.en=op.en;a.zh=op.zh;a.pin=op.pin;a.tags=op.tags;a.skip=op.skip||'';qDone();return;}
     const i=Q.findIndex(x=>x.op==='update'&&x.id===op.id);
     if(i>=0){Q[i]=op;qDone();return;}
   }else if(op.op==='delete'){
@@ -573,13 +580,13 @@ async function syncNow(manual){
       if(op.op!=='add'&&/^L\d+$/.test(String(op.id||''))){Q.shift();cacheSave();syncBadge();continue;}
       try{
         if(op.op==='add'){
-          const r=await apiOnce({action:'addTerm',ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags},25000);
+          const r=await apiOnce({action:'addTerm',ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags,skip:op.skip||''},25000);
           const real=String(r.id),tmp=op.tmp;
           const d=D.find(x=>String(x.id)===tmp);if(d)d.id=real;
           Q.forEach(x=>{if(x.id===tmp)x.id=real;if(x.tmp===tmp)x.tmp=real;});
           if(selW.has(tmp)){selW.delete(tmp);selW.add(real);}
         }else if(op.op==='update'){
-          await apiOnce({action:'updateTerm',id:op.id,ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags},25000);
+          await apiOnce({action:'updateTerm',id:op.id,ar:op.ar,en:op.en,zh:op.zh,pin:op.pin,tags:op.tags,skip:op.skip||''},25000);
         }else if(op.op==='delete'){
           await apiOnce({action:'deleteTerm',id:op.id},25000);
         }else if(op.op==='scores'){
@@ -624,14 +631,14 @@ function onT(r){if(r.status==='error'){if(_lRej)_lRej(new Error('خطأ في ق�
   const h=r.table.cols.map(c=>(c.label||'').trim());
   D=r.table.rows.map(rw=>{const o={};h.forEach((k,i)=>{const c=rw.c[i];
     o[k]=c?(c.f!=null?String(c.f):String(c.v!=null?c.v:'')).trim():'';
-  });o._s=Array.from({length:MAX_U},(_,k)=>parseSc(rw.c[SC_COL0+k]));return o;}).filter(r=>r.ar||r.en||r.zh);
+  });o._s=Array.from({length:MAX_U},(_,k)=>parseSc(rw.c[SC_COL0+k]));o.skip=o.skip||'';return o;}).filter(r=>r.ar||r.en||r.zh);
   D.forEach(d=>{d._tags=parseTags(d.tags);});
   lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onC&sheet=${encodeURIComponent('التصنيفات')}`,_lRej);}
 function onC(r){if(r.status==='ok')cats=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),ord:String(rw.c[1]?.v||'').trim(),name:(rw.c[2]?.v||'').trim()})).filter(c=>c.id&&c.name);cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
   lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onG&sheet=${encodeURIComponent('التاجات')}`,_lRej);}
 function onG(r){if(r.status==='ok')tags=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),name:(rw.c[1]?.v||'').trim(),catId:String(rw.c[2]?.v||'').trim()})).filter(g=>g.id&&g.name);
   loadUsersThen();}
-function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();updClrAll();$('ld').style.display='none';$('app').style.display='block';syncBadge();if(!_uChosen)uGate();}
+function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();bSkf();updClrAll();$('ld').style.display='none';$('app').style.display='block';syncBadge();if(!_uChosen)uGate();}
 
 // ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
 async function boot(){
@@ -657,7 +664,7 @@ window.addEventListener('beforeunload',e=>{if(Q.length||(QZ&&!QZ.saved&&QZ.items
 // خادم Apps Script يفشل أحياناً فشلاً عابراً (رد فارغ بعد ~20 ثانية)، لذلك:
 // مهلة محددة + إعادة محاولة تلقائية للإجراءات الآمنة فقط (التي لا تُنشئ صفوفاً جديدة)
 let _n=0;
-const API_SAFE=/^(version|translate|updateTerm|deleteTerm|updateCat|deleteCat|updateTag|deleteTag|reorderCats|fixTags|saveUser|saveScores|resetScores|clearScores|setupQuiz)$/;
+const API_SAFE=/^(version|translate|updateTerm|deleteTerm|updateCat|deleteCat|updateTag|deleteTag|reorderCats|fixTags|saveUser|saveScores|resetScores|clearScores|setupQuiz|saveSettings)$/;
 const API_NET=/فشل الاتصال|انتهت مهلة/;
 function apiOnce(p,ms){return new Promise((ok,no)=>{
   const cn='_c'+(++_n)+'_'+Date.now();
@@ -738,6 +745,7 @@ function buildView(){
     });
   }
   if(sfActive())fd=fd.filter(sfPass);
+  if(skfActive())fd=fd.filter(skfPass);
 
   // Group terms by tag (each term appears once per tag it has)
   const tagTerms=new Map();
@@ -780,7 +788,7 @@ function bDD(){
   bD('c',catsPlus,selC);bD('g',aG(),selT);bF();
 }
 function aG(){return selC.size===0?tags:tags.filter(t=>selC.has(t.catId));}
-const DD_M={c:'cm',g:'gm',f:'fm',s:'sm'},DD_T={c:'cdd',g:'gdd',f:'fdd',s:'sdd'};
+const DD_M={c:'cm',g:'gm',f:'fm',s:'sm',k:'km'},DD_T={c:'cdd',g:'gdd',f:'fdd',s:'sdd',k:'kdd'};
 function bD(t,items,sel){const m=$(DD_M[t]);
   let h=`<button class="ddi all" onclick="event.stopPropagation();clSl('${t}')">✦ الكل</button>`;
   h+=`<div class="dd-search"><input placeholder="بحث..." oninput="filterDD('${t}',this.value)" onclick="event.stopPropagation()"></div>`;
@@ -818,20 +826,21 @@ function rSH(){const dd=$('shDD'),h=shLoad(),q=$('si').value.toLowerCase();
     +'<div class="sh-clr" onmousedown="event.preventDefault();shClrAll()">🗑 مسح سجل البحث</div>';
   dd.classList.add('opn');}
 // ── مسح كل الفلاتر مع إمكانية الإرجاع ──
-function hasAnyFilter(){return !!($('si').value)||selC.size>0||selT.size>0||sfActive();}
+function hasAnyFilter(){return !!($('si').value)||selC.size>0||selT.size>0||sfActive()||skfActive();}
 let _lastFlt=null;
 function updClrAll(){const b=$('clrAllBtn');if(!b)return;
   if(_lastFlt){b.style.display='';b.innerHTML='↩ <span class="ab-txt">إرجاع الفلترة</span>';b.onclick=restoreFlt;b.title='إرجاع الفلترة الأخيرة';b.style.background='';b.style.borderColor='';b.style.color='';}
-  else if(hasAnyFilter()){b.style.display='';b.innerHTML='✕ <span class="ab-txt">مسح الفلترة</span>';b.onclick=clrAllF;b.title='مسح كل الفلاتر (البحث + التصنيف + التاج + الحفظ)';}
+  else if(hasAnyFilter()){b.style.display='';b.innerHTML='✕ <span class="ab-txt">مسح الفلترة</span>';b.onclick=clrAllF;b.title='مسح كل الفلاتر (البحث + التصنيف + التاج + الحفظ + الاستبعاد)';}
   else{b.style.display='none';}}
-function clrAllF(){_lastFlt={si:$('si').value,sC:new Set(selC),sT:new Set(selT),sfM:SF.mode,sfMn:SF.min,sfMx:SF.max,sfS:SF.sort};
+function clrAllF(){_lastFlt={si:$('si').value,sC:new Set(selC),sT:new Set(selT),sfM:SF.mode,sfMn:SF.min,sfMx:SF.max,sfS:SF.sort,skf:SKF};
   const q=$('si').value.trim();if(q)shAdd(q);
-  $('si').value='';$('sc').classList.remove('s');selC.clear();selT.clear();SF.mode='all';sfSave();bDD();rFav();bS();ai=0;buildView();updClrAll();}
+  $('si').value='';$('sc').classList.remove('s');selC.clear();selT.clear();SF.mode='all';sfSave();SKF='all';lsSet('dictSkipFilter',SKF);bDD();rFav();bS();bSkf();ai=0;buildView();updClrAll();}
 function restoreFlt(){if(!_lastFlt)return;const f=_lastFlt;_lastFlt=null;
   $('si').value=f.si;$('sc').classList.toggle('s',!!f.si);
   selC.clear();f.sC.forEach(id=>selC.add(id));selT.clear();f.sT.forEach(id=>selT.add(id));
   SF.mode=f.sfM;SF.min=f.sfMn;SF.max=f.sfMx;SF.sort=f.sfS;sfSave();
-  bDD();rFav();bS();ai=0;buildView();updClrAll();}
+  SKF=f.skf||'all';lsSet('dictSkipFilter',SKF);
+  bDD();rFav();bS();bSkf();ai=0;buildView();updClrAll();}
 
 // ── FIELD VISIBILITY (إظهار/إخفاء الأعمدة) ──
 const VF_W={ar:'1.4fr',en:'1.4fr',zh:'.7fr',pin:'1fr'},VF_L={ar:'عربي',en:'English',zh:'中文',pin:'Pīnyīn'};
@@ -839,9 +848,9 @@ const VF={ar:true,en:true,zh:true,pin:true};
 try{const sv=JSON.parse(lsGet('dictFields')||'{}');Object.keys(VF).forEach(k=>{if(k in sv)VF[k]=!!sv[k];});}catch(e){}
 if(!Object.keys(VF).some(k=>VF[k]))VF.ar=true;
 function vfOn(){return ['ar','en','zh','pin'].filter(k=>VF[k]);}
-function vfCols(){document.documentElement.style.setProperty('--fcols',(vfOn().map(k=>VF_W[k]).join(' ')||'1fr')+(cuCode()?' 44px':''));}
+function vfCols(){document.documentElement.style.setProperty('--fcols',(vfOn().map(k=>VF_W[k]).join(' ')||'1fr')+(cuCode()?' 30px 44px':''));}
 function rHdr(){const L={ar:'<span>عربي</span>',en:'<span style="direction:ltr;text-align:left">English</span>',zh:'<span style="text-align:center">中文</span>',pin:'<span>Pīnyīn</span>'};
-  const el=$('lhd');if(el)el.innerHTML='<span class="sb" id="hdrSb" onclick="selHdrTog()" title="تحديد / إلغاء تحديد كل الكلمات المعروضة"></span>'+vfOn().map(k=>L[k]).join('')+(cuCode()?'<span style="text-align:center" title="درجة الحفظ للمستخدم الحالي">🎯</span>':'');}
+  const el=$('lhd');if(el)el.innerHTML='<span class="sb" id="hdrSb" onclick="selHdrTog()" title="تحديد / إلغاء تحديد كل الكلمات المعروضة"></span>'+vfOn().map(k=>L[k]).join('')+(cuCode()?'<span class="skh" title="استبعاد من الاختبار">🚫</span><span style="text-align:center" title="درجة الحفظ للمستخدم الحالي">🎯</span>':'');}
 function bF(){const m=$('fm');if(!m)return;
   m.innerHTML=['ar','en','zh','pin'].map(k=>`<button class="ddi ${VF[k]?'sel':''}" onclick="vfTog('${k}')"><span class="chk">${VF[k]?'✓':''}</span>${VF_L[k]}</button>`).join('')
     +`<button class="ddi all" onclick="vfAll()">✦ إظهار الكل</button>`;
@@ -902,7 +911,7 @@ function ren(){if(cv==='list')rL();else rC();rNc();selUpd();}
 function rL(){const el=$('wl');if(!V.length){el.innerHTML='<div class="empt">لا توجد نتائج</div>';return;}let h='',lt='';
   V.forEach((v,i)=>{const d=v.d;const tk=v.catId+'-'+v.tagId;
     if(tk!==lt){h+=`<div class="gs"><span class="cat-n">${esc(v.catName)} </span><span style="color:var(--ft)">›</span> <span class="tag-n">🏷 ${esc(v.tagName)} <span class="cnt">${cntTag(v.tagId)}</span></span></div>`;lt=tk;}
-    let cl='';if(VF.ar)cl+=`<span class="ra">${esc(d.ar)}</span>`;if(VF.en)cl+=`<span class="re">${esc(d.en)}</span>`;if(VF.zh)cl+=`<span class="rz">${esc(d.zh)}</span>`;if(VF.pin)cl+=`<span class="rp">${esc(d.pin)}</span>`;if(cuCode())cl+=sBadge(d);
+    let cl='';if(VF.ar)cl+=`<span class="ra">${esc(d.ar)}</span>`;if(VF.en)cl+=`<span class="re">${esc(d.en)}</span>`;if(VF.zh)cl+=`<span class="rz">${esc(d.zh)}</span>`;if(VF.pin)cl+=`<span class="rp">${esc(d.pin)}</span>`;if(cuCode())cl+=`<span class="sk-t${d.skip==='1'?' on':''}" title="${d.skip==='1'?'مستبعدة من الاختبارات':''}">${d.skip==='1'?'🚫':''}</span>`+sBadge(d);
     let mr='';if(VF.ar)mr+=`<div class="m-ar">${esc(d.ar)}</div>`;if(VF.en)mr+=`<div class="m-en">${esc(d.en)}</div>`;
     let ml='';if(VF.zh)ml+=`<div class="m-zh">${esc(d.zh)}</div>`;if(VF.pin)ml+=`<div class="m-pn">${esc(d.pin)}</div>`;
     h+=`<div class="wr${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="w${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cl}<div class="wr-mob-r">${mr}</div><div class="wr-mob-l">${ml}</div></div>`;
@@ -913,7 +922,7 @@ function rC(){const el=$('cg');if(!V.length){el.innerHTML='<div class="empt">ل�
     if(ck!==lc){h+=`<div class="cgs"><span class="cat-n">${esc(v.catName)}</span></div>`;lc=ck;}
     if(tk!==lt){h+=`<div class="cgs" style="font-size:11px;margin-top:2px;border-bottom:1px solid var(--bdl)"><span class="tag-n">🏷 ${esc(v.tagName)} <span class="cnt">${cntTag(v.tagId)}</span></span></div><div class="ccg">`;lt=tk;}
     let ci='';if(VF.ar)ci+=`<div class="ca">${esc(d.ar)}</div>`;if(VF.en)ci+=`<div class="ce">${esc(d.en)}</div>`;if(VF.zh)ci+=`<div class="cz">${esc(d.zh)}</div>`;if(VF.pin)ci+=`<div class="cp">${esc(d.pin)}</div>`;
-    h+=`<div class="tc${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="k${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cuCode()?sBadge(d):''}${ci}</div>`;
+    h+=`<div class="tc${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="k${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${d.skip==='1'?`<span class="skip-b" onclick="event.stopPropagation();togSkip('${esc(String(d.id))}')" title="إلغاء الاستبعاد" style="cursor:pointer">🚫</span>`:''}${cuCode()?sBadge(d):''}${ci}</div>`;
   });el.innerHTML=h;const c=$('k'+ai);if(c)c.scrollIntoView({block:'nearest'});}
 
 // ── EDIT MODAL (بديل اللوحة الجانبية) ──
@@ -959,7 +968,7 @@ function doSvPanel(){trBump();if(!V[ai])return;const d=V[ai].d;
   const ar=$('efa').value.trim(),en=$('efe').value.trim(),zh=$('efz').value.trim(),pin=$('efp').value.trim();
   const tagsStr=[..._selTagsSp].join(',');
   Object.assign(d,{ar,en,zh,pin,tags:tagsStr});d._tags=parseTags(tagsStr);
-  qPush({op:'update',id:String(d.id),ar,en,zh,pin,tags:tagsStr});
+  qPush({op:'update',id:String(d.id),ar,en,zh,pin,tags:tagsStr,skip:d.skip||''});
   recTPush([..._selTagsSp]);cM();refresh(d.id);ts('تم الحفظ ✓','ok');}
 
 function sw(i){ai=i;ren();}function goF(){ai=0;ren();}function goP(){if(ai>0){ai--;ren();}}function goN(){if(ai<V.length-1){ai++;ren();}}function goL(){ai=Math.max(0,V.length-1);ren();}
@@ -1119,7 +1128,7 @@ async function trBulk(){
       const out=await trCompute(src,d[src],{ar:d.ar,en:d.en,zh:d.zh,pin:d.pin},false);
       const got=Object.keys(out).filter(k=>(out[k]||'').trim());
       if(got.length){got.forEach(k=>d[k]=out[k]);
-        qPush({op:'update',id:String(d.id),ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags||''});
+        qPush({op:'update',id:String(d.id),ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags||'',skip:d.skip||''});
         ok++;fail=0;}
     }catch(e){fail++;if(fail>=3){ts('توقفت الترجمة بعد 3 أخطاء متتالية: '+e.message,'er');break;}}
     await new Promise(r=>setTimeout(r,_trAS?120:600));
@@ -1215,8 +1224,8 @@ function doSvAdd(){trBump();
   const ar=$('fa').value.trim(),en=$('fen').value.trim();
   const zh=$('fzh').value.trim(),pin=$('fpn').value.trim(),tagsStr=[..._selTagsAdd].join(',');
   const tmp='L'+(++_qseq);
-  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr};nd._tags=parseTags(tagsStr);
-  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr});
+  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr,skip:''};nd._tags=parseTags(tagsStr);
+  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr,skip:''});
   recTPush([..._selTagsAdd]);addClear();refresh(tmp);
   ts(`تم حفظ "${ar||en}" ✓ — أضف التالية`,'ok');}
 // تفريغ الحقول مع الإبقاء على التاج والنافذة مفتوحة
@@ -1253,8 +1262,8 @@ function doSvDup(){trBump();
   const ar=$('fa').value.trim(),en=$('fen').value.trim();
   const zh=$('fzh').value.trim(),pin=$('fpn').value.trim(),tagsStr=[..._selTagsAdd].join(',');
   const tmp='L'+(++_qseq);
-  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr};nd._tags=parseTags(tagsStr);
-  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr});
+  const nd={id:tmp,ar,en,zh,pin,tags:tagsStr,skip:''};nd._tags=parseTags(tagsStr);
+  D.push(nd);qPush({op:'add',tmp,ar,en,zh,pin,tags:tagsStr,skip:''});
   recTPush([..._selTagsAdd]);cM();refresh(tmp);
   ts(`تم حفظ "${ar||en}" ✓`,'ok');}
 
@@ -1296,8 +1305,8 @@ document.addEventListener('keydown',e=>{
 });
 
 // ═══ MANAGE ═══
-function oMng(){$('mo').innerHTML=`<h2>⚙ إدارة</h2><div style="display:flex;gap:3px;margin-bottom:10px"><button class="vb on" id="mtc" onclick="mTb('c')">التصنيفات</button><button class="vb" id="mtg" onclick="mTb('g')">التاجات</button></div><div id="mct"></div><div id="mgt" style="display:none"></div><div class="mbt"><button class="mc" onclick="cM()">إغلاق</button></div>`;rMC();rMG();oM();}
-function mTb(t){$('mct').style.display=t==='c'?'block':'none';$('mgt').style.display=t==='g'?'block':'none';$('mtc').classList.toggle('on',t==='c');$('mtg').classList.toggle('on',t==='g');}
+function oMng(tab){$('mo').innerHTML=`<h2>⚙ إدارة</h2><div style="display:flex;gap:3px;margin-bottom:10px"><button class="vb on" id="mtc" onclick="mTb('c')">التصنيفات</button><button class="vb" id="mtg" onclick="mTb('g')">التاجات</button><button class="vb" id="mtd" onclick="mTb('d')">الدرجات</button></div><div id="mct"></div><div id="mgt" style="display:none"></div><div id="mdt" style="display:none"></div><div class="mbt"><button class="mc" onclick="cM()">إغلاق</button></div>`;rMC();rMG();rMD();if(tab)mTb(tab);oM();}
+function mTb(t){['c','g','d'].forEach(k=>{$('m'+k+'t').style.display=t===k?'block':'none';$('mt'+k).classList.toggle('on',t===k);});}
 function rMC(){let h=`<div style="display:flex;gap:4px;margin-bottom:6px"><input id="ncn" placeholder="تصنيف جديد" style="flex:1;padding:5px 8px;border:1px solid var(--bd);border-radius:4px;font-size:12px;font-family:var(--fa)"><button class="ab g" onclick="addC()">+</button><button class="ab" onclick="oRoCats()">↕</button></div><div style="max-height:260px;overflow-y:auto">`;cats.forEach(c=>{h+=`<div class="mg-row"><span class="mg-id">${c.id}</span><input value="${c.ord}" id="mco${c.id}" style="width:35px;text-align:center;font-family:var(--fm);font-size:11px;flex:none" oninput="$('mcs${c.id}').classList.add('show')"><input value="${esc(c.name)}" id="mc${c.id}" oninput="$('mcs${c.id}').classList.add('show')"><button class="mg-sv" id="mcs${c.id}" onclick="updC('${c.id}')">حفظ</button><button class="mg-dl" onclick="dlC('${c.id}')">🗑</button></div>`;});h+='</div>';$('mct').innerHTML=h;}
 function rMG(){let h=`<div style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap"><select id="ngc" style="padding:5px;border:1px solid var(--bd);border-radius:4px;font-size:11px;font-family:var(--fa)">${cats.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}</select><input id="ngn" placeholder="تاج جديد" style="flex:1;padding:5px 8px;border:1px solid var(--bd);border-radius:4px;font-size:12px;font-family:var(--fa)"><button class="ab g" onclick="addTg()">+</button></div><div style="max-height:260px;overflow-y:auto">`;
   [...tags].sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar')).forEach(t=>{const cs=cats.map(c=>`<option value="${c.id}"${c.id===t.catId?' selected':''}>${c.name}</option>`).join('');h+=`<div class="mg-row"><span class="mg-id">${t.id}</span><select style="font-size:10px;padding:2px;border:1px solid var(--bdl);border-radius:3px;font-family:var(--fa);background:var(--sf);min-width:60px" id="tgc${t.id}" onchange="$('tgs${t.id}').classList.add('show')">${cs}</select><input value="${esc(t.name)}" id="tg${t.id}" oninput="$('tgs${t.id}').classList.add('show')"><button class="mg-sv" id="tgs${t.id}" onclick="updTg('${t.id}')">حفظ</button><button class="mg-dl" onclick="dlTg('${t.id}')">🗑</button></div>`;});h+='</div>';$('mgt').innerHTML=h;}
@@ -1486,7 +1495,11 @@ function doPr(){const z=$('pz');const rows=poRows();if(!rows.length){ts('لا ت
 // درجة المستخدم رقم k لكل كلمة في العمود 6+k من «مصطلحات» (G..P). الخلية الفارغة = لم تُختبر بعد.
 const QL={ar:'عربي',zh:'رمز',pin:'بينين',en:'إنجليزي'},QK=['ar','zh','pin','en'];
 const QL_REV={'عربي':'ar','رمز':'zh','بينين':'pin','بينيين':'pin','إنجليزي':'en','انجليزي':'en'};
-const S_MIN=-5,S_MAX=5,MAX_U=10,SC_COL0=6;
+let S_MIN=-5,S_MAX=5;const MAX_U=10,SC_COL0=7;
+const QSC_DEF={write_ok:2,write_bad:0,write_dk:0,mc_ok:1,mc_bad:-1,mc_dk:0,tf_ok:1,tf_bad:-1,tf_dk:0,clamp:true,smin:-5,smax:5};
+let QSC=Object.assign({},QSC_DEF);try{Object.assign(QSC,JSON.parse(lsGet('dictScoreCfg')||'{}'));}catch(e){}
+if(QSC.clamp){S_MIN=QSC.smin;S_MAX=QSC.smax;}else{S_MIN=-Infinity;S_MAX=Infinity;}
+function qscSave(){lsSet('dictScoreCfg',JSON.stringify(QSC));if(QSC.clamp){S_MIN=QSC.smin;S_MAX=QSC.smax;}else{S_MIN=-Infinity;S_MAX=Infinity;}}
 // الإعدادات الافتراضية لكل مستخدم جديد: السؤال بينين، الإجابة عربي، المستثناة الأولى إنجليزي
 const U_DEF={q:'pin',a:'ar',x1:'en',x2:''};
 function uDef(){return Array.from({length:MAX_U},(_,i)=>Object.assign({code:i+1,name:''},U_DEF));}
@@ -1513,9 +1526,10 @@ function applySrvScores(code,map){if(Q.some(x=>x!==Q[0]&&/scores/i.test(x.op)&&x
     if(!d._s)d._s=sEmpty();d._s[code-1]=map[id]==null?null:clampS(+map[id]);});}
 
 // ── تحميل جدول المستخدمين بعد المصطلحات والتاجات (لا يوقف التحميل لو الجدول غير موجود) ──
-let _uDone=true,_uT=null;
-function loadUsersThen(){_uDone=false;clearTimeout(_uT);_uT=setTimeout(finishLoad,15000);
-  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onU&headers=1&sheet=${encodeURIComponent('المستخدمين')}`,()=>finishLoad());}
+let _uDone=true,_uT=null,_waitU=false,_waitCfg=false;
+function loadUsersThen(){_uDone=false;_waitU=true;_waitCfg=true;clearTimeout(_uT);_uT=setTimeout(finishLoad,15000);
+  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onU&headers=1&sheet=${encodeURIComponent('المستخدمين')}`,()=>{_waitU=false;_tryFinish();});
+  lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onCfg&headers=1&sheet=${encodeURIComponent('الإعدادات')}`,()=>{_waitCfg=false;_tryFinish();});}
 function onU(r){
   try{if(r&&r.status==='ok'&&r.table&&((r.table.cols[0]||{}).label||'').trim()==='الكود'){
     const nu=uDef();
@@ -1523,7 +1537,18 @@ function onU(r){
       const g=i=>String((c[i]&&c[i].v)!=null?c[i].v:'').trim();
       Object.assign(nu[code-1],{name:g(1),q:QL_REV[g(2)]||'pin',a:QL_REV[g(3)]||'ar',x1:QL_REV[g(4)]||'',x2:QL_REV[g(5)]||''});});
     U=nu;uNorm();}}catch(e){}
-  finishLoad();}
+  _waitU=false;_tryFinish();}
+function onCfg(r){
+  try{if(r&&r.status==='ok'&&r.table){
+    const m={};r.table.rows.forEach(rw=>{const c=rw.c||[];const k=String((c[0]&&c[0].v)!=null?c[0].v:'').trim();const v=String((c[1]&&c[1].v)!=null?c[1].v:'').trim();if(k)m[k]=v;});
+    const num=k=>{const n=Number(m[k]);return isNaN(n)?undefined:n;};
+    const keys=['write_ok','write_bad','write_dk','mc_ok','mc_bad','mc_dk','tf_ok','tf_bad','tf_dk','smin','smax'];
+    keys.forEach(k=>{const v=num(k);if(v!==undefined)QSC[k]=v;});
+    if(m['clamp']!==undefined)QSC.clamp=m['clamp']!=='false';
+    if(QSC.clamp){S_MIN=QSC.smin;S_MAX=QSC.smax;}else{S_MIN=-Infinity;S_MAX=Infinity;}
+    lsSet('dictScoreCfg',JSON.stringify(QSC));}}catch(e){}
+  _waitCfg=false;_tryFinish();}
+function _tryFinish(){if(!_waitU&&!_waitCfg)finishLoad();}
 function finishLoad(){if(_uDone)return;_uDone=true;clearTimeout(_uT);linkTags();cacheSave();paint();if(_lRes)_lRes();}
 
 function uBtn(){const b=$('uBtn'),u=curU();
@@ -1550,9 +1575,9 @@ function bS(){const m=$('sm');if(!m)return;const u=curU();
   else{bd.style.display='none';tg.classList.remove('act');}
   if(!u){m.innerHTML=`<div class="sf-box"><div class="qz-note">اختر المستخدم أولاً لعرض درجات الحفظ والفلترة بها.</div><button class="ab" style="margin-top:6px" onclick="oUsers()">👤 اختيار المستخدم</button></div>`;return;}
   const chip=(k,l,sub,n)=>`<span class="qz-opt${SF.mode===k?' on':''}" onclick="sfSet('${k}')">${l}${sub?` <small style="opacity:.7">(${sub})</small>`:''}${n!=null?` <span class="cnt">${n}</span>`:''}</span>`;
-  let h=`<div class="sf-box"><div style="font-size:11px;color:var(--dm);margin-bottom:6px">درجات <b>${esc(u.name)}</b> — من ${S_MIN} إلى +${S_MAX}</div><div class="qz-opts">`
+  let h=`<div class="sf-box"><div style="font-size:11px;color:var(--dm);margin-bottom:6px">درجات <b>${esc(u.name)}</b>${QSC.clamp?` — من ${QSC.smin} إلى +${QSC.smax}`:' — بلا حدود'}</div><div class="qz-opts">`
     +chip('all','✦ الكل','',D.length)+['weak','mid','strong','none'].map(k=>chip(k,SF_M[k][0],SF_M[k][1],sfCount(k))).join('')+chip('range','🎚 مخصص','',null)+'</div>';
-  if(SF.mode==='range')h+=`<div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px">من <input type="number" min="${S_MIN}" max="${S_MAX}" value="${SF.min}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('min',this.value)"> إلى <input type="number" min="${S_MIN}" max="${S_MAX}" value="${SF.max}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('max',this.value)"> <span class="cnt">${sfCount('range')}</span></div>`;
+  if(SF.mode==='range'){const mn=QSC.clamp?QSC.smin:-99,mx=QSC.clamp?QSC.smax:99;h+=`<div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px">من <input type="number" min="${mn}" max="${mx}" value="${SF.min}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('min',this.value)"> إلى <input type="number" min="${mn}" max="${mx}" value="${SF.max}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm)" onchange="sfRange('max',this.value)"> <span class="cnt">${sfCount('range')}</span></div>`;}
   h+=`<div style="margin-top:10px;font-size:11px;color:var(--dm);font-weight:700">الترتيب داخل كل تاج:</div><div class="qz-opts" style="margin-top:4px">`
     +[['','أبجدي'],['asc','الأضعف أولاً'],['desc','الأقوى أولاً']].map(([k,l])=>`<span class="qz-opt${SF.sort===k?' on':''}" onclick="sfSort('${k}')">${l}</span>`).join('')+'</div>'
     +`<button class="ab qz" style="margin-top:10px;width:100%;justify-content:center;padding:7px" onclick="tDD('s');oQuiz('view')">🎯 اختبرني في الكلمات المعروضة</button></div>`;
@@ -1560,6 +1585,19 @@ function bS(){const m=$('sm');if(!m)return;const u=curU();
 function sfSet(k){_lastFlt=null;SF.mode=k;sfSave();ai=0;buildView();bS();updClrAll();}
 function sfRange(w,v){SF[w]=clampS(parseInt(v)||0);sfSave();ai=0;buildView();bS();updClrAll();}
 function sfSort(k){SF.sort=k;sfSave();buildView();bS();}
+
+let SKF='all';try{SKF=lsGet('dictSkipFilter')||'all';}catch(e){}
+function skfActive(){return SKF!=='all';}
+function skfPass(d){return SKF==='skipped'?d.skip==='1':d.skip!=='1';}
+function skfSet(k){_lastFlt=null;SKF=k;lsSet('dictSkipFilter',SKF);ai=0;buildView();bSkf();updClrAll();}
+function bSkf(){const m=$('km');if(!m)return;
+  const bd=$('skfb'),tg=bd.parentElement;
+  if(skfActive()){bd.textContent=SKF==='skipped'?'🚫':'✅';bd.style.display='inline';tg.classList.add('act');}
+  else{bd.style.display='none';tg.classList.remove('act');}
+  const chip=(k,l,n)=>`<span class="qz-opt${SKF===k?' on':''}" onclick="skfSet('${k}')">${l} <span class="cnt">${n}</span></span>`;
+  const nSkip=D.filter(d=>d.skip==='1').length;
+  m.innerHTML=`<div class="sf-box"><div style="font-size:11px;color:var(--dm);margin-bottom:6px">فلترة حسب حالة الاستبعاد</div><div class="qz-opts">`
+    +chip('all','✦ الكل',D.length)+chip('skipped','🚫 المستبعدة',nSkip)+chip('notskipped','✅ غير المستبعدة',D.length-nSkip)+'</div></div>';}
 
 // ── إدارة المستخدمين ──
 function uSel(id,val,allowEmpty){return `<select id="${id}">${allowEmpty?'<option value="">— لا شيء —</option>':''}${QK.map(k=>`<option value="${k}"${val===k?' selected':''}>${QL[k]}</option>`).join('')}</select>`;}
@@ -1769,7 +1807,7 @@ function rQS(){qsStore();const u=curU();const X=new Set([u.x1,u.x2].filter(Boole
   const sec=(k,title,sum,content,extra)=>mob
     ?`<details class="qz-sec"${QS._op&&QS._op.has(k)?' open':''} ontoggle="qsSecTog('${k}',this.open)"><summary><span>${title}</span><span class="qs-v">${sum}</span></summary><div class="qs-b">${extra?`<div style="margin-bottom:8px">${extra}</div>`:''}${content}</div></details>`
     :`<div class="qz-row"><div class="lb">${title}${extra?`<span style="flex:1"></span>${extra}`:''}</div>${content}</div>`;
-  const scoreNote='<div class="qz-note">الإجابة الصحيحة <b style="color:var(--gn)">+1</b> والخاطئة <b style="color:var(--acc)">−1</b>، ما عدا <b>كتابة الإجابة</b>: الصحيحة <b style="color:var(--gn)">+2</b> والخاطئة <b style="color:var(--acc)">−1</b>. استخدام التلميح 💡 ينقص نقطة من الإجابة الصحيحة.<br>الدرجة من <b>−5</b> إلى <b>+5</b> لكل كلمة.</div>';
+  const scoreNote='<button class="ab" style="margin-top:6px;font-size:11px" onclick="event.stopPropagation();showScoreInfo()">📊 شرح توزيع الدرجات</button>';
   const allBtn='<button class="ab" onclick="qsAll()" title="كل الأنواع عدا الإجابة واللغات المستثناة">☑ اختيار الكل</button>';
   $('mo').innerHTML=`<h2>🎯 اختبار الكلمات</h2>
    ${mob?`<div class="qs-go"><div class="qs-sum">👤 ${esc(u.name)}<br>${qN} ← ${QL[QS.a]}<br>${TYN[QS.type]} · ${QS.n} أسئلة · ${srcN}</div><button onclick="qzStart()">▶ ابدأ الاختبار</button><div class="qz-note" id="qsInfo"></div></div>`:''}
@@ -1800,7 +1838,33 @@ function qsSet(k,v){QS[k]=v;rQS();}
 function qsN(v){QS.n=Math.max(1,Math.min(200,parseInt(v)||10));rQS();}
 function qsTog(k,id,el){const s=QS[k];s.has(id)?s.delete(id):s.add(id);if(el)el.classList.toggle('on',s.has(id));qsStore();qsInfo();}
 function qsFilter(q){q=(q||'').toLowerCase();document.querySelectorAll('.qs-it').forEach(el=>el.style.display=(!q||el.dataset.n.includes(q))?'':'none');}
-function qEligible(d){return !/^L\d+$/.test(String(d.id))&&(d[QS.a]||'').trim()&&[...QS.q].some(k=>k!==QS.a&&(d[k]||'').trim());}
+function oSkipSel(){
+  let ids=selIdsReal();const sel=ids.length>0;
+  if(!ids.length&&V[ai])ids=[String(V[ai].d.id)];
+  if(!ids.length){ts('حدد كلمات بعلامة ✓ أو اختر كلمة أولاً','er');return;}
+  const words=ids.map(id=>D.find(d=>String(d.id)===id)).filter(Boolean);
+  if(!words.length)return;
+  const skipped=words.filter(d=>d.skip==='1').length;
+  const notSkipped=words.length-skipped;
+  const action=notSkipped>0?'skip':'unskip';
+  const lbl=sel?words.length+' كلمة محددة':(words[0].ar||words[0].en||'');
+  const msg=action==='skip'
+    ?`استبعاد ${lbl} من الاختبارات؟${skipped?' ('+skipped+' مستبعدة بالفعل)':''}`
+    :`إلغاء استبعاد ${lbl} من الاختبارات؟`;
+  if(sel&&!confirm(msg))return;
+  let n=0;words.forEach(d=>{
+    const nv=action==='skip'?'1':'';
+    if(d.skip===nv)return;
+    d.skip=nv;
+    qPush({op:'update',id:String(d.id),ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags||'',skip:d.skip});n++;});
+  if(n){refresh();bSkf();ts(action==='skip'?`تم استبعاد ${n} كلمة من الاختبارات`:`تم إلغاء استبعاد ${n} كلمة`,'ok');}
+  else ts('لا توجد تغييرات','ok');}
+function togSkip(id){const d=D.find(x=>String(x.id)===String(id));if(!d)return;
+  d.skip=d.skip==='1'?'':'1';
+  qPush({op:'update',id:String(d.id),ar:d.ar,en:d.en,zh:d.zh,pin:d.pin,tags:d.tags||'',skip:d.skip});
+  refresh();bSkf();const wcOpen=$('shv').classList.contains('opn')&&$('wcBox');if(wcOpen&&V[ai])wCard(ai);
+  ts(d.skip==='1'?'تم استبعاد الكلمة من الاختبارات':'تم إلغاء الاستبعاد — الكلمة ستظهر في الاختبارات','ok');}
+function qEligible(d){return d.skip!=='1'&&!/^L\d+$/.test(String(d.id))&&(d[QS.a]||'').trim()&&[...QS.q].some(k=>k!==QS.a&&(d[k]||'').trim());}
 function qsPool(){let p=[];
   if(QS.src==='view')p=[...new Set(V.map(v=>v.d))];
   else if(QS.src==='sel')p=D.filter(d=>selW.has(String(d.id)));
@@ -1808,10 +1872,12 @@ function qsPool(){let p=[];
   else if(QS.src==='cats'){const ct=new Set(tags.filter(t=>QS.cats.has(t.catId)).map(t=>t.id));p=D.filter(d=>[...d._tags].some(t=>ct.has(t)));}
   return p.filter(qEligible);}
 function qsInfo(){const el=$('qsInfo');if(!el)return;const p=qsPool();
+  const skipped=D.filter(d=>d.skip==='1').length;
   el.innerHTML=p.length?`✅ الكلمات الصالحة لهذا الاختيار: <b>${p.length}</b> — سيُسأل عن <b>${Math.min(QS.n,p.length)}</b> منها، والكلمات الأضعف تظهر أكثر.`
     :`<span style="color:var(--acc)">⚠️ لا توجد كلمات صالحة: ${QS.src==='tags'&&!QS.tags.size?'اختر تاجاً واحداً على الأقل':QS.src==='cats'&&!QS.cats.size?'اختر تصنيفاً واحداً على الأقل':'تأكد أن الكلمات فيها نص في حقلي السؤال والإجابة'}</span>`;
   const pend=D.filter(d=>/^L\d+$/.test(String(d.id))).length;
-  if(pend)el.innerHTML+=`<div style="font-size:10px;color:var(--ft)">الكلمات الجديدة التي لم تُرحَّل بعد (${pend}) لا تدخل في الاختبار.</div>`;}
+  if(pend)el.innerHTML+=`<div style="font-size:10px;color:var(--ft)">الكلمات الجديدة التي لم تُرحَّل بعد (${pend}) لا تدخل في الاختبار.</div>`;
+  if(skipped)el.innerHTML+=`<div style="font-size:10px;color:var(--ft)">🚫 ${skipped} كلمة مستبعدة من الاختبارات يدوياً.</div>`;}
 
 // ── تشغيل الاختبار ──
 function qzItem(d,cfg){const qs=cfg.q.filter(k=>k!==cfg.a&&(d[k]||'').trim());
@@ -1847,7 +1913,7 @@ function rQZ(){const z=QZ,it=z.items[z.i],n=z.items.length,u=U[z.cfg.code-1];
     :`<div style="text-align:center;margin:-6px 0 10px"><button class="ab" style="display:inline-flex" onclick="QZ.items[QZ.i].hint=true;rQZ()" title="ينقص نقطة من الإجابة الصحيحة">💡 إظهار البينيين</button></div>`;
   let fb='';
   if(it.done){const d=it.d,nv=clampS((it.base==null?0:it.base)+it.delta);
-    fb=`<div class="qz-fb ${it.ok?'ok':'bad'}"><b>${it.ok?'✅ إجابة صحيحة':'❌ إجابة خاطئة'}</b> <b style="font-family:var(--fm)">${it.delta>0?'+':''}${it.delta}</b> <span style="font-size:11px">(الدرجة: ${sTxt(it.base)} ← ${sTxt(nv)})</span>
+    fb=`<div class="qz-fb ${it.ok?'ok':'bad'}"><b>${it.ok?'✅ إجابة صحيحة':it.gaveUp?'🤷 لا أعرف':'❌ إجابة خاطئة'}</b> <b style="font-family:var(--fm)">${it.delta>0?'+':''}${it.delta}</b> <span style="font-size:11px">(الدرجة: ${sTxt(it.base)} ← ${sTxt(nv)})</span>
       ${it.ok&&it.type!=='write'?'':`<div>الإجابة الصحيحة: <b>${qzTxt(d[it.a],it.a)}</b>${it.a==='pin'?` <span dir="ltr" style="font-family:var(--fm);font-size:12px">(${esc(pyNum(d.pin))})</span>`:''}</div>`}
       <div class="qz-word">${QK.filter(k=>(d[k]||'').trim()).map(k=>qzTxt(d[k],k)).join('<span style="color:var(--ft)">·</span>')}</div></div>
       <button class="ab qz qz-nx" style="width:100%;justify-content:center;padding:10px;margin-top:10px;font-size:13px" onclick="qzNext()">${z.i<n-1?'التالي ← (Enter)':'🏁 عرض النتيجة (Enter)'}</button>`;}
@@ -1858,12 +1924,17 @@ function rQZ(){const z=QZ,it=z.items[z.i],n=z.items.length,u=U[z.cfg.code-1];
   $('mov').classList.add('qzrun');
   if(it.type==='write'&&!it.done)setTimeout(()=>{const el=$('qzIn');if(el)el.focus();},30);
   else if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();}
-function qzScore(it,ok){it.done=true;it.ok=ok;it.delta=ok?(it.type==='write'?2:1)-(it.hint?1:0):-1;rQZ();}
+function qzScore(it,ok){it.done=true;it.ok=ok;
+  const t=it.type,dk=it.gaveUp;
+  if(dk)it.delta=QSC[t+'_dk'];
+  else if(ok)it.delta=QSC[t+'_ok']-(it.hint?1:0);
+  else it.delta=QSC[t+'_bad'];
+  rQZ();}
 function qzMC(i){const it=QZ.items[QZ.i];if(it.done)return;it.pick=i;qzScore(it,cmpKey(it.opts[i],it.a)===cmpKey(it.right,it.a));}
 function qzTF(v){const it=QZ.items[QZ.i];if(it.done)return;it.pick=v;qzScore(it,v===it.truth);}
 function qzWrite(giveUp){const it=QZ.items[QZ.i];if(it.done)return;const v=giveUp?'':(($('qzIn')||{}).value||'').trim();
   if(!giveUp&&!v){ts('اكتب إجابتك أولاً أو اضغط «لا أعرف»','er');return;}
-  it.input=v;qzScore(it,!giveUp&&ansOk(it.d[it.a],v,it.a));}
+  it.input=v;if(giveUp)it.gaveUp=true;qzScore(it,!giveUp&&ansOk(it.d[it.a],v,it.a));}
 function qzPrev(v){QZ.items[QZ.i].input=v;const el=$('qzPv');if(el)el.textContent=pyMark(v);}
 function qzNext(){if(QZ.i<QZ.items.length-1){QZ.i++;rQZ();}else qzFinish();}
 function qzQuit(){const n=QZ.items.filter(x=>x.done).length;
@@ -1894,6 +1965,64 @@ function rQR(){$('mov').classList.remove('qzrun');const z=QZ,done=z.items.filter
 function qzRetry(){const z=QZ;const ids=[...new Set(z.items.filter(x=>x.done&&!x.ok).map(x=>String(x.d.id)))];
   const w=ids.map(id=>D.find(d=>String(d.id)===id)).filter(Boolean);
   if(!w.length){ts('لا توجد كلمات خاطئة','ok');return;}qzStart(w,Object.assign({},z.cfg,{n:w.length}));}
+function showScoreInfo(){
+  const f=(v)=>v>0?'+'+v:String(v);
+  const c=QSC;
+  const pop=document.createElement('div');pop.className='sc-pop';pop.onclick=e=>{if(e.target===pop)pop.remove();};
+  pop.innerHTML=`<div class="sc-pop-in">
+    <h3 style="margin:0 0 12px;font-size:15px">📊 توزيع الدرجات</h3>
+    <table class="sc-tbl">
+    <thead><tr><th>نوع السؤال</th><th style="color:var(--gn)">✓ صحيحة</th><th style="color:var(--acc)">✗ خاطئة</th><th>🤷 لا أعرف</th></tr></thead>
+    <tbody>
+    <tr><td style="font-weight:700">⌨️ الكتابة</td><td style="color:var(--gn);font-weight:700">${f(c.write_ok)}</td><td style="color:var(--acc);font-weight:700">${f(c.write_bad)}</td><td>${f(c.write_dk)}</td></tr>
+    <tr><td style="font-weight:700">🔘 الاختيارات</td><td style="color:var(--gn);font-weight:700">${f(c.mc_ok)}</td><td style="color:var(--acc);font-weight:700">${f(c.mc_bad)}</td><td>${f(c.mc_dk)}</td></tr>
+    <tr><td style="font-weight:700">⚖️ صح أم خطأ</td><td style="color:var(--gn);font-weight:700">${f(c.tf_ok)}</td><td style="color:var(--acc);font-weight:700">${f(c.tf_bad)}</td><td>${f(c.tf_dk)}</td></tr>
+    </tbody></table>
+    <div style="margin-top:12px;font-size:12px;color:var(--dm);line-height:1.8">
+      <div>💡 استخدام التلميح ينقص <b>1</b> من درجة الإجابة الصحيحة.</div>
+      <div>${c.clamp?`📏 حدود الدرجات: من <b>${c.smin}</b> إلى <b>${f(c.smax)}</b> لكل كلمة.`:'📏 حدود الدرجات <b>معطّلة</b> — الدرجة بلا حد أقصى أو أدنى.'}</div>
+    </div>
+    <div style="text-align:center;margin-top:14px"><button class="ab" onclick="this.closest('.sc-pop').remove()" style="padding:8px 24px">إغلاق</button></div></div>`;
+  document.body.appendChild(pop);}
+function rMD(){
+  const c=QSC;
+  const inp=(id,v)=>`<input type="number" id="${id}" value="${v}" style="width:56px;padding:4px;border:1px solid var(--bd);border-radius:5px;font-family:var(--fm);text-align:center">`;
+  $('mdt').innerHTML=`<div style="font-size:12px;color:var(--dm);margin-bottom:8px;font-weight:700">درجات الاختبار حسب نوع السؤال ونتيجة الإجابة:</div>
+    <div style="overflow-x:auto"><table class="sc-tbl">
+    <thead><tr><th>نوع السؤال</th><th style="color:var(--gn)">✓ صحيحة</th><th style="color:var(--acc)">✗ خاطئة</th><th>🤷 لا أعرف</th></tr></thead>
+    <tbody>
+    <tr><td style="font-weight:700">⌨️ الكتابة</td><td>${inp('sc_wo',c.write_ok)}</td><td>${inp('sc_wb',c.write_bad)}</td><td>${inp('sc_wd',c.write_dk)}</td></tr>
+    <tr><td style="font-weight:700">🔘 الاختيارات</td><td>${inp('sc_mo',c.mc_ok)}</td><td>${inp('sc_mb',c.mc_bad)}</td><td>${inp('sc_md',c.mc_dk)}</td></tr>
+    <tr><td style="font-weight:700">⚖️ صح أم خطأ</td><td>${inp('sc_to',c.tf_ok)}</td><td>${inp('sc_tb',c.tf_bad)}</td><td>${inp('sc_td',c.tf_dk)}</td></tr>
+    </tbody></table></div>
+    <div class="qz-note" style="margin-top:10px">💡 استخدام التلميح ينقص <b>1</b> من درجة الإجابة الصحيحة.</div>
+    <div style="margin-top:14px;padding:12px;border:1px solid var(--bd);border-radius:8px">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:700">
+        <input type="checkbox" id="sc_clamp" ${c.clamp?'checked':''} onchange="$('sc_lims').style.display=this.checked?'flex':'none'" style="width:18px;height:18px">
+        تفعيل حدود الدرجات</label>
+      <div id="sc_lims" style="display:${c.clamp?'flex':'none'};align-items:center;gap:8px;margin-top:8px;font-size:12px">
+        من ${inp('sc_smin',c.smin)} إلى ${inp('sc_smax',c.smax)}</div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:14px">
+      <button class="ab" onclick="scCfgReset()" style="font-size:11px">↩ الافتراضي</button>
+      <span style="flex:1"></span>
+      <button class="ab g" onclick="scCfgSave()" style="font-size:11px">💾 حفظ الدرجات</button></div>`;}
+function scCfgVal(id){return parseInt($(id).value)||0;}
+function scCfgSave(){
+  QSC.write_ok=scCfgVal('sc_wo');QSC.write_bad=scCfgVal('sc_wb');QSC.write_dk=scCfgVal('sc_wd');
+  QSC.mc_ok=scCfgVal('sc_mo');QSC.mc_bad=scCfgVal('sc_mb');QSC.mc_dk=scCfgVal('sc_md');
+  QSC.tf_ok=scCfgVal('sc_to');QSC.tf_bad=scCfgVal('sc_tb');QSC.tf_dk=scCfgVal('sc_td');
+  QSC.clamp=$('sc_clamp').checked;QSC.smin=scCfgVal('sc_smin');QSC.smax=scCfgVal('sc_smax');
+  if(QSC.smin>QSC.smax){const t=QSC.smin;QSC.smin=QSC.smax;QSC.smax=t;}
+  qscSave();
+  const d={};['write_ok','write_bad','write_dk','mc_ok','mc_bad','mc_dk','tf_ok','tf_bad','tf_dk','smin','smax'].forEach(k=>d[k]=QSC[k]);
+  d.clamp=String(QSC.clamp);
+  api({action:'saveSettings',data:JSON.stringify(d)}).then(()=>ts('تم حفظ إعدادات الدرجات ✓','ok')).catch(()=>ts('حُفظت محلياً — فشل الحفظ في الشيت','er'));}
+function scCfgReset(){Object.assign(QSC,QSC_DEF);qscSave();rMD();
+  const d={};['write_ok','write_bad','write_dk','mc_ok','mc_bad','mc_dk','tf_ok','tf_bad','tf_dk','smin','smax'].forEach(k=>d[k]=QSC_DEF[k]);
+  d.clamp=String(QSC_DEF.clamp);
+  api({action:'saveSettings',data:JSON.stringify(d)}).catch(()=>{});
+  ts('تمت استعادة الإعدادات الافتراضية','ok');}
 // لوحة المفاتيح أثناء الاختبار: 1-4 للخيارات، 1/2 لصح/خطأ، Enter للتالي
 document.addEventListener('keydown',e=>{
   if(!QZ||QZ.saved||!$('mov').classList.contains('opn')||!$('mov').classList.contains('qz'))return;
@@ -1934,7 +2063,7 @@ function shOut(){const vs=(($('verSt')||{}).textContent||'').trim();
   shOpen(shBadge('#d97706','📤 الإخراج والإعدادات'),shItems([
     {ic:'🖨',t:'طباعة',s:'الكلمات المعروضة',fn:'prMain()'},
     {ic:'⬇',t:'تصدير CSV',s:`${V.length} صف معروض`,fn:'expCSV()'},
-    {ic:'⚙',t:'إدارة التصنيفات والتاجات',fn:'oMng()'},
+    {ic:'⚙',t:'إدارة التصنيفات والتاجات والدرجات',fn:'oMng()'},
     {ic:'🔗',t:'إعدادات الاتصال',s:esc(vs),fn:'oSetup()'}]));}
 
 // ── الشريط السفلي: المجموعات، أو شريط التحديد في وضع التحديد ──
@@ -1986,7 +2115,8 @@ function wCard(i){const v=V[i];if(!v)return;ai=i;ren();const d=v.d;
     ${d.zh?`<div class="wc-zh">${esc(d.zh)}</div>`:''}${d.pin?`<div class="wc-pn" dir="ltr">${esc(d.pin)}</div>`:''}
     ${d.ar?`<div class="wc-ar">${esc(d.ar)}</div>`:''}${d.en?`<div class="wc-en" dir="ltr">${esc(d.en)}</div>`:''}
     ${sc?`<div class="wc-sc">${sc}</div>`:''}${tg?`<div class="tag-chips">${tg}</div>`:''}
-    <div class="wc-act" style="grid-template-columns:repeat(4,1fr)"><button onclick="shClose();oEditW(${i})"><span>✏️</span>تعديل</button><button onclick="shClose();oDup()"><span>📋</span>تكرار</button><button onclick="shClose();oClrSel('${esc(String(d.id))}')"><span>🧹</span>مسح الدرجة</button><button class="del" onclick="shClose();cDel(${i})"><span>🗑</span>حذف</button></div>
+    ${d.skip==='1'?'<div class="wc-skip">🚫 مستبعدة من الاختبارات</div>':''}
+    <div class="wc-act" style="grid-template-columns:repeat(5,1fr)"><button onclick="shClose();oEditW(${i})"><span>✏️</span>تعديل</button><button onclick="shClose();oDup()"><span>📋</span>تكرار</button><button onclick="togSkip('${esc(String(d.id))}')"><span>${d.skip==='1'?'✅':'🚫'}</span>${d.skip==='1'?'إلغاء الاستبعاد':'استبعاد'}</button><button onclick="shClose();oClrSel('${esc(String(d.id))}')"><span>🧹</span>مسح الدرجة</button><button class="del" onclick="shClose();cDel(${i})"><span>🗑</span>حذف</button></div>
     <div class="wc-nav"><button onclick="wcGo(-1)"${i<=0?' disabled':''}>السابقة ▶</button><button onclick="wcGo(1)"${i>=V.length-1?' disabled':''}>◀ التالية</button></div>
     <div class="wc-hint">اسحب يميناً أو يساراً للتنقل بين الكلمات</div></div>`;
   shOpen('',html,'wcard');
@@ -2028,19 +2158,20 @@ MQ.addEventListener('change',()=>{if(!isMob()){shClose();selMode=false;}closeDD(
 // في كل مرة يُفتح فيها التطبيق يجب اختيار المستخدم أولاً، ثم تُستعاد فلاتره وطريقة عرضه كما تركها.
 let _uChosen=false;
 function vsSave(){if(!_uChosen||!cuCode())return;
-  lsSet('dictView_'+CU,JSON.stringify({c:[...selC],g:[...selT],sf:{mode:SF.mode,min:SF.min,max:SF.max,sort:SF.sort},cv,vf:Object.assign({},VF),q:$('si').value}));}
+  lsSet('dictView_'+CU,JSON.stringify({c:[...selC],g:[...selT],sf:{mode:SF.mode,min:SF.min,max:SF.max,sort:SF.sort},skf:SKF,cv,vf:Object.assign({},VF),q:$('si').value}));}
 function vsLoad(code){let o=null;try{o=JSON.parse(lsGet('dictView_'+code)||'null');}catch(e){}
   if(o){selC.clear();selT.clear();
     (o.c||[]).forEach(id=>{if(id==='_none'||cats.some(x=>x.id===id))selC.add(id);});
     (o.g||[]).forEach(id=>{if(tags.some(t=>t.id===id))selT.add(id);});
     Object.assign(SF,SF_DEF,o.sf||{});
+    SKF=o.skf||'all';lsSet('dictSkipFilter',SKF);
     if(o.vf){['ar','en','zh','pin'].forEach(k=>{if(k in o.vf)VF[k]=!!o.vf[k];});if(!vfOn().length)VF.ar=true;}
     $('si').value=o.q||'';$('sc').classList.toggle('s',!!$('si').value);
     cv=o.cv==='cards'?'cards':'list';}
-  else{selC.clear();selT.clear();Object.assign(SF,SF_DEF);$('si').value='';$('sc').classList.remove('s');cv='list';}   // مستخدم بلا عرض محفوظ يبدأ بعرض نظيف
+  else{selC.clear();selT.clear();Object.assign(SF,SF_DEF);SKF='all';lsSet('dictSkipFilter',SKF);$('si').value='';$('sc').classList.remove('s');cv='list';}   // مستخدم بلا عرض محفوظ يبدأ بعرض نظيف
   document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===cv));
   $('lhd').style.display=cv==='list'?'grid':'none';$('wl').style.display=cv==='list'?'block':'none';$('cg').style.display=cv==='cards'?'block':'none';
-  ai=0;uBtn();vfCols();rHdr();bDD();rFav();buildView();bS();}
+  ai=0;uBtn();vfCols();rHdr();bDD();rFav();buildView();bS();bSkf();}
 function uGateHide(){const g=$('ugate');if(g)g.classList.remove('on');}
 function uGate(){if(_uChosen)return;const g=$('ugate');if(!g)return;
   if($('mov').classList.contains('opn')){uGateHide();return;}   // نافذة إدارة المستخدمين مفتوحة فوقها
