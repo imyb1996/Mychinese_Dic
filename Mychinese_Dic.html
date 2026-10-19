@@ -631,7 +631,8 @@ function onT(r){if(r.status==='error'){if(_lRej)_lRej(new Error('خطأ في ق�
   const h=r.table.cols.map(c=>(c.label||'').trim());
   D=r.table.rows.map(rw=>{const o={};h.forEach((k,i)=>{const c=rw.c[i];
     o[k]=c?(c.f!=null?String(c.f):String(c.v!=null?c.v:'')).trim():'';
-  });o._s=Array.from({length:MAX_U},(_,k)=>parseSc(rw.c[SC_COL0+k]));o.skip=o.skip||'';return o;}).filter(r=>r.ar||r.en||r.zh);
+  });o._s=Array.from({length:MAX_U},(_,k)=>parseSc(rw.c[SC_COL0+k]));
+    const sc=rw.c[6];o.skip=(sc&&String(sc.f!=null?sc.f:(sc.v!=null?sc.v:'')).trim()==='1')?'1':'';return o;}).filter(r=>r.ar||r.en||r.zh);
   D.forEach(d=>{d._tags=parseTags(d.tags);});
   lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onC&sheet=${encodeURIComponent('التصنيفات')}`,_lRej);}
 function onC(r){if(r.status==='ok')cats=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),ord:String(rw.c[1]?.v||'').trim(),name:(rw.c[2]?.v||'').trim()})).filter(c=>c.id&&c.name);cats.sort((a,b)=>(parseInt(a.ord)||0)-(parseInt(b.ord)||0));
