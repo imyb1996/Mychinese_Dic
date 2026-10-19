@@ -566,7 +566,8 @@ function syncBadge(){const b=$('syncbar');if(!b)return;clearTimeout(_okTimer);
   b.className='syncbar no-pr on '+(_syncErr?'err':'pend');
   b.innerHTML=`${_syncErr?'⚠️ تعثر الترحيل مؤقتاً —':'⚠️ لديك'} <span class="dt">${n}</span> تغييرات لم تُرحَّل إلى جوجل شيت`
     +` <button onclick="syncNow(true)">⬆ ترحيل الآن</button>`
-    +(_syncErr?`<span class="sb-more" style="font-weight:400;font-size:10px">بياناتك محفوظة على جهازك وسيعيد التطبيق المحاولة تلقائياً (${esc(_syncErr)})</span>`:'');}
+    +(_syncErr?`<span class="sb-more" style="font-weight:400;font-size:10px">بياناتك محفوظة على جهازك وسيعيد التطبيق المحاولة تلقائياً (${esc(_syncErr)})</span>`
+    +(/فشل الاتصال/.test(_syncErr)?`<span class="sb-more" style="font-weight:400;font-size:10px">⚠️ إن نجح الترحيل من الكمبيوتر فقط: انشر Apps Script بصلاحية «Who has access = Anyone» (وليس Anyone with Google account) ثم استخدم رابط النشر الجديد</span>`:''):'');}
 
 // ── الترحيل: عملية تلو الأخرى، مع معالجة المعرّفات المؤقتة ──
 async function syncNow(manual){
@@ -2079,6 +2080,8 @@ function rBnav(){const b=$('bnav');if(!b)return;
       +`<button onclick="selHdrTog()"><span>☑</span><small>الكل</small></button>`
       +`<button onclick="qzMain()"${dis}><span>🎯</span><small>اختبار</small></button>`
       +`<button onclick="oClrSel()"${dis}><span>🧹</span><small>الدرجات</small></button>`
+      +(()=>{const ws=selIdsReal().map(id=>D.find(d=>String(d.id)===id)),allSk=ws.length>0&&ws.every(d=>d.skip==='1');
+        return `<button onclick="oSkipSel()"${dis}><span>🚫</span><small>${allSk?'إلغاء الاستبعاد':'استبعاد'}</small></button>`;})()
       +`<button onclick="oDelW()"${dis}><span>🗑</span><small>حذف</small></button>`
       +`<button onclick="prMain()"${dis}><span>🖨</span><small>طباعة</small></button>`
       +`<button class="bn-x" onclick="selClear()"><span>✕</span><small>إنهاء</small></button>`;
