@@ -73,7 +73,7 @@
 
 .nv-mob{display:none}
 .nv-desk{display:flex;justify-content:center;align-items:center;gap:4px;padding:5px 10px;border-top:1px solid var(--bdl)}
-.wr-mob-r,.wr-mob-l,.tc-mob-r,.tc-mob-l{display:none}
+.wr-mob-r,.wr-mob-l,.tc-mob-r,.tc-mob-l,.wr .m-sk{display:none}
 @media(max-width:800px){
   .hdr{padding:8px 12px}.logo-ic{width:32px;height:32px;font-size:14px}.logo h1{font-size:15px}.logo p{font-size:8px}.st{padding:3px 6px;font-size:9px}.st b{font-size:11px}
   .top-area{position:sticky;top:0;z-index:100;background:var(--card);box-shadow:var(--sh)}
@@ -85,6 +85,7 @@
   .lhd{display:none!important}
   .wr{display:flex!important;gap:6px;padding:8px 10px;grid-template-columns:none}
   .wr .ra,.wr .re,.wr .rz,.wr .rp,.wr .sk-t,.wr .skh{display:none}
+  .wr .m-sk{display:inline-block;flex:none;align-self:center;font-size:14px;cursor:pointer}
   .wr .wr-mob-r,.wr .wr-mob-l{display:block}.wr .wr-mob-r{flex:1;min-width:0}.wr .wr-mob-r .m-ar{font-size:14px;font-weight:700;text-align:right}.wr .wr-mob-r .m-en{font-size:12px;color:var(--bl);text-align:right;font-family:var(--fe);font-weight:500;direction:ltr}
   .wr .wr-mob-l{text-align:center;flex-shrink:0;min-width:65px}.wr .wr-mob-l .m-zh{font-size:18px;color:var(--acc);font-family:var(--fz);font-weight:600;line-height:1.2}.wr .wr-mob-l .m-pn{font-size:10px;color:var(--pin);font-family:var(--fe);margin-top:1px}
   .ccg{grid-template-columns:1fr!important}.tc .tc-mob-r,.tc .tc-mob-l{display:none}
@@ -458,7 +459,7 @@ function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
 (function(){const old=lsGet('dictApiUrl');if(old&&(old.includes('AKfycbwsk74_')||old.includes('AKfycby6M1l')))lsDel('dictApiUrl');})();
 let AU=lsGet('dictApiUrl')||DEFAULT_AU;
 const SID='1Vxj5-4Uo0tZ_X0tx9a3FSNHdS_z-zDns7_tsZUM9gWA';
-const EXPECTED_VER='v5-quiz-2026f';
+const EXPECTED_VER='v6-skip-2026g';
 
 // ═══════════ التحقق من الجهاز ═══════════
 const DEV_KEY='dictDeviceId';
@@ -661,6 +662,9 @@ async function boot(){
 function reload(){if(Q.length){ts('رحّل التغييرات أولاً','er');return;}loadFromSheet(false).catch(e=>ts(e.message,'er'));}
 window.addEventListener('online',()=>{syncBadge();if(Q.length)syncSoon(500);});
 window.addEventListener('offline',()=>syncBadge());
+// الموبايل يجمّد المؤقتات عند تبديل التطبيق أو قفل الشاشة: نرحّل فوراً عند المغادرة ونعيد عند العودة
+document.addEventListener('visibilitychange',()=>{if(Q.length)syncSoon(document.hidden?1:300);});
+window.addEventListener('pagehide',()=>{if(Q.length)syncNow(false);});
 window.addEventListener('beforeunload',e=>{if(Q.length||(QZ&&!QZ.saved&&QZ.items.some(x=>x.done))){e.preventDefault();e.returnValue='';return '';}});
 // خادم Apps Script يفشل أحياناً فشلاً عابراً (رد فارغ بعد ~20 ثانية)، لذلك:
 // مهلة محددة + إعادة محاولة تلقائية للإجراءات الآمنة فقط (التي لا تُنشئ صفوفاً جديدة)
@@ -915,7 +919,7 @@ function rL(){const el=$('wl');if(!V.length){el.innerHTML='<div class="empt">ل�
     let cl='';if(VF.ar)cl+=`<span class="ra">${esc(d.ar)}</span>`;if(VF.en)cl+=`<span class="re">${esc(d.en)}</span>`;if(VF.zh)cl+=`<span class="rz">${esc(d.zh)}</span>`;if(VF.pin)cl+=`<span class="rp">${esc(d.pin)}</span>`;if(cuCode())cl+=`<span class="sk-t${d.skip==='1'?' on':''}" title="${d.skip==='1'?'مستبعدة من الاختبارات':''}">${d.skip==='1'?'🚫':''}</span>`+sBadge(d);
     let mr='';if(VF.ar)mr+=`<div class="m-ar">${esc(d.ar)}</div>`;if(VF.en)mr+=`<div class="m-en">${esc(d.en)}</div>`;
     let ml='';if(VF.zh)ml+=`<div class="m-zh">${esc(d.zh)}</div>`;if(VF.pin)ml+=`<div class="m-pn">${esc(d.pin)}</div>`;
-    h+=`<div class="wr${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="w${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cl}<div class="wr-mob-r">${mr}</div><div class="wr-mob-l">${ml}</div></div>`;
+    h+=`<div class="wr${i===ai?' on':''}" onclick="rowTap(${i})" ondblclick="oEditW(${i})" id="w${i}" title="نقرتان للتعديل"><span class="sb${selW.has(d.id)?' on':''}" onclick="event.stopPropagation();selTog('${d.id}')" title="تحديد للطباعة">${selW.has(d.id)?'✓':''}</span>${cl}${d.skip==='1'?`<span class="m-sk" onclick="event.stopPropagation();togSkip('${esc(String(d.id))}')" title="مستبعدة من الاختبارات — اضغط لإلغاء الاستبعاد">🚫</span>`:''}<div class="wr-mob-r">${mr}</div><div class="wr-mob-l">${ml}</div></div>`;
   });el.innerHTML=h;const r=$('w'+ai);if(r)r.scrollIntoView({block:'nearest'});}
 
 function rC(){const el=$('cg');if(!V.length){el.innerHTML='<div class="empt">لا توجد نتائج</div>';return;}let h='',lt='',lc='';
