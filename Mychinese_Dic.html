@@ -13,7 +13,9 @@
 .lov #trStopBtn{margin-top:4px}
 .hdr{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 20px;box-shadow:var(--sh)}.hdr-in{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}.logo{display:flex;align-items:center;gap:10px}.logo-ic{width:38px;height:38px;background:linear-gradient(135deg,var(--acc),#e74c3c);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;font-weight:800}.logo h1{font-size:18px;font-weight:800}.logo p{font-size:10px;color:var(--ft);letter-spacing:2px;margin-top:1px}.sts{display:flex;gap:6px;flex-wrap:wrap}.st{display:flex;align-items:center;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:4px 10px;font-size:11px;color:var(--dm)}.st b{font-family:var(--fm);font-weight:600;color:var(--acc);font-size:13px}
 .tb{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--bd);padding:7px 20px;box-shadow:var(--sh)}.tb-in{max-width:1400px;margin:0 auto;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.srch{display:flex;align-items:center;gap:6px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:5px 10px;flex:1 1 140px;min-width:120px;position:relative}.srch:focus-within{border-color:var(--bl)}.srch svg{width:13px;height:13px;opacity:.35;flex-shrink:0}.srch input{background:0 0;border:0;outline:0;color:var(--tx);font-size:13px;width:100%;font-family:var(--fa)}.srch input::placeholder{color:var(--ft)}.clr{background:var(--sf);border:1px solid var(--bd);color:var(--ft);cursor:pointer;font-size:11px;padding:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.4;transition:.15s}.clr.s{opacity:1;background:var(--accl);color:var(--acc);border-color:var(--acc)}.clr.s:hover{background:var(--acc);color:#fff}
+.srch{display:flex;align-items:center;gap:6px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:5px 10px;flex:1 1 140px;min-width:120px;position:relative}.srch:focus-within{border-color:var(--bl)}
+.srch-sc{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--dm);border-radius:6px;padding:2px 7px;font-size:11px;font-family:var(--fa);cursor:pointer;white-space:nowrap}
+.srch-sc.on{background:var(--bll);border-color:var(--bl);color:var(--bl);font-weight:700}.srch svg{width:13px;height:13px;opacity:.35;flex-shrink:0}.srch input{background:0 0;border:0;outline:0;color:var(--tx);font-size:13px;width:100%;font-family:var(--fa)}.srch input::placeholder{color:var(--ft)}.clr{background:var(--sf);border:1px solid var(--bd);color:var(--ft);cursor:pointer;font-size:11px;padding:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.4;transition:.15s}.clr.s{opacity:1;background:var(--accl);color:var(--acc);border-color:var(--acc)}.clr.s:hover{background:var(--acc);color:#fff}
 .sh-dd{display:none;position:absolute;top:calc(100% + 3px);left:0;right:0;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--shl);max-height:260px;overflow-y:auto;z-index:150}.sh-dd.opn{display:block;animation:fd .12s ease}.sh-i{display:flex;align-items:center;padding:7px 10px;cursor:pointer;font-size:12px;gap:6px;color:var(--tx)}.sh-i:hover{background:var(--hov)}.sh-i span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--fa)}.sh-i button{background:0 0;border:0;color:var(--ft);cursor:pointer;font-size:10px;padding:2px 5px;border-radius:4px;opacity:.5}.sh-i button:hover{opacity:1;background:var(--accl);color:var(--acc)}.sh-clr{text-align:center;padding:6px;font-size:11px;color:var(--ft);cursor:pointer;border-top:1px solid var(--bdl)}.sh-clr:hover{background:var(--hov);color:var(--acc)}
 .dd{position:relative}.ddt{display:flex;align-items:center;gap:4px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:5px 9px;color:var(--dm);cursor:pointer;font-size:11px;font-family:var(--fa);white-space:nowrap}.ddt:hover{border-color:var(--bl)}.ddt.act{border-color:var(--acc);background:var(--accl);color:var(--acc)}.ddb{background:var(--acc);color:#fff;border-radius:7px;padding:0 5px;font-size:9px;font-weight:700;font-family:var(--fm)}.dda{font-size:7px;opacity:.4}
 .ddm{display:none;position:absolute;top:calc(100% + 3px);right:0;background:var(--card);border:1px solid var(--bd);border-radius:var(--rl);min-width:220px;max-height:320px;overflow-y:auto;box-shadow:var(--shl);padding:4px;z-index:200}.ddm.opn{display:block;animation:fd .12s ease}
@@ -400,7 +402,7 @@
     <button class="ab" id="clrAllBtn" onclick="clrAllF()" title="مسح كل الفلاتر (البحث + التصنيف + التاج + الحفظ + الاستبعاد)" style="display:none">✕ <span class="ab-txt">مسح الفلترة</span></button>
     <div class="vg"><button class="vb on" data-v="list" onclick="sV('list')">☰ <span class="ab-txt">قائمة</span></button><button class="vb" data-v="cards" onclick="sV('cards')">⊞ <span class="ab-txt">بطاقات</span></button></div>
   </div>
-  <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث... (dian shi · dian4 · صنب*ميا)" title="البحث بالبينيين: اكتب الحروف فقط (dian shi) لكل النغمات، أو أضف رقم النغمة بعد المقطع (dian4 shi4) لنغمة محددة: 1-4، والساكنة 0.&#10;علامة * بين جزأين تبحث عن كلمة تحتوي الجزأين بالترتيب في كل اللغات: dia*sh أو صنب*ميا"><button class="clr" id="sc" onclick="clrS()">✕</button><div class="sh-dd" id="shDD"></div></div>
+  <div class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input id="si" placeholder="بحث... (dian shi · dian4 · صنب*ميا)" title="البحث بالبينيين: اكتب الحروف فقط (dian shi) لكل النغمات، أو أضف رقم النغمة بعد المقطع (dian4 shi4) لنغمة محددة: 1-4، والساكنة 0.&#10;علامة * بين جزأين تبحث عن كلمة تحتوي الجزأين بالترتيب في كل اللغات: dia*sh أو صنب*ميا"><button class="clr" id="sc" onclick="clrS()">✕</button><button type="button" class="srch-sc" id="ssc" onclick="srchScopeTog()"></button><div class="sh-dd" id="shDD"></div></div>
   <div class="favbar" id="favbar"></div>
   <span class="tbrk"></span>
   <div class="tgrp g-wrd"><span class="tg-l">📝 الكلمات</span>
@@ -641,7 +643,7 @@ function onC(r){if(r.status==='ok')cats=r.table.rows.map(rw=>({id:String(rw.c[0]
   lS(`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=responseHandler:onG&sheet=${encodeURIComponent('التاجات')}`,_lRej);}
 function onG(r){if(r.status==='ok')tags=r.table.rows.map(rw=>({id:String(rw.c[0]?.v||'').trim(),name:(rw.c[1]?.v||'').trim(),catId:String(rw.c[2]?.v||'').trim()})).filter(g=>g.id&&g.name);
   loadUsersThen();}
-function paint(){vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();bSkf();updClrAll();$('ld').style.display='none';$('app').style.display='block';syncBadge();if(!_uChosen)uGate();}
+function paint(){srchScopeBtn();vfCols();rHdr();bDD();rFav();buildView();uBtn();bS();bSkf();updClrAll();$('ld').style.display='none';$('app').style.display='block';syncBadge();if(!_uChosen)uGate();}
 
 // ── الإقلاع: نعرض النسخة المحلية فوراً ثم نُحدِّث من الشيت ──
 async function boot(){
@@ -735,14 +737,22 @@ async function diagnose(){
     +`<br>الرابط: ${isCustom?'مخصص':'الافتراضي'}</div>`;}
 
 // ── BUILD VIEW: each term × each tag = display row ──
+// نطاق البحث: افتراضياً داخل المفلتر عليه فقط، أو في كل الكلمات متجاوزاً الفلاتر
+let SRCH_FLT=lsGet('dictSearchInFilter')!=='0';
+function srchScopeBtn(){const b=$('ssc');if(!b)return;b.classList.toggle('on',SRCH_FLT);
+  b.textContent=SRCH_FLT?'🌐 كل الكلمات':'🎯 داخل الفلتر';
+  b.title=SRCH_FLT?'البحث الآن داخل الكلمات المفلتر عليها فقط — اضغط للبحث في كل الكلمات':'البحث الآن في كل الكلمات بغض النظر عن الفلاتر — اضغط للبحث داخل المفلتر عليه فقط';}
+function srchScopeTog(){SRCH_FLT=!SRCH_FLT;lsSet('dictSearchInFilter',SRCH_FLT?'1':'0');srchScopeBtn();_lastFlt=null;ai=0;buildView();updClrAll();}
 function buildView(){
   const sm=mkSearch($('si').value);
+  const ign=!!sm&&!SRCH_FLT;                       // بحث نشط في كل الكلمات: تُتجاهل الفلاتر
+  const eT=ign?new Set():selT,eC=ign?new Set():selC;
   const tMap=new Map();tags.forEach(t=>tMap.set(t.id,t));
   let fd=sm?D.filter(sm):D.slice();
-  if(selT.size>0) fd=fd.filter(d=>{for(const t of selT){if(d._tags.has(t))return true;}return false;});
-  if(selC.size>0){
-    const catTags=new Set();tags.forEach(t=>{if(selC.has(t.catId))catTags.add(t.id);});
-    const incNone=selC.has('_none');
+  if(eT.size>0) fd=fd.filter(d=>{for(const t of eT){if(d._tags.has(t))return true;}return false;});
+  if(eC.size>0){
+    const catTags=new Set();tags.forEach(t=>{if(eC.has(t.catId))catTags.add(t.id);});
+    const incNone=eC.has('_none');
     fd=fd.filter(d=>{
       const validTags=[...d._tags].filter(tid=>tMap.has(tid));
       if(!validTags.length)return incNone;
@@ -750,8 +760,8 @@ function buildView(){
       return false;
     });
   }
-  if(sfActive())fd=fd.filter(sfPass);
-  if(skfActive())fd=fd.filter(skfPass);
+  if(!ign&&sfActive())fd=fd.filter(sfPass);
+  if(!ign&&skfActive())fd=fd.filter(skfPass);
 
   // Group terms by tag (each term appears once per tag it has)
   const tagTerms=new Map();
@@ -762,8 +772,8 @@ function buildView(){
       if(!tMap.has(tid))return;found=true;
       if(!tagTerms.has(tid))tagTerms.set(tid,[]);
       // Only include if tag passes filter
-      if(selT.size===0||selT.has(tid)){tagTerms.get(tid).push(d);}
-      else if(selT.size>0&&!selT.has(tid)){/* skip */}
+      if(eT.size===0||eT.has(tid)){tagTerms.get(tid).push(d);}
+      else if(eT.size>0&&!eT.has(tid)){/* skip */}
     });
     if(!found)untagged.push(d);
   });
@@ -771,7 +781,7 @@ function buildView(){
   const tcmp=termCmp();tagTerms.forEach(arr=>arr.sort(tcmp));
 
   // Sorted tags: catOrd → tagName alphabetical
-  const sortedTags=[...tags].filter(t=>tagTerms.has(t.id)&&(selT.size===0||selT.has(t.id))).sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar'));
+  const sortedTags=[...tags].filter(t=>tagTerms.has(t.id)&&(eT.size===0||eT.has(t.id))).sort((a,b)=>a.catOrd-b.catOrd||a.name.localeCompare(b.name,'ar'));
 
   V=[];
   sortedTags.forEach(tag=>{
@@ -816,6 +826,7 @@ document.addEventListener('click',e=>{if(!e.target.closest('.dd')){document.quer
 $('si').addEventListener('input',function(){_lastFlt=null;$('sc').classList.toggle('s',this.value.length>0);buildView();updClrAll();rSH();});
 $('si').addEventListener('focus',function(){rSH();});
 $('si').addEventListener('blur',function(){const q=this.value.trim();if(q)shAdd(q);setTimeout(()=>{$('shDD').classList.remove('opn');},150);});
+window.addEventListener('pagehide',()=>{const q=$('si').value.trim();if(q)shAdd(q);});
 function clrS(){const q=$('si').value.trim();if(q)shAdd(q);$('si').value='';$('sc').classList.remove('s');buildView();updClrAll();}
 // ── سجل البحث ──
 const SH_KEY='dictSearchHist';
@@ -2166,7 +2177,7 @@ MQ.addEventListener('change',()=>{if(!isMob()){shClose();selMode=false;}closeDD(
 // في كل مرة يُفتح فيها التطبيق يجب اختيار المستخدم أولاً، ثم تُستعاد فلاتره وطريقة عرضه كما تركها.
 let _uChosen=false;
 function vsSave(){if(!_uChosen||!cuCode())return;
-  lsSet('dictView_'+CU,JSON.stringify({c:[...selC],g:[...selT],sf:{mode:SF.mode,min:SF.min,max:SF.max,sort:SF.sort},skf:SKF,cv,vf:Object.assign({},VF),q:$('si').value}));}
+  lsSet('dictView_'+CU,JSON.stringify({c:[...selC],g:[...selT],sf:{mode:SF.mode,min:SF.min,max:SF.max,sort:SF.sort},skf:SKF,cv,vf:Object.assign({},VF)}));}
 function vsLoad(code){let o=null;try{o=JSON.parse(lsGet('dictView_'+code)||'null');}catch(e){}
   if(o){selC.clear();selT.clear();
     (o.c||[]).forEach(id=>{if(id==='_none'||cats.some(x=>x.id===id))selC.add(id);});
@@ -2174,7 +2185,7 @@ function vsLoad(code){let o=null;try{o=JSON.parse(lsGet('dictView_'+code)||'null
     Object.assign(SF,SF_DEF,o.sf||{});
     SKF=o.skf||'all';lsSet('dictSkipFilter',SKF);
     if(o.vf){['ar','en','zh','pin'].forEach(k=>{if(k in o.vf)VF[k]=!!o.vf[k];});if(!vfOn().length)VF.ar=true;}
-    $('si').value=o.q||'';$('sc').classList.toggle('s',!!$('si').value);
+    $('si').value='';$('sc').classList.remove('s');
     cv=o.cv==='cards'?'cards':'list';}
   else{selC.clear();selT.clear();Object.assign(SF,SF_DEF);SKF='all';lsSet('dictSkipFilter',SKF);$('si').value='';$('sc').classList.remove('s');cv='list';}   // مستخدم بلا عرض محفوظ يبدأ بعرض نظيف
   document.querySelectorAll('.vb').forEach(b=>b.classList.toggle('on',b.dataset.v===cv));
